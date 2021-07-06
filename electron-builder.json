@@ -1,6 +1,6 @@
 {
-  "appId": "org.wexond.wexond",
-  "productName": "Wexond",
+  "appId": "com.innatical.skye",
+  "productName": "Skye",
   "nsis": {
     "include": "static/installer.nsh"
   },
@@ -43,7 +43,7 @@
   "fileAssociations": [
     {
       "name": "Document",
-      "description": "Wexond",
+      "description": "Skye",
       "role": "Viewer",
       "ext": "html"
     }
