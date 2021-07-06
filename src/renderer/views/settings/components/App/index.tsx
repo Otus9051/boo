@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { SettingsSection } from '../../store';
 import { Appearance } from '../Appearance';
 import { AddressBar, ManageSearchEngines } from '../AddressBar';
+import { Accounts } from '../Accounts';
 import { Privacy } from '../Privacy';
 import store from '../../store';
 import { NavigationDrawer } from '~/renderer/components/NavigationDrawer';
@@ -23,6 +24,7 @@ import {
   ICON_SHIELD,
   ICON_TRASH,
   ICON_EDIT,
+  ICON_PERSON,
 } from '~/renderer/constants';
 import {
   ContextMenuItem,
@@ -256,6 +258,9 @@ export default observer(() => {
           <MenuItem icon={ICON_SHIELD} section="privacy">
             Privacy
           </MenuItem>
+          <MenuItem icon={ICON_PERSON} section="account">
+            My Innatical
+          </MenuItem>
           {/* <MenuItem section="permissions">Site permissions</MenuItem> */}
 
           {/* <MenuItem section="language">Languages</MenuItem> */}
@@ -273,6 +278,7 @@ export default observer(() => {
             {selectedSection === 'startup' && <OnStartup />}
             {selectedSection === 'privacy' && <Privacy />}
             {selectedSection === 'downloads' && <Downloads />}
+            {selectedSection === 'account' && <Accounts />}
           </LeftContent>
         </Content>
       </Container>
