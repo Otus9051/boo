@@ -17,7 +17,8 @@ export type SettingsSection =
   | 'shortcuts'
   | 'downloads'
   | 'system'
-  | 'search-engines';
+  | 'search-engines'
+  | 'account';
 
 export class Store {
   public autoFill = new AutoFillStore();
