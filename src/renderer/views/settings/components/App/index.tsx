@@ -38,7 +38,6 @@ import {
 } from '~/renderer/views/bookmarks/components/App/style';
 import { Textfield } from '~/renderer/components/Textfield';
 import { WebUIStyle } from '~/renderer/mixins/default-styles';
-import rendererStore from '~/renderer/views/app/store';
 
 export const NormalButton = ({
   children,
@@ -162,6 +161,8 @@ export default observer(() => {
 
       store.selectedSection = 'account';
 
+      store;
+
       const req = await fetch('https://skye.innatical.com/login', {
         body: JSON.stringify({ token }),
         method: 'POST',
@@ -175,7 +176,6 @@ export default observer(() => {
       store.save();
 
       ipcRenderer.invoke('bookmarks-sync');
-      rendererStore.bookmarksBar.load();
       window.history.replaceState(null, null, window.location.pathname);
     })();
   }, []);
