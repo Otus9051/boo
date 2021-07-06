@@ -64,7 +64,7 @@ if (process.env.ENABLE_EXTENSIONS) {
   ];
   extPopupConfig.plugins.push(
     new HtmlWebpackPlugin({
-      title: 'Wexond',
+      title: 'Skye',
       template: 'static/pages/extension-popup.html',
       filename: `extension-popup.html`,
       chunks: [`vendor.app`, 'extension-popup'],
