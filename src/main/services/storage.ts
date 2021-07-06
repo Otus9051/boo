@@ -19,6 +19,8 @@ import { promises } from 'fs';
 import { Application } from '../application';
 import { requestURL } from '../network/request';
 import * as parse from 'node-bookmarks-parser';
+import fetch from 'node-fetch';
+import { Settings } from '../models/settings';
 
 interface Databases {
   [key: string]: Datastore;
@@ -43,6 +45,8 @@ const indentLength = 4;
 const indentType = ' ';
 
 export class StorageService {
+  public settings: Settings;
+
   public databases: Databases = {
     favicons: null,
     bookmarks: null,
@@ -60,7 +64,9 @@ export class StorageService {
 
   public favicons: Map<string, string> = new Map();
 
-  public constructor() {
+  public constructor(settings: Settings) {
+    this.settings = settings;
+
     ipcMain.handle('storage-get', async (e, data: IFindOperation) => {
       return await this.find(data);
     });
@@ -102,6 +108,10 @@ export class StorageService {
 
     ipcMain.handle('bookmarks-get', (e) => {
       return this.bookmarks;
+    });
+
+    ipcMain.handle('bookmarks-sync', (e) => {
+      this.loadBookmarks();
     });
 
     ipcMain.on('bookmarks-remove', (e, ids: string[]) => {
@@ -218,6 +228,18 @@ export class StorageService {
     this.loadHistory();
   }
 
+  private async saveBookmarks() {
+    if (!this.settings.object.token) return;
+    await fetch('https://skye.innatical.com/bookmarks', {
+      method: 'PUT',
+      body: JSON.stringify(this.bookmarks),
+      headers: {
+        'content-type': 'application/json',
+        authorization: this.settings.object.token,
+      },
+    });
+  }
+
   private async loadFavicons() {
     (await this.find<IFavicon>({ scope: 'favicons', query: {} })).forEach(
       (favicon) => {
@@ -259,7 +281,19 @@ export class StorageService {
   }
 
   private async loadBookmarks() {
-    const items = await this.find<IBookmark>({ scope: 'bookmarks', query: {} });
+    let items = await this.find<IBookmark>({ scope: 'bookmarks', query: {} });
+
+    if (this.settings.object.token) {
+      const req = await fetch('https://skye.innatical.com/bookmarks', {
+        headers: {
+          authorization: this.settings.object.token,
+        },
+      });
+
+      if (req.status === 200) {
+        items = await req.json();
+      }
+    }
 
     items.sort((a, b) => a.order - b.order);
 
@@ -268,6 +302,7 @@ export class StorageService {
     let mobileFolder = items.find((x) => x.static === 'mobile');
 
     this.bookmarks = items;
+    this.saveBookmarks();
 
     if (!barFolder) {
       barFolder = await this.addBookmark({
@@ -303,6 +338,7 @@ export class StorageService {
     if (!item) return;
 
     this.bookmarks = this.bookmarks.filter((x) => x._id !== id);
+    this.saveBookmarks();
     const parent = this.bookmarks.find((x) => x._id === item.parent);
 
     parent.children = parent.children.filter((x) => x !== id);
@@ -312,6 +348,7 @@ export class StorageService {
 
     if (item.isFolder) {
       this.bookmarks = this.bookmarks.filter((x) => x.parent !== id);
+      this.saveBookmarks();
       const removed = this.bookmarks.filter((x) => x.parent === id);
 
       this.remove({ scope: 'bookmarks', query: { parent: id }, multi: true });
@@ -330,6 +367,7 @@ export class StorageService {
       this.bookmarks.find((x) => x._id === id),
     );
     this.bookmarks[index] = { ...this.bookmarks[index], ...change };
+    this.saveBookmarks();
 
     await this.update({
       scope: 'bookmarks',
@@ -376,6 +414,7 @@ export class StorageService {
     }
 
     this.bookmarks.push(doc);
+    this.saveBookmarks();
 
     Application.instance.windows.broadcast('reload-bookmarks');
 

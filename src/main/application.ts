@@ -21,7 +21,7 @@ export class Application {
 
   public settings = new Settings();
 
-  public storage = new StorageService();
+  public storage = new StorageService(this.settings);
 
   public windows = new WindowsService();
 

@@ -30,4 +30,5 @@ export interface ISettings {
   downloadsPath: string;
   doNotTrack: boolean;
   topBarVariant: TopBarVariant;
+  token: string | null;
 }

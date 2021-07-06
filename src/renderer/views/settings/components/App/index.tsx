@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { observer } from 'mobx-react-lite';
 
+import { ipcRenderer } from 'electron';
 import { SettingsSection } from '../../store';
 import { Appearance } from '../Appearance';
 import { AddressBar, ManageSearchEngines } from '../AddressBar';
@@ -37,6 +38,7 @@ import {
 } from '~/renderer/views/bookmarks/components/App/style';
 import { Textfield } from '~/renderer/components/Textfield';
 import { WebUIStyle } from '~/renderer/mixins/default-styles';
+import rendererStore from '~/renderer/views/app/store';
 
 export const NormalButton = ({
   children,
@@ -153,10 +155,30 @@ export default observer(() => {
   }
 
   React.useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    store.token = params.get('token')
-    store.selectedSection = 'account'
-  }, [])
+    (async () => {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get('token');
+      if (!token) return;
+
+      store.selectedSection = 'account';
+
+      const req = await fetch('https://skye.innatical.com/login', {
+        body: JSON.stringify({ token }),
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+      });
+
+      const res = (await req.json()) as { token: string };
+      store.settings.token = res.token;
+      store.save();
+
+      ipcRenderer.invoke('bookmarks-sync');
+      rendererStore.bookmarksBar.load();
+      window.history.replaceState(null, null, window.location.pathname);
+    })();
+  }, []);
 
   return (
     <ThemeProvider

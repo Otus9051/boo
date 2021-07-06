@@ -69,9 +69,6 @@ export class Store {
   public selectedSection: SettingsSection = 'appearance';
 
   @observable
-  public token: string | undefined
-
-  @observable
   public settings: ISettings = { ...(window as any).settings };
 
   @observable

@@ -5,23 +5,44 @@ import store from '../../store';
 import { NormalButton } from '../App';
 import { getWebUIURL } from '~/common/webui';
 import { observer } from 'mobx-react-lite';
+import decode from 'jwt-decode';
 
 export const Accounts = observer(() => {
-  const { token } = store;
-
+  const { token } = store.settings;
   return (
     <>
       <Header>Account</Header>
       <Row>
         <div>
-          <Title>{ token ? 'Logged In' : 'Logged Out' }</Title>
-          <SecondaryText>{ token ? 'Logged In' : 'No user logged In' }</SecondaryText>
+          <Title>{token ? 'Logged In' : 'Logged Out'}</Title>
+          <SecondaryText>
+            {token
+              ? (decode(token) as { sub: string }).sub
+              : 'No user logged In'}
+          </SecondaryText>
         </div>
 
         <Control>
-          { token ? <NormalButton onClick={() => {
-            console.log('owo')
-          }}>Logout</NormalButton> :  <NormalButton onClick={() => window.location.href = `https://id.innatical.com/connect?callback=${getWebUIURL('settings')}`}>Login</NormalButton>}
+          {token ? (
+            <NormalButton
+              onClick={() => {
+                store.settings.token = null;
+                store.save();
+              }}
+            >
+              Logout
+            </NormalButton>
+          ) : (
+            <NormalButton
+              onClick={() =>
+                (window.location.href = `https://id.innatical.com/connect?callback=${getWebUIURL(
+                  'settings',
+                )}`)
+              }
+            >
+              Login
+            </NormalButton>
+          )}
         </Control>
       </Row>
     </>
