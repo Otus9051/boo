@@ -152,6 +152,12 @@ export default observer(() => {
     dialogTitle = 'Add search engine';
   }
 
+  React.useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    store.token = params.get('token')
+    store.selectedSection = 'account'
+  }, [])
+
   return (
     <ThemeProvider
       theme={{ ...store.theme, dark: store.theme['pages.lightForeground'] }}
