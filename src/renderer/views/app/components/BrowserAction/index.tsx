@@ -26,7 +26,7 @@ const showPopup = (
   );
 };
 
-let canOpenPopup = true;
+// let canOpenPopup = true;
 
 const onClick = (data: IBrowserAction) => (
   e: React.MouseEvent<HTMLDivElement>,
@@ -34,12 +34,36 @@ const onClick = (data: IBrowserAction) => (
   if (data.tabId) {
     // TODO:
     //extensionsRenderer.browserAction.onClicked(data.extensionId, data.tabId);
+    const {
+      left,
+      top,
+      width,
+      height,
+    } = e.currentTarget.getBoundingClientRect();
+
+    ipcRenderer.invoke(
+      'crx-msg-remote',
+      'persist:view',
+      'browserAction.activate',
+      {
+        eventType: 'click',
+        extensionId: data.extensionId,
+        tabId: data.tabId,
+        anchorRect: {
+          x: left,
+          y: top,
+          width: width,
+          height: height,
+        },
+      },
+    );
   }
 
-  if (canOpenPopup) {
-    const { right, bottom } = e.currentTarget.getBoundingClientRect();
-    showPopup(data, right, bottom, false);
-  }
+  // if (canOpenPopup) {
+  //   const { right, bottom } = e.currentTarget.getBoundingClientRect();
+
+  //   showPopup(data, right, bottom, false);
+  // }
 };
 
 const onContextMenu = (data: IBrowserAction) => (

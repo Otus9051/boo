@@ -19,11 +19,11 @@ export class Application {
 
   public sessions: SessionsService;
 
-  public settings = new Settings();
+  public settings: Settings;
 
-  public storage = new StorageService(this.settings);
+  public storage: StorageService;
 
-  public windows = new WindowsService();
+  public windows: WindowsService;
 
   public dialogs = new DialogsService();
 
@@ -95,12 +95,15 @@ export class Application {
 
     checkFiles();
 
+    this.sessions = new SessionsService();
+    this.windows = new WindowsService(this.sessions);
+    this.settings = new Settings();
+    this.storage = new StorageService(this.settings);
+
     this.storage.run();
     this.dialogs.run();
 
     this.windows.open();
-
-    this.sessions = new SessionsService();
 
     Menu.setApplicationMenu(getMainMenu());
     runAutoUpdaterService();

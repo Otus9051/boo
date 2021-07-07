@@ -9,10 +9,11 @@ import { IDownloadItem, BrowserActionChangeType } from '~/interfaces';
 import { parseCrx } from '~/utils/crx';
 import { pathExists } from '~/utils/files';
 import { extractZip } from '~/utils/zip';
-import { extensions, _setFallbackSession } from 'electron-extensions';
+// import { extensions, _setFallbackSession } from 'electron-extensions';
 import { requestPermission } from './dialogs/permissions';
 import * as rimraf from 'rimraf';
 import { promisify } from 'util';
+import { ElectronChromeExtensions } from 'electron-chrome-extensions';
 
 const rf = promisify(rimraf);
 
@@ -20,6 +21,8 @@ const rf = promisify(rimraf);
 export class SessionsService {
   public view = session.fromPartition('persist:view');
   public viewIncognito = session.fromPartition('view_incognito');
+
+  public chromeExtensions: ElectronChromeExtensions;
 
   public incognitoExtensionsLoaded = false;
   public extensionsLoaded = false;
@@ -33,11 +36,6 @@ export class SessionsService {
     this.clearCache('incognito');
 
     if (process.env.ENABLE_EXTENSIONS) {
-      extensions.initializeSession(
-        this.view,
-        `${app.getAppPath()}/build/extensions-preload.bundle.js`,
-      );
-
       ipcMain.on('load-extensions', () => {
         this.loadExtensions();
       });

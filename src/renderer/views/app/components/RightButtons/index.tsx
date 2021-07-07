@@ -47,6 +47,12 @@ const BrowserActions = observer(() => {
           }
           return null;
         })}
+      {/* {selectedTabId && (
+        <browser-action-list
+        // partition="persist:view"
+        // tab={String(selectedTabId)}
+        ></browser-action-list>
+      )} */}
     </>
   );
 });
