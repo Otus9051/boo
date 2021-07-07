@@ -1,7 +1,7 @@
 import { ITheme } from '~/interfaces';
 import { BLUE_500 } from './colors';
 
-export const lightTheme: ITheme = {
+export const skyeLight: ITheme = {
   'titlebar.backgroundColor': '#d4d4d4',
   'addressbar.backgroundColor': '#fff',
   'addressbar.textColor': '#000',
@@ -35,11 +35,11 @@ export const lightTheme: ITheme = {
   backgroundColor: '#fff',
 };
 
-export const darkTheme: ITheme = {
-  'titlebar.backgroundColor': '#1c1c1c',
-  'addressbar.backgroundColor': '#262626',
+export const skyeDark: ITheme = {
+  'titlebar.backgroundColor': '#070B10',
+  'addressbar.backgroundColor': '#1A1E2C',
   'addressbar.textColor': '#fff',
-  'toolbar.backgroundColor': '#333333',
+  'toolbar.backgroundColor': '#1A1E2C',
   'toolbar.bottomLine.backgroundColor': 'rgba(255, 255, 255, 0.08)',
   'toolbar.lightForeground': true,
   'toolbar.separator.color': 'rgba(255, 255, 255, 0.12)',
@@ -50,21 +50,21 @@ export const darkTheme: ITheme = {
   'control.valueColor': '#fff',
   'control.lightIcon': true,
   'switch.backgroundColor': 'rgba(255, 255, 255, 0.24)',
-  'dialog.backgroundColor': '#383838',
+  'dialog.backgroundColor': '#1A1E2C',
   'dialog.separator.color': 'rgba(255, 255, 255, 0.12)',
   'dialog.textColor': '#fff',
   'dialog.lightForeground': true,
-  'searchBox.backgroundColor': '#262626',
+  'searchBox.backgroundColor': '#070B10',
   'searchBox.lightForeground': true,
-  'pages.backgroundColor': '#212121',
+  'pages.backgroundColor': '#1A1E2C',
   'pages.lightForeground': true,
   'pages.textColor': '#fff',
-  'dropdown.backgroundColor': 'rgb(66, 66, 66)',
+  'dropdown.backgroundColor': '#1A1E2C',
   'dropdown.backgroundColor.translucent': 'rgb(60, 60, 60, 0.6)',
   'dropdown.separator.color': 'rgba(255, 255, 255, 0.12)',
-  'pages.navigationDrawer1.backgroundColor': 'rgba(255, 255, 255, 0.1)',
-  'pages.navigationDrawer2.backgroundColor': 'rgba(255, 255, 255, 0.05)',
+  'pages.navigationDrawer1.backgroundColor': '#12151f',
+  'pages.navigationDrawer2.backgroundColor': '#10121a',
 
-  backgroundColor: '#1c1c1c',
-  accentColor: BLUE_500,
+  backgroundColor: '#070B10',
+  accentColor: "#1A1E2C",
 };

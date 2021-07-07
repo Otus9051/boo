@@ -1,7 +1,7 @@
-import { lightTheme, darkTheme } from '~/renderer/constants/themes';
+  import { skyeLight, skyeDark } from '~/renderer/constants/themes';
 
 export const getTheme = (name: string) => {
-  if (name === 'wexond-light') return lightTheme;
-  else if (name === 'wexond-dark') return darkTheme;
-  return lightTheme;
+  if (name === 'skye-light') return skyeLight;
+  else if (name === 'skye-dark') return skyeDark;
+  return skyeDark;
 };

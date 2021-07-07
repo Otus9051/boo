@@ -33,6 +33,7 @@ export class BookmarkBarStore {
 
   public async load() {
     const items: IBookmark[] = await ipcRenderer.invoke('bookmarks-get');
+    console.log(items)
     this.staticMainID = items.find((x) => x.static === 'main')._id;
     this.list = items;
     this.setBookmarkBarItems();
