@@ -39,4 +39,4 @@ jobs:
           MAC_CERTS: ${{ secrets.mac_certs }}
           MAC_CERTS_PASSWORD: ${{ secrets.mac_certs_password }}
 
-          RELEASE: ${{ contains(steps.log.outputs.message, 'bump version') }}
+          RELEASE: "true"
