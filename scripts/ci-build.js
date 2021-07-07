@@ -65,8 +65,8 @@ const getInput = (name) => {
     }
 
     const release =
-      (getEnv('release') === 'true' || getEnv('release') === true) &&
-      getEnv('GITHUB_TOKEN');
+      (getEnv('RELEASE') === 'true' || getEnv('RELEASE') === true) &&
+      getEnv('GH_TOKEN');
     const platform = getPlatform();
 
     if (platform === 'mac') {
