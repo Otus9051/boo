@@ -37,10 +37,10 @@ const getInput = (name) => {
       );
       const newPkg = {
         ...package,
-        name: 'wexond-nightly',
+        name: 'skye-nightly',
         repository: {
           type: 'git',
-          url: 'git+https://github.com/wexond/desktop-nightly.git',
+          url: 'git+https://github.com/innatical/skye.git',
         },
       };
       await promises.writeFile(
@@ -50,8 +50,8 @@ const getInput = (name) => {
 
       const newEBConfig = {
         ...electronBuilder,
-        appId: 'org.wexond.wexond-nightly',
-        productName: 'Wexond Nightly',
+        appId: 'com.innatical.skye',
+        productName: 'Skye Nightly',
         directories: {
           output: 'dist',
           buildResources: 'static/nightly-icons',
