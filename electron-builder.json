@@ -46,6 +46,12 @@
       "description": "Skye",
       "role": "Viewer",
       "ext": "html"
+    },
+    {
+      "name": "Browser",
+      "description": "Skye",
+      "role": "Viewer",
+      "schemes": ["http", "https"]
     }
   ]
 }
