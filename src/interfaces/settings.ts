@@ -31,4 +31,5 @@ export interface ISettings {
   doNotTrack: boolean;
   topBarVariant: TopBarVariant;
   token: string | null;
+  defaultBrowser: boolean;
 }

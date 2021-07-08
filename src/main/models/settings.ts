@@ -1,4 +1,4 @@
-import { ipcMain, nativeTheme, dialog } from 'electron';
+import { ipcMain, nativeTheme, dialog, app } from 'electron';
 
 import { DEFAULT_SETTINGS, DEFAULT_SEARCH_ENGINES } from '~/constants';
 
@@ -111,6 +111,24 @@ export class Settings extends EventEmitter {
         stopAdblockService(e);
       }
     });
+
+    if (
+      this.object.defaultBrowser &&
+      !(
+        app.isDefaultProtocolClient('http') &&
+        app.isDefaultProtocolClient('https')
+      )
+    ) {
+      app.setAsDefaultProtocolClient('http');
+      app.setAsDefaultProtocolClient('https');
+    } else if (
+      !this.object.defaultBrowser &&
+      (app.isDefaultProtocolClient('http') ||
+        app.isDefaultProtocolClient('https'))
+    ) {
+      app.removeAsDefaultProtocolClient('http');
+      app.removeAsDefaultProtocolClient('https');
+    }
   };
 
   private async load() {

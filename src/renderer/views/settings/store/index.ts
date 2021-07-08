@@ -7,6 +7,7 @@ import { getTheme } from '~/utils/themes';
 import { Textfield } from '~/renderer/components/Textfield';
 
 export type SettingsSection =
+  | 'general'
   | 'appearance'
   | 'autofill'
   | 'address-bar'
@@ -66,7 +67,7 @@ export class Store {
     | 'privacy' = null;
 
   @observable
-  public selectedSection: SettingsSection = 'appearance';
+  public selectedSection: SettingsSection = 'general';
 
   @observable
   public settings: ISettings = { ...(window as any).settings };

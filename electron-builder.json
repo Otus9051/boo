@@ -46,10 +46,11 @@
       "description": "Skye",
       "role": "Viewer",
       "ext": "html"
-    },
+    }
+  ],
+  "protocols": [
     {
-      "name": "Browser",
-      "description": "Skye",
+      "name": "Skye",
       "role": "Viewer",
       "schemes": ["http", "https"]
     }

@@ -7,6 +7,7 @@ import { Appearance } from '../Appearance';
 import { AddressBar, ManageSearchEngines } from '../AddressBar';
 import { Accounts } from '../Accounts';
 import { Privacy } from '../Privacy';
+import { General } from '../General';
 import store from '../../store';
 import { NavigationDrawer } from '~/renderer/components/NavigationDrawer';
 import { Button } from '~/renderer/components/Button';
@@ -26,6 +27,7 @@ import {
   ICON_TRASH,
   ICON_EDIT,
   ICON_PERSON,
+  ICON_SETTINGS,
 } from '~/renderer/constants';
 import {
   ContextMenuItem,
@@ -260,6 +262,9 @@ export default observer(() => {
           <div style={{ clear: 'both' }}></div>
         </Dialog>
         <NavigationDrawer title="Settings" search>
+          <MenuItem icon={ICON_SETTINGS} section="general">
+            General
+          </MenuItem>
           <MenuItem icon={ICON_PALETTE} section="appearance">
             Appearance
           </MenuItem>
@@ -295,6 +300,7 @@ export default observer(() => {
         </NavigationDrawer>
         <Content>
           <LeftContent style={{ maxWidth: 800, marginTop: 56 }}>
+            {selectedSection === 'general' && <General />}
             {selectedSection === 'appearance' && <Appearance />}
             {selectedSection === 'autofill' && process.env.ENABLE_AUTOFILL && (
               <Autofill />
