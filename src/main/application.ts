@@ -34,6 +34,14 @@ export class Application {
       app.quit();
       return;
     } else {
+      app.on('open-url', async (_, url) => {
+        this.windows.current.win.focus();
+        this.windows.current.viewManager.create({
+          url: url,
+          active: true,
+        });
+      });
+
       app.on('second-instance', async (e, argv) => {
         const path = argv[argv.length - 1];
 
