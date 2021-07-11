@@ -2651,11 +2651,6 @@ electron-chrome-extensions@^3.8.0:
   dependencies:
     debug "^4.3.1"
 
-electron-extensions@^7.0.0-beta.3:
-  version "7.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/electron-extensions/-/electron-extensions-7.0.0-beta.3.tgz#03bf2115a062d637af928ea521cfb221d449cb2f"
-  integrity sha512-b1fRJp7RW+pSmF22oMBmtNzuKSnmgFXNWDfk62WBDE6dgrLSPpArlEsPx5EMEUZAHcBQeLaelkW2nt4m2pO6vQ==
-
 electron-publish@22.11.7:
   version "22.11.7"
   resolved "https://registry.yarnpkg.com/electron-publish/-/electron-publish-22.11.7.tgz#4126cbb08ccf082a2aa7fef89ee629b3a4b8ae9a"

@@ -304,7 +304,8 @@ export class DialogsService {
   };
 
   public destroy = () => {
-    this.getBrowserViews().forEach((x) => (x.webContents as any).destroy());
+    // TODO: For some reason reactivation of the app breaks when this is called, it seems like the issue is with our extentions engine
+    // this.getBrowserViews().forEach((x) => (x.webContents as any).destroy());
   };
 
   public sendToAll = (channel: string, ...args: any[]) => {

@@ -1,5 +1,4 @@
 import { AppWindow } from './windows/app';
-import { extensions } from 'electron-extensions';
 import { app, BrowserWindow, ipcMain } from 'electron';
 import { SessionsService } from './sessions-service';
 import { ElectronChromeExtensions } from 'electron-chrome-extensions';
@@ -18,7 +17,7 @@ export class WindowsService {
         session: sessions.view,
         createTab: async (details) => {
           const win =
-            this.list.find((x) => x.id === details.windowId) ||
+            this.list.find((x) => x.win.id === details.windowId) ||
             this.lastFocused;
 
           if (!win) throw new Error('Window not found');
@@ -27,20 +26,22 @@ export class WindowsService {
           return [view.webContents, win.win];
         },
         selectTab: (tab, window) => {
-          const win = this.list.find((x) => x.id === window.id);
+          const win = this.list.find((x) => x.win.id === window.id);
           win.viewManager.select(tab.id, true);
         },
         removeTab: (tab, window) => {
-          const win = this.list.find((x) => x.id === window.id);
+          const win = this.list.find((x) => x.win.id === window.id);
           win.viewManager.destroy(tab.id);
         },
         createWindow: async (details) => {
           return this.open(details.incognito).win;
         },
         removeWindow: (window) => {
-          const win = this.list.find((x) => x.id === window.id);
-          this.list = this.list.filter((w) => w !== win);
-          win.win.destroy();
+          const win = this.list.find((x) => x.win.id === window.id);
+          if (win) {
+            this.list = this.list.filter((w) => w !== win);
+            win.win.destroy();
+          }
         },
       });
     }
@@ -54,10 +55,6 @@ export class WindowsService {
   public open(incognito = false) {
     const window = new AppWindow(incognito);
     this.list.push(window);
-
-    if (process.env.ENABLE_EXTENSIONS) {
-      extensions.windows.observe(window.win);
-    }
 
     window.win.on('focus', () => {
       this.lastFocused = window;
