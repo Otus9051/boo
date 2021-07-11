@@ -35,6 +35,10 @@ export class Application {
       return;
     } else {
       app.on('open-url', async (_, url) => {
+        if (!this.windows.current) {
+          this.windows.current = this.windows.open();
+        }
+
         this.windows.current.win.focus();
         this.windows.current.viewManager.create({
           url: url,
@@ -51,6 +55,10 @@ export class Application {
             const ext = extname(path);
 
             if (ext === '.html') {
+              if (!this.windows.current) {
+                this.windows.current = this.windows.open();
+              }
+
               this.windows.current.win.focus();
               this.windows.current.viewManager.create({
                 url: `file:///${path}`,
@@ -60,6 +68,10 @@ export class Application {
           }
           return;
         } else if (isURL(path)) {
+          if (!this.windows.current) {
+            this.windows.current = this.windows.open();
+          }
+
           this.windows.current.win.focus();
           this.windows.current.viewManager.create({
             url: prefixHttp(path),
