@@ -163,7 +163,7 @@ export default observer(() => {
 
       store.selectedSection = 'account';
 
-      const req = await fetch('https://skye.innatical.com/login', {
+      const req = await fetch('https://api.skye.innatical.com/login', {
         body: JSON.stringify({ token }),
         method: 'POST',
         headers: {

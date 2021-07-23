@@ -230,7 +230,7 @@ export class StorageService {
 
   private async saveBookmarks() {
     if (!this.settings.object.token) return;
-    await fetch('https://skye.innatical.com/bookmarks', {
+    await fetch('https://api.skye.innatical.com/bookmarks', {
       method: 'PUT',
       body: JSON.stringify(this.bookmarks),
       headers: {
@@ -284,7 +284,7 @@ export class StorageService {
     let items = await this.find<IBookmark>({ scope: 'bookmarks', query: {} });
 
     if (this.settings.object.token) {
-      const req = await fetch('https://skye.innatical.com/bookmarks', {
+      const req = await fetch('https://api.skye.innatical.com/bookmarks', {
         headers: {
           authorization: this.settings.object.token,
         },
