@@ -29,11 +29,6 @@ const emitBlockedEvent = (request: Request) => {
 let adblockRunning = false;
 let adblockInitialized = false;
 
-interface IAdblockInfo {
-  headersReceivedId?: number;
-  beforeRequestId?: number;
-}
-
 export const runAdblockService = async (ses: Electron.session) => {
   if (!adblockInitialized) {
     adblockInitialized = true;
