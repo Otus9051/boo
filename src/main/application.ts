@@ -67,7 +67,7 @@ export class Application {
           }
           return;
         } else if (isURL(path)) {
-          if (this.windows.list.filter((x) => x !== null).length === 0) {
+          if (!this.windows.current) {
             this.windows.current = this.windows.open();
           }
 

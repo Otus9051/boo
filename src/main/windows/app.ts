@@ -154,6 +154,8 @@ export class AppWindow {
       Application.instance.windows.list = Application.instance.windows.list.filter(
         (x) => x.win.id !== this.win.id,
       );
+
+      Application.instance.windows.current = undefined;
     });
 
     // this.webContents.openDevTools({ mode: 'detach' });
