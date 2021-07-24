@@ -35,7 +35,7 @@ export class Application {
       return;
     } else {
       app.on('open-url', async (_, url) => {
-        if (this.windows.list.filter((x) => x !== null).length === 0) {
+        if (!this.windows.current) {
           this.windows.current = this.windows.open();
         }
         this.windows.current.win.focus();
@@ -54,7 +54,7 @@ export class Application {
             const ext = extname(path);
 
             if (ext === '.html') {
-              if (this.windows.list.filter((x) => x !== null).length === 0) {
+              if (!this.windows.current) {
                 this.windows.current = this.windows.open();
               }
 
