@@ -22,10 +22,6 @@ const onTabsMouseLeave = () => {
   }, 300);
 };
 
-const onAddTabClick = () => {
-  store.tabs.addTab();
-};
-
 const onWheel = (e: any) => {
   if (!store.tabs.containerRef) return;
 
@@ -62,11 +58,6 @@ export const Tabbar = observer(() => {
         <TabGroups />
         <Tabs />
       </TabsContainer>
-      <AddTab
-        icon={ICON_ADD}
-        onClick={onAddTabClick}
-        divRef={(r: any) => (store.addTab.ref = r)}
-      />
       {store.isCompact && <AddressBarContainer />}
     </StyledTabbar>
   );

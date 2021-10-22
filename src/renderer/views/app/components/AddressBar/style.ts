@@ -5,15 +5,17 @@ import { BLUE_300 } from '~/renderer/constants';
 export const StyledAddressBar = styled.div`
   height: 30px;
   flex: 1;
-  border-radius: 4px;
+  border-radius: 8px;
   margin: 0 7px;
   display: flex;
   align-items: center;
   position: relative;
-
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 15px;
   overflow: hidden;
-
+  left: -64px;
   ${({ theme, focus }: { theme: ITheme; focus: boolean }) => css`
     background-color: ${theme['addressbar.backgroundColor']};
     border: 1px solid

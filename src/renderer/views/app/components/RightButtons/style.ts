@@ -4,7 +4,7 @@ import { ITheme } from '~/interfaces';
 export const Buttons = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 4px;
+  margin-right: 10px;
 `;
 
 export const Separator = styled.div`

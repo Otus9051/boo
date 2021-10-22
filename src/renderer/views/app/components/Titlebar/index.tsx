@@ -31,9 +31,10 @@ const onFullscreenExit = (e: React.MouseEvent<HTMLDivElement>) => {
 };
 
 export const Titlebar = observer(() => {
-  return (
+  return store.tabs.list.length > 1 ? (
     <StyledTitlebar
       onMouseDown={onMouseDown}
+      // @ts-ignore
       isFullscreen={store.isFullscreen}
       isHTMLFullscreen={store.isHTMLFullscreen}
     >
@@ -41,16 +42,17 @@ export const Titlebar = observer(() => {
       <Tabbar />
       {store.isCompact && <RightButtons />}
 
-      {platform() !== 'darwin' && (
-        store.isFullscreen
-          ? <FullscreenExitButton
+      {platform() !== 'darwin' &&
+        (store.isFullscreen ? (
+          <FullscreenExitButton
             style={{
               height: store.isCompact ? '100%' : 32,
             }}
             onMouseUp={onFullscreenExit}
             theme={store.theme}
           />
-          : <WindowsControls
+        ) : (
+          <WindowsControls
             style={{
               height: store.isCompact ? '100%' : 32,
               WebkitAppRegion: 'no-drag',
@@ -61,7 +63,9 @@ export const Titlebar = observer(() => {
             onMaximize={onMaximizeClick}
             dark={store.theme['toolbar.lightForeground']}
           />
-      )}
+        ))}
     </StyledTitlebar>
+  ) : (
+    <></>
   );
 });

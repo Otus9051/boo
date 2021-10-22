@@ -104,6 +104,9 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
     "electron-chrome-extensions": "^3.8.0",
     "jwt-decode": "^3.1.2",
     "patch-package": "^6.4.7",

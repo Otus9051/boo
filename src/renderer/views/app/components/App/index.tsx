@@ -63,8 +63,9 @@ const App = observer(() => {
         }}
       >
         <UIStyle />
-        <Titlebar />
+
         {store.settings.object.topBarVariant === 'default' && <Toolbar />}
+        <Titlebar />
         <BookmarkBar />
       </StyledApp>
       <Line

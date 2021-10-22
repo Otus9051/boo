@@ -34,6 +34,10 @@ export class AppWindow {
         enableRemoteModule: true,
         worldSafeExecuteJavaScript: false,
       },
+      trafficLightPosition: {
+        x: 18,
+        y: 18,
+      },
       icon: resolve(
         app.getAppPath(),
         `static/${isNightly ? 'nightly-icons' : 'icons'}/icon.png`,

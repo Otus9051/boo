@@ -5,6 +5,7 @@ import { ipcRenderer, remote } from 'electron';
 import { ToolbarButton } from '../ToolbarButton';
 import { BrowserAction } from '../BrowserAction';
 import {
+  ICON_ADD,
   ICON_SHIELD,
   ICON_DOWNLOAD,
   ICON_INCOGNITO,
@@ -13,8 +14,13 @@ import {
 import { Buttons, Separator } from './style';
 import store from '../../store';
 import { SiteButtons } from '../SiteButtons';
+import { AddTab } from '../Tabbar/style';
 
 let menuRef: HTMLDivElement = null;
+
+const onAddTabClick = () => {
+  store.tabs.addTab();
+};
 
 const onDownloadsClick = async (e: React.MouseEvent<HTMLDivElement>) => {
   const { right, bottom } = e.currentTarget.getBoundingClientRect();
@@ -23,7 +29,10 @@ const onDownloadsClick = async (e: React.MouseEvent<HTMLDivElement>) => {
 };
 
 const showMenuDialog = async () => {
-  const { right, bottom } = menuRef.getBoundingClientRect();
+  const { right, bottom } = menuRef?.getBoundingClientRect() ?? {
+    right: 0,
+    bottom: 0,
+  };
   ipcRenderer.send(`show-menu-dialog-${store.windowId}`, right, bottom);
 };
 
@@ -84,7 +93,7 @@ export const RightButtons = observer(() => {
       )}
       {store.isIncognito && <ToolbarButton icon={ICON_INCOGNITO} size={18} />}
       <ToolbarButton
-        divRef={(r) => (menuRef = r)}
+        divRef={(r: any) => (store.addTab.ref = r)}
         toggled={store.dialogsVisibility['menu']}
         badge={store.updateAvailable}
         badgeRight={10}
@@ -93,6 +102,20 @@ export const RightButtons = observer(() => {
         icon={ICON_MORE}
         size={18}
       />
+
+      <ToolbarButton
+        badgeRight={10}
+        onMouseDown={onMenuClick}
+        onClick={onAddTabClick}
+        icon={ICON_ADD}
+        size={18}
+      />
+
+      {/* <AddTab
+        icon={ICON_ADD}
+        onClick={onAddTabClick}
+        divRef={(r: any) => (store.addTab.ref = r)}
+      /> */}
     </Buttons>
   );
 });
