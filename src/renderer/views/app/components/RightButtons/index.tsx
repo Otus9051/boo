@@ -30,8 +30,8 @@ const onDownloadsClick = async (e: React.MouseEvent<HTMLDivElement>) => {
 
 const showMenuDialog = async () => {
   const { right, bottom } = menuRef?.getBoundingClientRect() ?? {
-    right: 0,
-    bottom: 0,
+    right: 1000,
+    bottom: 50,
   };
   ipcRenderer.send(`show-menu-dialog-${store.windowId}`, right, bottom);
 };
@@ -93,7 +93,7 @@ export const RightButtons = observer(() => {
       )}
       {store.isIncognito && <ToolbarButton icon={ICON_INCOGNITO} size={18} />}
       <ToolbarButton
-        divRef={(r: any) => (store.addTab.ref = r)}
+        divRef={(r: any) => (menuRef = r)}
         toggled={store.dialogsVisibility['menu']}
         badge={store.updateAvailable}
         badgeRight={10}

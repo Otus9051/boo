@@ -252,8 +252,9 @@ export class TabsStore {
 
     const frame = () => {
       if (!this.scrollingToEnd) return;
+      if (!this.containerRef?.current?.scrollWidth) return;
       this.containerRef.current.scrollLeft =
-        this.containerRef.current?.scrollWidth ?? 0;
+        this.containerRef.current?.scrollWidth || 0;
       requestAnimationFrame(frame);
     };
 
