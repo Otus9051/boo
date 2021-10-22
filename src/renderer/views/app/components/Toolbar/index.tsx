@@ -6,10 +6,14 @@ import { NavigationButtons } from '../NavigationButtons';
 
 import { AddressBar } from '../AddressBar';
 import { RightButtons } from '../RightButtons';
+import store from '../../store';
 
 export const Toolbar = observer(() => {
   return (
-    <StyledToolbar>
+    <StyledToolbar
+      isFullscreen={store.isFullscreen}
+      isHTMLFullscreen={store.isHTMLFullscreen}
+    >
       <NavigationButtons />
       <AddressBar />
       <RightButtons />

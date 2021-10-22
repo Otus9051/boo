@@ -14,7 +14,7 @@ export const StyledToolbar = styled.div`
   width: 100%;
   justify-content: center;
   ${({ theme }: { theme: ITheme }) => css`
-    background-color: ${theme['toolbar.backgroundColor']};
+    background-color: ${theme['titlebar.backgroundColor']};
   `};
 
   ${({

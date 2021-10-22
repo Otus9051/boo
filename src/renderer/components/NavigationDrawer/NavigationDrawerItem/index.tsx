@@ -2,6 +2,8 @@ import * as React from 'react';
 import { observer } from 'mobx-react-lite';
 
 import { StyledNavigationDrawerItem, Icon } from './style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export const NavigationDrawerItem = observer(
   ({
@@ -9,19 +11,25 @@ export const NavigationDrawerItem = observer(
     selected,
     onClick,
     icon,
+    global,
   }: {
     children: any;
     selected?: boolean;
     onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
-    icon?: string;
+    icon?: IconProp;
+    global?: boolean;
   }) => {
     return (
       <StyledNavigationDrawerItem
         title={children}
-        selected={selected}
         onClick={onClick}
+        global={global}
       >
-        {icon && <Icon style={{ backgroundImage: `url(${icon})` }} />}
+        {icon && (
+          <Icon>
+            <FontAwesomeIcon icon={icon} fixedWidth />
+          </Icon>
+        )}
         {children}
       </StyledNavigationDrawerItem>
     );

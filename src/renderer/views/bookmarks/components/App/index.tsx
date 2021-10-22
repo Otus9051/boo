@@ -34,6 +34,7 @@ import {
   ICON_NEW_FOLDER,
 } from '~/renderer/constants';
 import { WebUIStyle } from '~/renderer/mixins/default-styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const onScroll = (e: any) => {
   const scrollPos = e.target.scrollTop;
@@ -196,19 +197,19 @@ export default observer(() => {
           visible={store.menuVisible}
         >
           {store.currentBookmark && !store.currentBookmark.isFolder && (
-            <ContextMenuItem onClick={onEditClick} icon={ICON_EDIT}>
+            <ContextMenuItem onClick={onEditClick}>
+              <FontAwesomeIcon icon={ICON_EDIT} fixedWidth />
               Edit
             </ContextMenuItem>
           )}
           {store.currentBookmark && store.currentBookmark.isFolder && (
-            <ContextMenuItem onClick={onRenameClick} icon={ICON_EDIT}>
+            <ContextMenuItem onClick={onRenameClick}>
+              <FontAwesomeIcon icon={ICON_EDIT} fixedWidth />
               Rename
             </ContextMenuItem>
           )}
-          <ContextMenuItem
-            onClick={onRemoveClick(store.currentBookmark)}
-            icon={ICON_TRASH}
-          >
+          <ContextMenuItem onClick={onRemoveClick(store.currentBookmark)}>
+            <FontAwesomeIcon icon={ICON_TRASH} fixedWidth />
             Delete
           </ContextMenuItem>
         </ContextMenu>

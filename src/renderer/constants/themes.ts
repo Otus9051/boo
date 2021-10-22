@@ -2,14 +2,16 @@ import { ITheme } from '~/interfaces';
 import { BLUE_500 } from './colors';
 
 export const skyeLight: ITheme = {
-  'titlebar.backgroundColor': '#d4d4d4',
-  'addressbar.backgroundColor': '#fff',
+  'titlebar.backgroundColor': '#fff',
+  'addressbar.backgroundColor': '#F2F8FF',
   'addressbar.textColor': '#000',
-  'toolbar.backgroundColor': '#f8f8f8',
+  'toolbar.backgroundColor': '#F2F8FF',
   'toolbar.bottomLine.backgroundColor': 'rgba(0, 0, 0, 0.12)',
   'toolbar.lightForeground': false,
   'toolbar.separator.color': 'rgba(0, 0, 0, 0.12)',
   'tab.selected.textColor': '#000',
+  'tab.selected.backgroundColor': '#E5F1FF',
+  'tab.backgroundColor': '#F2F8FF',
   'tab.textColor': `rgba(0, 0, 0, 0.7)`,
   'control.backgroundColor': 'rgba(0, 0, 0, 0.08)',
   'control.hover.backgroundColor': 'rgba(0, 0, 0, 0.1)',
@@ -20,7 +22,7 @@ export const skyeLight: ITheme = {
   'dialog.separator.color': 'rgba(0, 0, 0, 0.12)',
   'dialog.textColor': '#000',
   'dialog.lightForeground': false,
-  'searchBox.backgroundColor': '#fff',
+  'searchBox.backgroundColor': '#F7FBFF',
   'searchBox.lightForeground': false,
   'pages.backgroundColor': '#fff',
   'pages.lightForeground': false,
@@ -31,7 +33,7 @@ export const skyeLight: ITheme = {
   'pages.navigationDrawer1.backgroundColor': '#f5f5f5',
   'pages.navigationDrawer2.backgroundColor': '#fafafa',
 
-  accentColor: BLUE_500,
+  accentColor: '#fff',
   backgroundColor: '#fff',
 };
 
@@ -45,6 +47,10 @@ export const skyeDark: ITheme = {
   'toolbar.separator.color': 'rgba(255, 255, 255, 0.12)',
   'tab.selected.textColor': '#fff',
   'tab.textColor': 'rgba(255, 255, 255, 0.54)',
+
+  'tab.selected.backgroundColor': '#1A1E2C',
+  'tab.backgroundColor': '#11151A',
+
   'control.backgroundColor': 'rgba(255, 255, 255, 0.1)',
   'control.hover.backgroundColor': 'rgba(255, 255, 255, 0.12)',
   'control.valueColor': '#fff',
@@ -66,5 +72,5 @@ export const skyeDark: ITheme = {
   'pages.navigationDrawer2.backgroundColor': '#10121a',
 
   backgroundColor: '#070B10',
-  accentColor: "#1A1E2C",
+  accentColor: '#1A1E2C',
 };

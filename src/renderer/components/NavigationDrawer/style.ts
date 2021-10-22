@@ -26,7 +26,7 @@ export const MenuItems = styled.div`
   display: flex;
   flex-flow: column;
   flex: 1;
-  margin-top: 24px;
+  margin-top: 10px;
   padding-bottom: 24px;
   overflow: hidden auto;
   ${noButtons('6px', 'rgba(0, 0, 0, 0.04)', 'rgba(0, 0, 0, 0.12)')};
@@ -40,7 +40,7 @@ export const Header = styled.div`
 
 export const Title = styled.div`
   font-size: 24px;
-  font-weight: 300;
+  font-weight: 900;
 `;
 
 export const Input = styled.input`
@@ -48,7 +48,7 @@ export const Input = styled.input`
   outline: none;
 
   width: 100%;
-  padding-left: 42px;
+  padding-left: 14px;
   background-color: transparent;
   height: 100%;
   font-size: 14px;
@@ -57,7 +57,8 @@ export const Input = styled.input`
     color: ${theme['pages.lightForeground']
       ? 'white'
       : `rgba(0, 0, 0, ${transparency.text.high})`};
-
+    border-radius: 8px;
+    background-color: ${theme['addressbar.backgroundColor']};
     &::placeholder {
       color: ${theme['pages.lightForeground']
         ? 'rgba(255, 255, 255, 0.54)'
@@ -67,9 +68,9 @@ export const Input = styled.input`
 `;
 
 export const Search = styled.div`
-  margin-top: 24px;
+  margin-top: 10px;
   height: 42px;
-  border-radius: 30px;
+  border-radius: 8px;
 
   position: relative;
 
@@ -88,7 +89,6 @@ export const Search = styled.div`
     width: 16px;
     height: 16px;
     ${centerIcon(16)};
-    background-image: url(${ICON_SEARCH});
 
     ${({ theme }: { theme?: ITheme }) => css`
       filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : 'none'};

@@ -10,30 +10,23 @@ import { ITheme } from '~/interfaces';
 export const Icon = styled.div`
   width: 100%;
   height: 100%;
-  will-change: background-image;
-  transition: 0.15s background-image;
-  backface-visibility: hidden;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   ${({
     size,
     disabled,
     opacity,
-    autoInvert,
     theme,
-    dense,
   }: {
     size: number;
     disabled: boolean;
     opacity: number;
-    autoInvert?: boolean;
-    dense?: boolean;
     theme?: ITheme;
   }) => css`
     ${centerIcon(size)};
+    color: ${theme['toolbar.lightForeground'] ? '#DEDEDE' : '#323232'};
     opacity: ${disabled ? 0.25 : opacity};
-    filter: ${autoInvert && theme['toolbar.lightForeground']
-      ? 'invert(100%)'
-      : 'none'};
   `};
 `;
 

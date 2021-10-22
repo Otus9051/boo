@@ -13,9 +13,9 @@ export const Header = styled.div`
   margin-top: 4px;
   margin-bottom: 16px;
   font-size: 20px;
+  font-weight: black;
   display: flex;
   align-items: center;
-  ${robotoLight()};
 `;
 
 export const Row = styled.div`
@@ -56,17 +56,19 @@ export const IconButton = styled.div`
   ${centerIcon(24)};
   opacity: 0.7;
 
+  svg {
+    margin-right: 10px;
+  }
+
   ${({ theme }: { theme?: ITheme }) => css`
+    color: ${theme['toolbar.lightForeground'] ? '#DEDEDE' : '#323232'};
     &:hover {
       background-color: rgba(0, 0, 0, 0.08);
     }
-
-    filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : 'none'};
   `}
 `;
 
 export const Back = styled(IconButton)`
   position: absolute;
   left: -48px;
-  background-image: url(${ICON_BACK});
 `;

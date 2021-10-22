@@ -9,21 +9,26 @@ import {
   ICON_DOWNLOAD,
 } from '~/renderer/constants/icons';
 import { getWebUIURL } from '~/common/webui';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const MenuItem = observer(
   ({
     name,
     children,
     icon,
+    global,
   }: {
     name: string;
     children: any;
-    icon?: string;
+    icon?: IconProp;
+    global?: boolean;
   }) => (
     <NavigationDrawer.Item
       onClick={() => (window.location.href = getWebUIURL(name))}
       selected={window.location.href.startsWith(getWebUIURL(name))}
       icon={icon}
+      global={global}
     >
       {children}
     </NavigationDrawer.Item>
@@ -33,14 +38,14 @@ const MenuItem = observer(
 export const GlobalNavigationDrawer = () => {
   return (
     <NavigationDrawer dense title="">
-      <MenuItem name="settings" icon={ICON_SETTINGS}>
-        Settings
+      <MenuItem name="settings" global>
+        <FontAwesomeIcon icon={ICON_SETTINGS} fixedWidth />
       </MenuItem>
-      <MenuItem name="history" icon={ICON_HISTORY}>
-        History
+      <MenuItem name="history" global>
+        <FontAwesomeIcon icon={ICON_HISTORY} fixedWidth />
       </MenuItem>
-      <MenuItem name="bookmarks" icon={ICON_BOOKMARKS}>
-        Bookmarks
+      <MenuItem name="bookmarks" global>
+        <FontAwesomeIcon icon={ICON_BOOKMARKS} fixedWidth />
       </MenuItem>
       {/* <MenuItem name="downloads" icon={ICON_DOWNLOAD}>
         Downloads

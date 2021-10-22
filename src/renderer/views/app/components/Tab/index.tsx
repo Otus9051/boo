@@ -12,11 +12,16 @@ import {
   StyledPinAction,
   TabContainer,
 } from './style';
-import { ICON_VOLUME_HIGH, ICON_VOLUME_OFF } from '~/renderer/constants';
+import {
+  ICON_CLOSE,
+  ICON_VOLUME_HIGH,
+  ICON_VOLUME_OFF,
+} from '~/renderer/constants';
 import { ITab } from '../../models';
 import store from '../../store';
 import { remote, ipcRenderer } from 'electron';
 import { COMPACT_TAB_MARGIN_TOP } from '~/constants/design';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const removeTab = (tab: ITab) => (e: React.MouseEvent<HTMLDivElement>) => {
   e.stopPropagation();
@@ -253,8 +258,11 @@ const ExpandedVolume = observer(({ tab }: { tab: ITab }) => {
       onMouseDown={onVolumeMouseDown}
       onClick={toggleMuteTab(tab)}
       visible={tab.isExpanded && !tab.isPinned && tab.isPlaying}
-      icon={tab.isMuted ? ICON_VOLUME_OFF : ICON_VOLUME_HIGH}
-    />
+    >
+      <FontAwesomeIcon
+        icon={tab.isMuted ? ICON_VOLUME_OFF : ICON_VOLUME_HIGH}
+      />
+    </StyledAction>
   );
 });
 
@@ -264,8 +272,11 @@ const PinnedVolume = observer(({ tab }: { tab: ITab }) => {
       onMouseDown={onVolumeMouseDown}
       onClick={toggleMuteTab(tab)}
       visible={tab.isPinned && tab.isPlaying}
-      icon={tab.isMuted ? ICON_VOLUME_OFF : ICON_VOLUME_HIGH}
-    />
+    >
+      <FontAwesomeIcon
+        icon={tab.isMuted ? ICON_VOLUME_OFF : ICON_VOLUME_HIGH}
+      />
+    </StyledPinAction>
   );
 });
 
@@ -275,23 +286,13 @@ const Close = observer(({ tab }: { tab: ITab }) => {
       onMouseDown={onCloseMouseDown}
       onClick={removeTab(tab)}
       visible={tab.isExpanded && !tab.isPinned}
-    />
+    >
+      <FontAwesomeIcon icon={ICON_CLOSE} />
+    </StyledClose>
   );
 });
 
-export default observer(({ tab }: { tab: ITab }) => {
-  const defaultColor = store.theme['toolbar.lightForeground']
-    ? 'rgba(255, 255, 255, 0.04)'
-    : 'rgba(255, 255, 255, 0.3)';
-
-  const defaultHoverColor = store.theme['toolbar.lightForeground']
-    ? 'rgba(255, 255, 255, 0.08)'
-    : 'rgba(255, 255, 255, 0.5)';
-
-  const defaultSelectedHoverColor = store.theme['toolbar.lightForeground']
-    ? '#393939'
-    : '#fcfcfc';
-
+export default observer(({ tab, index }: { tab: ITab; index: number }) => {
   return (
     <StyledTab
       selected={tab.isSelected}
@@ -308,13 +309,7 @@ export default observer(({ tab }: { tab: ITab }) => {
         pinned={tab.isPinned}
         selected={tab.isSelected}
         style={{
-          backgroundColor: tab.isSelected
-            ? store.isCompact && tab.isHovered
-              ? defaultSelectedHoverColor
-              : store.theme['toolbar.backgroundColor']
-            : tab.isHovered
-            ? defaultHoverColor
-            : defaultColor,
+          marginLeft: index !== 0 ? '8px' : '1px',
           borderColor:
             tab.isSelected && tab.tabGroupId !== -1 && !store.isCompact
               ? tab.tabGroup.color

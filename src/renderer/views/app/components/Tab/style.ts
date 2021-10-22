@@ -16,15 +16,17 @@ export const StyledClose = styled.div`
   margin-left: 2px;
   margin-right: 6px;
   border-radius: 2px;
-  background-image: url('${ICON_CLOSE}');
   transition: 0.1s background-color;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ${centerIcon(16)};
 
   ${({ visible, theme }: CloseProps) => css`
+    color: ${theme['toolbar.lightForeground'] ? '#DEDEDE' : '#323232'};
     opacity: ${visible ? transparency.icons.inactive : 0};
     display: ${visible ? 'block' : 'none'};
-    filter: ${theme['toolbar.lightForeground'] ? 'invert(100%)' : 'none'};
   `}
 
   &:hover {
@@ -34,7 +36,6 @@ export const StyledClose = styled.div`
 
 interface ActionProps {
   visible: boolean;
-  icon: string;
   theme?: ITheme;
 }
 
@@ -47,11 +48,10 @@ export const StyledAction = styled.div`
   z-index: 10;
   ${centerIcon(16)};
 
-  ${({ visible, theme, icon }: ActionProps) => css`
+  ${({ visible, theme }: ActionProps) => css`
     opacity: ${visible ? transparency.icons.inactive : 0};
     display: ${visible ? 'block' : 'none'};
     filter: ${theme['toolbar.lightForeground'] ? 'invert(100%)' : 'none'};
-    background-image: url('${icon}');
   `}
 
   &:hover {
@@ -61,7 +61,6 @@ export const StyledAction = styled.div`
 
 interface PinActionProps {
   visible: boolean;
-  icon: string;
   theme?: ITheme;
 }
 
@@ -76,12 +75,11 @@ export const StyledPinAction = styled.div`
   top: 8px;
   ${centerIcon(10)};
 
-  ${({ visible, theme, icon }: PinActionProps) => css`
+  ${({ visible, theme }: PinActionProps) => css`
     display: ${visible ? 'block' : 'none'};
     background-color: ${theme['toolbar.lightForeground']
       ? 'rgb(255, 255, 255)'
       : 'rgb(0, 0, 0)'};
-    background-image: url('${icon}');
   `}
 
   &:hover {
@@ -173,10 +171,11 @@ export const TabContainer = styled.div`
 
   ${({ pinned, theme, hasTabGroup, selected }: TabContainerProps) => css`
     max-width: ${pinned ? `${TAB_PINNED_WIDTH}px` : '100%'};
-
+    background-color: ${selected
+      ? theme['tab.selected.backgroundColor']
+      : theme['tab.backgroundColor']};
     height: ${theme.tabHeight}px;
     border-radius: ${theme.isCompact && !hasTabGroup ? '8px' : 'auto'};
     border-radius: 8px;
-    box-shadow: ${selected ? '0px 0px 6px 0px rgba(0,0,0,0.12)' : 'none'};
   `};
 `;

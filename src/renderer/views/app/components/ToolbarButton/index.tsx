@@ -5,6 +5,8 @@ import { transparency } from '~/renderer/constants/transparency';
 import { Button, Icon, Badge, PreloaderBg } from './style';
 import { BLUE_500 } from '~/renderer/constants';
 import { Preloader } from '~/renderer/components/Preloader';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface Props {
   onClick?: (e?: React.MouseEvent<HTMLDivElement>) => void;
@@ -13,7 +15,7 @@ interface Props {
   onContextMenu?: (e?: React.MouseEvent<HTMLDivElement>) => void;
   size?: number;
   style?: any;
-  icon: string;
+  icon: IconProp;
   divRef?: (ref: HTMLDivElement) => void;
   disabled?: boolean;
   className?: string;
@@ -79,13 +81,13 @@ export const ToolbarButton = observer(
         disabled={disabled}
       >
         <Icon
-          style={{ backgroundImage: `url(${icon})`, ...iconStyle }}
+          style={{ ...iconStyle }}
           size={size}
-          dense={dense}
           disabled={disabled}
           opacity={opacity}
-          autoInvert={autoInvert}
-        />
+        >
+          <FontAwesomeIcon icon={icon} />
+        </Icon>
         {badge && (
           <Badge
             right={badgeRight}

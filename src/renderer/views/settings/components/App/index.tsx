@@ -40,6 +40,9 @@ import {
 } from '~/renderer/views/bookmarks/components/App/style';
 import { Textfield } from '~/renderer/components/Textfield';
 import { WebUIStyle } from '~/renderer/mixins/default-styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Icon } from '~/renderer/components/NavigationDrawer/NavigationDrawerItem/style';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export const NormalButton = ({
   children,
@@ -73,15 +76,15 @@ const MenuItem = observer(
     section: SettingsSection;
     subSections?: SettingsSection[];
     children: any;
-    icon?: string;
+    icon?: IconProp;
   }) => (
     <NavigationDrawer.Item
       onClick={() => (store.selectedSection = section)}
+      icon={icon}
       selected={
         store.selectedSection === section ||
         (subSections && subSections.includes(store.selectedSection))
       }
-      icon={icon}
     >
       {children}
     </NavigationDrawer.Item>
@@ -203,16 +206,18 @@ export default observer(() => {
           {store.editedSearchEngine &&
             store.editedSearchEngine.keyword !== store.searchEngine.keyword && (
               <>
-                <ContextMenuItem onClick={onMakeDefaultClick} icon=" ">
+                <ContextMenuItem onClick={onMakeDefaultClick}>
                   Make default
                 </ContextMenuItem>
-                <ContextMenuItem onClick={onRemoveClick} icon={ICON_TRASH}>
+                <ContextMenuItem onClick={onRemoveClick}>
+                  <FontAwesomeIcon icon={ICON_TRASH} />
                   Remove
                 </ContextMenuItem>
               </>
             )}
           {store.editedSearchEngine && (
-            <ContextMenuItem onClick={onEditClick} icon={ICON_EDIT}>
+            <ContextMenuItem onClick={onEditClick}>
+              <FontAwesomeIcon icon={ICON_EDIT} />
               Edit
             </ContextMenuItem>
           )}
@@ -262,34 +267,34 @@ export default observer(() => {
           <div style={{ clear: 'both' }}></div>
         </Dialog>
         <NavigationDrawer title="Settings" search>
-          <MenuItem icon={ICON_SETTINGS} section="general">
+          <MenuItem section="general" icon={ICON_SETTINGS}>
             General
           </MenuItem>
-          <MenuItem icon={ICON_PALETTE} section="appearance">
+          <MenuItem section="appearance" icon={ICON_PALETTE}>
             Appearance
           </MenuItem>
           {process.env.ENABLE_AUTOFILL && (
-            <MenuItem icon={ICON_AUTOFILL} section="autofill">
+            <MenuItem section="autofill" icon={ICON_AUTOFILL}>
               Autofill
             </MenuItem>
           )}
-          <MenuItem icon={ICON_POWER} section="startup">
+          <MenuItem section="startup" icon={ICON_POWER}>
             On startup
           </MenuItem>
           <MenuItem
-            icon={ICON_SEARCH}
             section="address-bar"
             subSections={['search-engines']}
+            icon={ICON_SEARCH}
           >
             Address bar
           </MenuItem>
-          <MenuItem icon={ICON_DOWNLOAD} section="downloads">
+          <MenuItem section="downloads" icon={ICON_DOWNLOAD}>
             Downloads
           </MenuItem>
-          <MenuItem icon={ICON_SHIELD} section="privacy">
+          <MenuItem section="privacy" icon={ICON_SHIELD}>
             Privacy
           </MenuItem>
-          <MenuItem icon={ICON_PERSON} section="account">
+          <MenuItem section="account" icon={ICON_PERSON}>
             My Innatical
           </MenuItem>
           {/* <MenuItem section="permissions">Site permissions</MenuItem> */}

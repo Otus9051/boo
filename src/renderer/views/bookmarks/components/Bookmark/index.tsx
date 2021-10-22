@@ -6,7 +6,9 @@ import { IBookmark } from '~/interfaces';
 import store from '../../store';
 import { ListItem } from '~/renderer/components/ListItem';
 import { getBookmarkTitle } from '../../utils';
-import { ICON_PAGE, ICON_FOLDER } from '~/renderer/constants/icons';
+import { ICON_PAGE, ICON_FOLDER, ICON_MORE } from '~/renderer/constants/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const onClick = (item: IBookmark) => (e: React.MouseEvent<HTMLDivElement>) => {
   const index = store.selectedItems.indexOf(item._id);
@@ -58,7 +60,7 @@ const onContextMenu = (data: IBookmark) => (e: any) => {
 export const Bookmark = observer(({ data }: { data: IBookmark }) => {
   const selected = store.selectedItems.includes(data._id);
 
-  let favicon = data.favicon;
+  let favicon: string | IconProp = data.favicon;
   let customFavicon = false;
 
   if (data.isFolder) {
@@ -97,7 +99,11 @@ export const Bookmark = observer(({ data }: { data: IBookmark }) => {
       />
       <Title>{getBookmarkTitle(data)}</Title>
       <Site>{data.url}</Site>
-      {!data.static && <More onClick={onMoreClick(data)} />}
+      {!data.static && (
+        <More onClick={onMoreClick(data)}>
+          <FontAwesomeIcon icon={ICON_MORE} />
+        </More>
+      )}
     </ListItem>
   );
 });

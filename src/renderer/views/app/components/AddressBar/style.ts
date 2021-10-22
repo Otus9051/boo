@@ -27,9 +27,6 @@ export const StyledAddressBar = styled.div`
         ? `${BLUE_300} !important`
         : 'transparent'};
     color: ${theme['addressbar.textColor']};
-    box-shadow: ${focus && !theme.isCompact
-      ? `0 0 0 1px ${BLUE_300}`
-      : `0px 0px 5px 0px rgba(0,0,0,0.1)`};
 
     ${!theme.isCompact &&
     css`

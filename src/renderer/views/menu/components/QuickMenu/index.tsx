@@ -30,6 +30,7 @@ import {
   ICON_PRINT,
 } from '~/renderer/constants/icons';
 import { getWebUIURL } from '~/common/webui';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const onFindClick = () => {
   /*
@@ -102,14 +103,18 @@ export const QuickMenu = observer(() => {
           {store.updateAvailable && (
             <>
               <MenuItem onClick={onUpdateClick}>
-                <Icon icon={ICON_FIRE}></Icon>
+                <Icon>
+                  <FontAwesomeIcon icon={ICON_FIRE} />
+                </Icon>
                 <MenuItemTitle>Update {remote.app.name}</MenuItemTitle>
               </MenuItem>
               <Line />
             </>
           )}
           <MenuItem onClick={onAlwaysClick}>
-            <Icon icon={ICON_TOPMOST} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_TOPMOST} />
+            </Icon>
             <MenuItemTitle>Always on top</MenuItemTitle>
             <RightControl>
               <Switch dense value={store.alwaysOnTop}></Switch>
@@ -117,36 +122,50 @@ export const QuickMenu = observer(() => {
           </MenuItem>
           <Line />
           <MenuItem onClick={goToWebUIPage('newtab')}>
-            <Icon icon={ICON_TAB} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_TAB} />
+            </Icon>
             <MenuItemTitle>New tab</MenuItemTitle>
             <Shortcut>Ctrl+T</Shortcut>
           </MenuItem>
           <MenuItem onClick={onNewWindowClick}>
-            <Icon icon={ICON_WINDOW} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_WINDOW} />
+            </Icon>
             <MenuItemTitle>New window</MenuItemTitle>
             <Shortcut>Ctrl+N</Shortcut>
           </MenuItem>
           <MenuItem onClick={onIncognitoClick}>
-            <Icon icon={ICON_INCOGNITO} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_INCOGNITO} />
+            </Icon>
             <MenuItemTitle>New incognito window</MenuItemTitle>
             <Shortcut>Ctrl+Shift+N</Shortcut>
           </MenuItem>
           <Line />
           <MenuItem onClick={goToWebUIPage('history')} arrow>
-            <Icon icon={ICON_HISTORY} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_HISTORY} />
+            </Icon>
             <MenuItemTitle>History</MenuItemTitle>
           </MenuItem>
           <MenuItem onClick={goToWebUIPage('bookmarks')} arrow>
-            <Icon icon={ICON_BOOKMARKS} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_BOOKMARKS} />
+            </Icon>
             <MenuItemTitle>Bookmarks</MenuItemTitle>
           </MenuItem>
           <MenuItem disabled onClick={goToWebUIPage('downloads')}>
-            <Icon icon={ICON_DOWNLOAD} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_DOWNLOAD} />
+            </Icon>
             <MenuItemTitle>Downloads</MenuItemTitle>
           </MenuItem>
           <Line />
           <MenuItem onClick={goToWebUIPage('settings')}>
-            <Icon icon={ICON_SETTINGS} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_SETTINGS} />
+            </Icon>
             <MenuItemTitle>Settings</MenuItemTitle>
           </MenuItem>
           {/* TODO: <MenuItem onClick={goToWebUIPage('extensions')}> */}
@@ -155,17 +174,23 @@ export const QuickMenu = observer(() => {
               'https://chrome.google.com/webstore/category/extensions',
             )}
           >
-            <Icon icon={ICON_EXTENSIONS} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_EXTENSIONS} />
+            </Icon>
             <MenuItemTitle>Extensions</MenuItemTitle>
           </MenuItem>
           <Line />
           <MenuItem onClick={onFindInPageClick}>
-            <Icon icon={ICON_FIND} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_FIND} />
+            </Icon>
             <MenuItemTitle>Find in page</MenuItemTitle>
             <Shortcut>Ctrl+F</Shortcut>
           </MenuItem>
           <MenuItem onClick={onPrintClick}>
-            <Icon icon={ICON_PRINT} />
+            <Icon>
+              <FontAwesomeIcon icon={ICON_PRINT} />
+            </Icon>
             <MenuItemTitle>Print</MenuItemTitle>
             <Shortcut>Ctrl+P</Shortcut>
           </MenuItem>

@@ -51,12 +51,12 @@ export const FullscreenExitButton = styled.div`
   min-width: 45px;
   -webkit-app-region: no-drag;
   margin-left: 8;
-  background-image: url(${ICON_FULLSCREEN_EXIT});
   transition: 0.1s background-color;
   ${centerIcon(24)};
 
   ${({ theme }: { theme?: ITheme }) => css`
-    filter: ${theme['dialog.lightForeground'] ? `invert(100%)` : `none`};
+    color: ${theme['toolbar.lightForeground'] ? '#DEDEDE' : '#323232'};
+    /* filter: ${theme['dialog.lightForeground'] ? `invert(100%)` : `none`}; */
   `}
 
   &:hover {

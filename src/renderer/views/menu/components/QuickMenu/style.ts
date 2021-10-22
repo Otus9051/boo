@@ -33,7 +33,6 @@ export const MenuItem = styled.div`
         height: 100%;
         opacity: 0.54;
         ${centerIcon(20)};
-        background-image: url(${ICON_ARROW_RIGHT});
         ${({ theme }: { theme?: ITheme }) => css`
           filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : 'none'};
         `};
@@ -64,7 +63,6 @@ export const MenuItems = styled.div`
   overflow: hidden;
   padding-top: 4px;
   padding-bottom: 4px;
-
   ${({ theme }: { theme?: ITheme }) => css`
     background-color: ${theme['dialog.backgroundColor']};
     color: ${theme['dialog.textColor']};
@@ -84,8 +82,13 @@ export const Icon = styled.div`
   ${centerIcon()};
   opacity: 0.8;
 
-  ${({ icon, theme }: { icon?: string; theme?: ITheme }) => css`
-    background-image: url(${icon});
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+
+  ${({ theme }: { theme?: ITheme }) => css`
+    color: theme['dialog.lightForeground']
     filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : 'none'};
   `};
 `;

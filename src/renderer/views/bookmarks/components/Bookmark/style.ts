@@ -9,8 +9,10 @@ export const More = styled.div`
   height: 24px;
   width: 24px;
   cursor: pointer;
-  background-image: url(${ICON_MORE});
   opacity: 0.54;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ${({ theme }: { theme: ITheme }) => css`
     filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : 'none'};
   `}

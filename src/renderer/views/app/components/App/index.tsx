@@ -32,7 +32,7 @@ const onAppLeave = () => {
 };
 
 const onAppEnter = () => {
-  clearTimeout(store.barHideTimer);
+  if (typeof store.barHideTimer !== 'number') clearTimeout(store.barHideTimer);
 };
 
 const onLineEnter = () => {
@@ -58,9 +58,6 @@ const App = observer(() => {
       <StyledApp
         onMouseOver={store.isFullscreen ? onAppEnter : undefined}
         onMouseLeave={store.isFullscreen ? onAppLeave : undefined}
-        style={{
-          height: !store.isFullscreen || store.titlebarVisible ? null : 0,
-        }}
       >
         <UIStyle />
 
