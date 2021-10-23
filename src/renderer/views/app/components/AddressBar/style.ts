@@ -1,3 +1,4 @@
+import { platform } from 'os';
 import styled, { css } from 'styled-components';
 import { ITheme } from '~/interfaces';
 import { BLUE_300 } from '~/renderer/constants';
@@ -15,7 +16,7 @@ export const StyledAddressBar = styled.div`
   margin-right: auto;
   font-size: 15px;
   overflow: hidden;
-  left: -64px;
+  left: ${platform() !== 'darwin' ? '34px' : '-64px'};
   ${({ theme, focus }: { theme: ITheme; focus: boolean }) => css`
     background-color: ${theme['addressbar.backgroundColor']};
     border: 1px solid
