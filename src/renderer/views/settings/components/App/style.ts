@@ -18,7 +18,11 @@ export const Header = styled.div`
   align-items: center;
 `;
 
-export const Row = styled.div`
+interface RowProps {
+  theme?: ITheme;
+}
+
+export const Row = styled.div<RowProps>`
   width: 100%;
   display: flex;
   align-items: center;
@@ -29,7 +33,7 @@ export const Row = styled.div`
     border: none;
   }
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     border-bottom: 1px solid
       ${theme['pages.lightForeground']
         ? 'rgba(255, 255, 255, 0.12)'
@@ -47,8 +51,11 @@ export const SecondaryText = styled.div`
   margin-top: 4px;
   font-size: 12px;
 `;
+interface IconButtonProps {
+  theme?: ITheme;
+}
 
-export const IconButton = styled.div`
+export const IconButton = styled.div<IconButtonProps>`
   border-radius: 4px;
   cursor: pointer;
   width: 38px;
@@ -60,7 +67,7 @@ export const IconButton = styled.div`
     margin-right: 10px;
   }
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     color: ${theme['toolbar.lightForeground'] ? '#DEDEDE' : '#323232'};
     &:hover {
       background-color: rgba(0, 0, 0, 0.08);

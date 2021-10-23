@@ -20,12 +20,7 @@ const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
 
 export const Titlebar = observer(() => {
   return store.tabs.list.length > 1 ? (
-    <StyledTitlebar
-      onMouseDown={onMouseDown}
-      // @ts-ignore
-      isFullscreen={store.isFullscreen}
-      isHTMLFullscreen={store.isHTMLFullscreen}
-    >
+    <StyledTitlebar onMouseDown={onMouseDown} isFullscreen={store.isFullscreen}>
       {store.isCompact && <NavigationButtons />}
       <Tabbar />
       {store.isCompact && <RightButtons />}

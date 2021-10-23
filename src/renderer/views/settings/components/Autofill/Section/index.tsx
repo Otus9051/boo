@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 
 import { IFormFillData } from '~/interfaces';
+import { ICON_DROPDOWN } from '~/renderer/constants';
 import store from '../../../store';
 import {
   StyledSection,
@@ -44,7 +46,9 @@ export const Section = (props: Props) => {
       <Header onClick={onClick}>
         <Icon icon={icon} />
         <Label>{label}</Label>
-        <DropIcon expanded={expanded} />
+        <DropIcon expanded={expanded}>
+          <FontAwesomeIcon icon={ICON_DROPDOWN} />
+        </DropIcon>
       </Header>
       <Container expanded={expanded} style={style}>
         {children}

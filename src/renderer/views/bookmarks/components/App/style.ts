@@ -31,7 +31,12 @@ export const PathItem = styled.div`
   }
 `;
 
-export const Dialog = styled.div`
+interface DialogProps {
+  visible: boolean;
+  theme?: ITheme;
+}
+
+export const Dialog = styled.div<DialogProps>`
   position: fixed;
   width: 512px;
   padding: 16px;
@@ -43,7 +48,7 @@ export const Dialog = styled.div`
   transition: 0.2s opacity;
   transform: translate(-50%, -50%);
 
-  ${({ visible, theme }: { visible: boolean; theme?: ITheme }) => css`
+  ${({ visible, theme }) => css`
     opacity: ${visible ? 1 : 0};
     pointer-events: ${visible ? 'inherit' : 'none'};
     background-color: ${theme['dialog.backgroundColor']};

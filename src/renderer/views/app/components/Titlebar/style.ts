@@ -4,9 +4,12 @@ import { platform } from 'os';
 import { ICON_FULLSCREEN_EXIT } from '~/renderer/constants/icons';
 import { centerIcon } from '~/renderer/mixins';
 
-// margin-top: ${isHTMLFullscreen ? -TOOLBAR_HEIGHT : 0}px;
+interface TitlebarProps {
+  isFullscreen: boolean;
+  theme: ITheme;
+}
 
-export const StyledTitlebar = styled.div`
+export const StyledTitlebar = styled.div<TitlebarProps>`
   position: relative;
   z-index: 100;
   display: flex;
@@ -24,15 +27,7 @@ export const StyledTitlebar = styled.div`
     content: '';
   }
 
-  ${({
-    isHTMLFullscreen,
-    isFullscreen,
-    theme,
-  }: {
-    isHTMLFullscreen: boolean;
-    isFullscreen: boolean;
-    theme: ITheme;
-  }) => css`
+  ${({ isFullscreen, theme }) => css`
     background-color: ${theme['titlebar.backgroundColor']};
     height: 45px;
     align-items: ${theme.isCompact ? 'center' : 'initial'};
@@ -43,7 +38,11 @@ export const StyledTitlebar = styled.div`
   `};
 `;
 
-export const FullscreenExitButton = styled.div`
+interface FullscreenExistButtonProps {
+  theme?: ITheme;
+}
+
+export const FullscreenExitButton = styled.div<FullscreenExistButtonProps>`
   top: 0;
   right: 0;
   height: 45px;
@@ -54,7 +53,7 @@ export const FullscreenExitButton = styled.div`
   transition: 0.1s background-color;
   ${centerIcon(24)};
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     color: ${theme['toolbar.lightForeground'] ? '#DEDEDE' : '#323232'};
     /* filter: ${theme['dialog.lightForeground'] ? `invert(100%)` : `none`}; */
   `}

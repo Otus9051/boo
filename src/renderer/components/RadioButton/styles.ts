@@ -18,7 +18,12 @@ export const Container = styled.div`
   }
 `;
 
-export const Circle = styled.div`
+interface CircleProps {
+  selected: boolean;
+  theme?: ITheme;
+}
+
+export const Circle = styled.div<CircleProps>`
   border-radius: 100%;
   position: absolute;
   top: 50%;
@@ -28,7 +33,7 @@ export const Circle = styled.div`
   pointer-events: none;
   z-index: 1;
 
-  ${({ selected, theme }: { selected: boolean; theme?: ITheme }) => css`
+  ${({ selected, theme }) => css`
     width: ${selected ? `calc(100% - 8px)` : 0};
     height: ${selected ? `calc(100% - 8px)` : 0};
     background: ${selected ? BLUE_500 : 'rgba(0, 0, 0, 0.54)'};

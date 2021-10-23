@@ -7,13 +7,16 @@ export const Buttons = styled.div`
   margin-right: 10px;
 `;
 
-export const Separator = styled.div`
+interface SeperatorProps {
+  theme?: ITheme;
+}
+export const Separator = styled.div<SeperatorProps>`
   height: 16px;
   width: 1px;
   margin-left: 4px;
   margin-right: 4px;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['toolbar.separator.color']};
   `};
 `;

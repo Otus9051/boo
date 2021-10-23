@@ -4,14 +4,19 @@ import { transparency, ICON_SEARCH } from '~/renderer/constants';
 import { ITheme } from '~/interfaces';
 import { centerIcon, noButtons } from '~/renderer/mixins';
 
-export const StyledNavigationDrawer = styled.div`
+interface NavigationDrawerProps {
+  theme?: ITheme;
+  dense?: boolean;
+}
+
+export const StyledNavigationDrawer = styled.div<NavigationDrawerProps>`
   height: 100%;
   left: 0;
   display: flex;
   flex-flow: column;
   transition: 0.2s width;
 
-  ${({ theme, dense }: { theme?: ITheme; dense?: boolean }) => css`
+  ${({ theme, dense }) => css`
     padding: ${dense ? 0 : '0 32px'};
 
     width: ${dense ? 56 : 320}px;
@@ -43,7 +48,11 @@ export const Title = styled.div`
   font-weight: 900;
 `;
 
-export const Input = styled.input`
+interface InputProps {
+  theme?: ITheme;
+}
+
+export const Input = styled.input<InputProps>`
   border: none;
   outline: none;
 
@@ -53,7 +62,7 @@ export const Input = styled.input`
   height: 100%;
   font-size: 14px;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     color: ${theme['pages.lightForeground']
       ? 'white'
       : `rgba(0, 0, 0, ${transparency.text.high})`};
@@ -67,14 +76,18 @@ export const Input = styled.input`
   `}
 `;
 
-export const Search = styled.div`
+interface SearchProps {
+  theme?: ITheme;
+}
+
+export const Search = styled.div<SearchProps>`
   margin-top: 10px;
   height: 42px;
   border-radius: 8px;
 
   position: relative;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['pages.lightForeground']
       ? 'rgba(255, 255, 255, 0.12)'
       : 'rgba(0, 0, 0, 0.04)'};
@@ -90,7 +103,7 @@ export const Search = styled.div`
     height: 16px;
     ${centerIcon(16)};
 
-    ${({ theme }: { theme?: ITheme }) => css`
+    ${({ theme }) => css`
       filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : 'none'};
     `}
   }

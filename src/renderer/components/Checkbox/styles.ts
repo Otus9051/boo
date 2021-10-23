@@ -18,7 +18,10 @@ export const Container = styled.div`
   }
 `;
 
-export const StyledCheckbox = styled.div`
+interface CheckboxProps {
+  toggled: boolean;
+}
+export const StyledCheckbox = styled.div<CheckboxProps>`
   width: 18px;
   height: 18px;
   box-sizing: border-box;
@@ -28,7 +31,7 @@ export const StyledCheckbox = styled.div`
   border-style: solid;
   transition: 0.15s background-color, 0.15s border-color;
 
-  ${({ toggled }: { toggled: boolean }) => css`
+  ${({ toggled }) => css`
     background-color: ${toggled ? BLUE_500 : 'transparent'};
     border-color: ${toggled ? BLUE_500 : 'rgba(0, 0, 0, 0.54)'};
 
@@ -58,7 +61,6 @@ export const Icon = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  background-image: url(${ICON_CHECK});
   transition: 0.3s clip-path ${EASING_FUNCTION};
   -webkit-font-smoothing: antialiased;
   filter: invert(100%);

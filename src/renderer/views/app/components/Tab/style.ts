@@ -10,7 +10,7 @@ interface CloseProps {
   theme?: ITheme;
 }
 
-export const StyledClose = styled.div`
+export const StyledClose = styled.div<CloseProps>`
   height: 20px;
   width: 20px;
   margin-left: 2px;
@@ -23,10 +23,9 @@ export const StyledClose = styled.div`
   align-items: center;
   ${centerIcon(16)};
 
-  ${({ visible, theme }: CloseProps) => css`
+  ${({ visible, theme }) => css`
     color: ${theme['toolbar.lightForeground'] ? '#DEDEDE' : '#323232'};
     opacity: ${visible ? transparency.icons.inactive : 0};
-    display: ${visible ? 'block' : 'none'};
   `}
 
   &:hover {
@@ -39,7 +38,7 @@ interface ActionProps {
   theme?: ITheme;
 }
 
-export const StyledAction = styled.div`
+export const StyledAction = styled.div<ActionProps>`
   height: 20px;
   width: 20px;
   margin-left: 2px;
@@ -48,7 +47,7 @@ export const StyledAction = styled.div`
   z-index: 10;
   ${centerIcon(16)};
 
-  ${({ visible, theme }: ActionProps) => css`
+  ${({ visible, theme }) => css`
     opacity: ${visible ? transparency.icons.inactive : 0};
     display: ${visible ? 'block' : 'none'};
     filter: ${theme['toolbar.lightForeground'] ? 'invert(100%)' : 'none'};
@@ -64,7 +63,7 @@ interface PinActionProps {
   theme?: ITheme;
 }
 
-export const StyledPinAction = styled.div`
+export const StyledPinAction = styled.div<PinActionProps>`
   height: 12px;
   width: 12px;
   border-radius: 100%;
@@ -75,7 +74,7 @@ export const StyledPinAction = styled.div`
   top: 8px;
   ${centerIcon(10)};
 
-  ${({ visible, theme }: PinActionProps) => css`
+  ${({ visible, theme }) => css`
     display: ${visible ? 'block' : 'none'};
     background-color: ${theme['toolbar.lightForeground']
       ? 'rgb(255, 255, 255)'
@@ -91,7 +90,7 @@ interface TabProps {
   selected: boolean;
 }
 
-export const StyledTab = styled.div`
+export const StyledTab = styled.div<TabProps>`
   position: absolute;
   height: 100%;
   width: 0;
@@ -101,7 +100,7 @@ export const StyledTab = styled.div`
   display: flex;
   backface-visibility: hidden;
 
-  ${({ selected }: TabProps) => css`
+  ${({ selected }) => css`
     z-index: ${selected ? 2 : 1};
   `};
 `;
@@ -112,7 +111,7 @@ interface TitleProps {
   theme?: ITheme;
 }
 
-export const StyledTitle = styled.div`
+export const StyledTitle = styled.div<TitleProps>`
   font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -122,7 +121,7 @@ export const StyledTitle = styled.div`
   min-width: 0;
   flex: 1;
 
-  ${({ isIcon, selected, theme }: TitleProps) => css`
+  ${({ isIcon, selected, theme }) => css`
     margin-left: ${!isIcon ? 0 : 12}px;
     color: ${selected
       ? theme['tab.selected.textColor']
@@ -130,12 +129,15 @@ export const StyledTitle = styled.div`
   `};
 `;
 
-export const StyledIcon = styled.div`
+interface IconProps {
+  isIconSet: boolean;
+}
+export const StyledIcon = styled.div<IconProps>`
   height: 16px;
   min-width: 16px;
   transition: 0.2s opacity, 0.2s min-width;
   ${centerIcon()};
-  ${({ isIconSet }: { isIconSet: boolean }) => css`
+  ${({ isIconSet }) => css`
     min-width: ${isIconSet ? 0 : 16},
     opacity: ${isIconSet ? 0 : 1};
   `};

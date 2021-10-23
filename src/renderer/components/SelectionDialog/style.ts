@@ -2,7 +2,11 @@ import styled, { css } from 'styled-components';
 import { shadows } from '~/renderer/mixins';
 import { ITheme } from '~/interfaces';
 
-export const StyledSmallDialog = styled.div`
+interface SmallDialogProps {
+  visible: boolean;
+  theme?: ITheme;
+}
+export const StyledSmallDialog = styled.div<SmallDialogProps>`
   width: fit-content;
   position: fixed;
   top: 16px;
@@ -24,7 +28,7 @@ export const StyledSmallDialog = styled.div`
     right: ${64 + 16 + 16}px;
   }
 
-  ${({ visible, theme }: { visible: boolean; theme?: ITheme }) => css`
+  ${({ visible, theme }) => css`
     opacity: ${visible ? 1 : 0};
     pointer-events: ${visible ? 'inherit' : 'none'};
     background-color: ${theme['dialog.backgroundColor']};

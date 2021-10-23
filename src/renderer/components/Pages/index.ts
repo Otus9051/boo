@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface ContainerProps {
+  darken?: boolean;
+}
+export const Container = styled.div<ContainerProps>`
   display: flex;
   overflow: auto;
   height: 100vh;
   overflow: hidden;
 
-  ${({ darken }: { darken?: boolean }) => css`
+  ${({ darken }) => css`
     &:after {
       opacity: ${darken ? 0.54 : 0};
       pointer-events: ${darken ? 'inherit' : 'none'};

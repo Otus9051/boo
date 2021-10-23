@@ -41,7 +41,10 @@ export const Icon = styled.div`
   `};
 `;
 
-export const PasswordIcon = styled.div`
+interface PasswordIconProps {
+  theme: ITheme;
+}
+export const PasswordIcon = styled.div<PasswordIconProps>`
   width: 20px;
   height: 20px;
   margin-left: auto;
@@ -51,17 +54,18 @@ export const PasswordIcon = styled.div`
   transition: 0.15s background-image;
   ${centerIcon('contain')};
 
-  ${({ toggled, theme }: { toggled: boolean; theme: ITheme }) => css`
-    background-image: url(${toggled ? ICON_INVISIBLE : ICON_VISIBLE});
+  ${({ theme }) => css`
     filter: ${theme.dark ? 'invert(100%)' : 'none'};
   `};
 `;
+interface MoreProps {
+  theme: ITheme;
+}
 
-export const More = styled.div`
+export const More = styled.div<MoreProps>`
   width: 24px;
   height: 24px;
   opacity: ${transparency.icons.inactive};
-  background-image: url(${ICON_MORE});
   cursor: pointer;
   ${centerIcon(20)};
 

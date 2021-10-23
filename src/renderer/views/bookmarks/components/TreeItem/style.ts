@@ -5,46 +5,44 @@ import { transparency } from '~/renderer/constants';
 import { ICON_FOLDER, ICON_DROPDOWN } from '~/renderer/constants/icons';
 import { ITheme } from '~/interfaces';
 
-export const StyledTreeItem = styled.div`
+interface TreeItemProps {
+  theme?: ITheme;
+  selected: boolean;
+}
+
+export const StyledTreeItem = styled.div<TreeItemProps>`
   width: 100%;
-  height: 32px;
+  height: 40px;
   display: flex;
   margin-top: 4px;
   align-items: center;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 5px;
 
-  ${({ theme, selected }: { theme?: ITheme; selected: boolean }) => css`
+  ${({ theme, selected }) => css`
     &:hover {
-      background-color: ${theme['pages.lightForeground']
-        ? 'rgba(255, 255, 255, 0.04)'
-        : 'rgba(0, 0, 0, 0.04)'};
+      background-color: ${theme['addressbar.backgroundColor']};
     }
 
     background-color: ${selected
-      ? theme['pages.lightForeground']
-        ? 'rgba(255, 255, 255, 0.06)'
-        : 'rgba(0, 0, 0, 0.06)'
+      ? theme['addressbar.backgroundColor']
       : 'none'};
   `}
 `;
 
-export const DropIcon = styled.div`
+interface DropIconProps {
+  theme?: ITheme;
+  visible: boolean;
+  expanded: boolean;
+}
+
+export const DropIcon = styled.div<DropIconProps>`
   min-width: 24px;
   min-height: 24px;
   margin: 0px 2px;
-  background-image: url(${ICON_DROPDOWN});
   border-radius: 100%;
   ${centerIcon(20)};
-  ${({
-    visible,
-    expanded,
-    theme,
-  }: {
-    visible: boolean;
-    expanded: boolean;
-    theme?: ITheme;
-  }) => css`
+  ${({ visible, expanded, theme }) => css`
     opacity: ${visible ? transparency.icons.inactive : 0};
     transform: ${expanded ? 'rotate(-90deg)' : 'rotate(0deg)'};
     filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : ''};
@@ -56,15 +54,21 @@ export const DropIcon = styled.div`
   `}
 `;
 
-export const FolderIcon = styled.div`
+interface FolderIconProps {
+  theme?: ITheme;
+}
+
+export const FolderIcon = styled.div<FolderIconProps>`
   min-width: 24px;
   min-height: 24px;
   opacity: ${transparency.icons.inactive};
-  background-image: url(${ICON_FOLDER});
+  display: flex;
+  align-items: center;
+  justify-content: center;
   ${centerIcon(20)}
 
-  ${({ theme }: { theme?: ITheme }) => css`
-    filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : ''};
+  ${({ theme }: FolderIconProps) => css`
+    color: ${theme['accentColor'] ? 'invert(100%)' : ''};
   `}
 `;
 

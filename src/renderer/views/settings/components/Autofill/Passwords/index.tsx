@@ -13,7 +13,13 @@ import {
   PasswordIcon,
   More,
 } from './styles';
-import { ICON_KEY } from '~/renderer/constants';
+import {
+  ICON_INVISIBLE,
+  ICON_KEY,
+  ICON_MORE,
+  ICON_VISIBLE,
+} from '~/renderer/constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Item = observer(({ data }: { data: IFormFillData }) => {
   const { url, favicon, fields } = data;
@@ -39,8 +45,14 @@ const Item = observer(({ data }: { data: IFormFillData }) => {
       </Wrapper>
       <Wrapper>
         <Label>{password}</Label>
-        <PasswordIcon toggled={!!realPassword} onClick={onIconClick} />
-        <More onClick={onMoreClick(data)} />
+        <PasswordIcon onClick={onIconClick}>
+          <FontAwesomeIcon
+            icon={!!realPassword ? ICON_INVISIBLE : ICON_VISIBLE}
+          />
+        </PasswordIcon>
+        <More onClick={onMoreClick(data)}>
+          <FontAwesomeIcon icon={ICON_MORE} />
+        </More>
       </Wrapper>
     </>
   );

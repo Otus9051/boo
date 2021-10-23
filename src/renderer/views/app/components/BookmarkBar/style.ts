@@ -2,7 +2,11 @@ import styled, { css } from 'styled-components';
 import { Button } from '../ToolbarButton/style';
 import { ITheme } from '~/interfaces';
 
-export const BookmarkBar = styled.div`
+interface BookmarkBarProps {
+  theme: ITheme;
+}
+
+export const BookmarkBar = styled.div<BookmarkBarProps>`
   position: relative;
   z-index: 100;
   display: flex;
@@ -16,7 +20,7 @@ export const BookmarkBar = styled.div`
   padding: 2px 8px;
   padding-top: 0px;
   padding-right: 4px;
-  ${({ theme }: { theme: ITheme }) => css`
+  ${({ theme }) => css`
     margin-top: ${theme.isCompact ? 0 : -1}px;
     background-color: ${theme.isCompact
       ? theme['titlebar.backgroundColor']

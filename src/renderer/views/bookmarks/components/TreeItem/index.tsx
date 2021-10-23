@@ -5,6 +5,8 @@ import { IBookmark } from '~/interfaces';
 import store from '../../store';
 import { getBookmarkTitle } from '../../utils';
 import { StyledTreeItem, DropIcon, FolderIcon, Label } from './style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ICON_ARROW_RIGHT, ICON_DOWN, ICON_FOLDER } from '~/renderer/constants';
 
 const onClick = (item: IBookmark) => () => {
   store.currentFolder = item._id;
@@ -41,8 +43,14 @@ const TreeItem = observer(
             visible={c.length !== 0}
             expanded={data.expanded}
             onClick={onDropClick(data)}
-          />
-          <FolderIcon />
+          >
+            <FontAwesomeIcon
+              icon={data.expanded ? ICON_DOWN : ICON_ARROW_RIGHT}
+            />
+          </DropIcon>
+          <FolderIcon>
+            <FontAwesomeIcon icon={ICON_FOLDER} fixedWidth />
+          </FolderIcon>
           <Label>{getBookmarkTitle(data)}</Label>
         </StyledTreeItem>
         {data.expanded &&

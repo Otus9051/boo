@@ -1,21 +1,21 @@
 import styled, { css } from 'styled-components';
 
-interface StyledButtonProps {
+interface ButtonProps {
   background: string;
   foreground: string;
   type?: 'contained' | 'outlined';
 }
 
-export const StyledButton = styled.div`
+export const StyledButton = styled.div<ButtonProps>`
   min-width: 80px;
   width: fit-content;
-  height: 32px;
-  padding: 0px 12px;
+  height: 42px;
+  padding: 0px 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 4px;
+  border-radius: 8px;
   position: relative;
   cursor: pointer;
 
@@ -35,7 +35,7 @@ export const StyledButton = styled.div`
     opacity: 0.12;
   }
 
-  ${({ background, foreground, type }: StyledButtonProps) => css`
+  ${({ background, foreground, type }) => css`
     color: ${foreground || '#fff'};
     border: ${type === 'outlined'
       ? `1px solid ${background || '#2196F3'}`

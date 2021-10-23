@@ -8,7 +8,10 @@ export const EnginesTable = styled.div`
   flex-flow: column;
 `;
 
-export const TableRow = styled.div`
+interface TableRowProps {
+  bold?: boolean;
+}
+export const TableRow = styled.div<TableRowProps>`
   margin-right: 0;
   display: grid;
   grid-template-columns: 4fr 3fr 3fr 38px;
@@ -16,7 +19,7 @@ export const TableRow = styled.div`
   height: 36px;
   align-items: center;
 
-  ${({ bold }: { bold?: boolean }) => css`
+  ${({ bold }) => css`
     font-weight: ${bold ? 500 : 300};
   `};
 `;
@@ -57,7 +60,6 @@ export const TableHeader = styled(TableCell)`
 export const MoreButton = styled(IconButton)`
   height: 32px;
   width: 32px;
-  background-image: url(${ICON_MORE});
   grid-column: 4 / auto;
   ${centerIcon(18)}
 `;

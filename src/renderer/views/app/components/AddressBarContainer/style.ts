@@ -2,7 +2,12 @@ import styled, { css } from 'styled-components';
 import { ITheme } from '~/interfaces';
 import { hexToRgb } from '~/utils';
 
-export const StyledAddressBarContainer = styled.div`
+interface AddressBarContainerProps {
+  visible: boolean;
+  theme?: ITheme;
+}
+
+export const StyledAddressBarContainer = styled.div<AddressBarContainerProps>`
   position: absolute;
   left: 0;
   right: 0;
@@ -15,7 +20,7 @@ export const StyledAddressBarContainer = styled.div`
   padding-right: 40px;
   transition: 0.1s transform, 0.1s opacity;
 
-  ${({ visible, theme }: { visible: boolean; theme?: ITheme }) => css`
+  ${({ visible, theme }) => css`
     display: ${visible ? 'flex' : 'table'};
     opacity: ${visible ? 1 : 0};
     transform: scale(${visible ? 1 : 1.05});

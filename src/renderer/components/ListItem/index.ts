@@ -1,13 +1,17 @@
 import styled, { css } from 'styled-components';
 import { ITheme } from '~/interfaces';
 
-export const ListItem = styled.div`
+interface ListItemProps {
+  selected: boolean;
+  theme?: ITheme;
+}
+export const ListItem = styled.div<ListItemProps>`
   display: flex;
   align-items: center;
   padding: 0 24px;
   height: 48px;
   overflow: hidden;
-  ${({ selected, theme }: { selected: boolean; theme?: ITheme }) => css`
+  ${({ selected, theme }) => css`
     background-color: ${
       selected
         ? theme['pages.lightForeground']

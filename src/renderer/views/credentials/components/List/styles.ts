@@ -23,7 +23,6 @@ export const Password = styled(Username)`
 export const DeleteIcon = styled.div`
   width: 16px;
   height: 16px;
-  background-image: url(${ICON_CLOSE});
   opacity: ${transparency.icons.inactive};
   cursor: pointer;
   ${centerIcon('contain')};

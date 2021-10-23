@@ -1,4 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
+import { ICON_CHECK } from '~/renderer/constants';
 
 import { Label } from '../RadioButton/styles';
 import { Container, StyledCheckbox, Icon } from './styles';
@@ -39,7 +41,9 @@ export default class Checkbox extends React.PureComponent<Props, State> {
           toggled={toggled}
           onClick={this.onClick}
         >
-          <Icon toggled={toggled} />
+          <Icon toggled={toggled}>
+            <FontAwesomeIcon icon={ICON_CHECK} />
+          </Icon>
         </StyledCheckbox>
         {children && <Label>{children}</Label>}
       </Container>

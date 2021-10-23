@@ -4,8 +4,12 @@ import { robotoRegular } from '~/renderer/mixins';
 import { ITheme } from '~/interfaces';
 import { DialogStyle } from '~/renderer/mixins/dialogs';
 
-export const StyledApp = styled(DialogStyle)`
-  padding: 16px;
+interface AppProps {
+  theme?: ITheme;
+  visible: boolean;
+}
+export const StyledApp = styled(DialogStyle)<AppProps>`
+  padding: 20px;
 
   & .textfield,
   .dropdown {
@@ -13,7 +17,7 @@ export const StyledApp = styled(DialogStyle)`
     margin-left: auto;
   }
 
-  ${({ theme }: { theme?: ITheme; visible: boolean }) => css`
+  ${({ theme }) => css`
     color: ${theme['dialog.lightForeground'] ? '#fff' : '#000'};
   `}
 `;
@@ -27,7 +31,7 @@ export const Subtitle = styled.div`
 export const Title = styled.div`
   font-size: 16px;
   margin-bottom: 16px;
-  ${robotoRegular()};
+  font-weight: bold;
 `;
 
 export const Row = styled.div`

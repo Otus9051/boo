@@ -4,7 +4,14 @@ import { shadows, centerIcon } from '~/renderer/mixins';
 import { ITheme } from '~/interfaces';
 import { DIALOG_EASING } from '~/renderer/constants';
 
-export const ContextMenu = styled.div`
+interface ContextMenuProps {
+  visible: boolean;
+  theme?: ITheme;
+  bigger?: boolean;
+  translucent?: boolean;
+}
+
+export const ContextMenu = styled.div<ContextMenuProps>`
   outline: none;
   position: absolute;
   backface-visibility: hidden;
@@ -16,17 +23,7 @@ export const ContextMenu = styled.div`
   box-shadow: ${shadows(8)};
   border-radius: 8px;
 
-  ${({
-    visible,
-    theme,
-    bigger,
-    translucent,
-  }: {
-    visible: boolean;
-    theme?: ITheme;
-    bigger?: boolean;
-    translucent?: boolean;
-  }) => css`
+  ${({ visible, theme, bigger, translucent }) => css`
     padding: ${bigger ? 8 : 4}px 0;
     transition: ${visible
       ? `0.35s opacity ${DIALOG_EASING}, 0.35s transform ${DIALOG_EASING}`
@@ -40,11 +37,16 @@ export const ContextMenu = styled.div`
   `}
 `;
 
-export const ContextMenuSeparator = styled.div`
+interface ContextMenuSeperatorProps {
+  theme?: ITheme;
+  bigger?: boolean;
+}
+
+export const ContextMenuSeparator = styled.div<ContextMenuSeperatorProps>`
   height: 1px;
   width: 100%;
 
-  ${({ theme, bigger }: { theme?: ITheme; bigger?: boolean }) => css`
+  ${({ theme, bigger }) => css`
     background-color: ${theme['dropdown.separator.color']};
     margin: ${bigger ? 8 : 4}px 0px;
   `}
@@ -66,20 +68,12 @@ export interface ContextMenuItemProps {
   disabled?: boolean;
 }
 
-export const ContextMenuItem = styled.div`
+export const ContextMenuItem = styled.div<ContextMenuItemProps>`
   padding: 12px 24px;
   font-weight: 400;
   position: relative;
 
-  ${({
-    icon,
-    selected,
-    theme,
-    bigger,
-    visible,
-    iconSize,
-    disabled,
-  }: ContextMenuItemProps) => css`
+  ${({ icon, selected, theme, bigger, visible, iconSize, disabled }) => css`
     pointer-events: ${disabled ? 'none' : 'inherit'};
     opacity: ${disabled ? 0.38 : 1};
     font-size: ${bigger ? 14 : 13}px;

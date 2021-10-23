@@ -13,8 +13,8 @@ interface StyledTextfieldProps {
   width?: number;
   dark: boolean;
 }
-export const StyledTextfield = styled.div`
-  ${({ width, dark }: StyledTextfieldProps) => css`
+export const StyledTextfield = styled.div<StyledTextfieldProps>`
+  ${({ width, dark }) => css`
     width: ${width === undefined ? 280 : width}px;
     background-color: ${dark ? 'rgba(255, 255, 255, 0.06)' : '#f5f5f5'};
   `}
@@ -33,7 +33,7 @@ interface InputProps {
   dark: boolean;
 }
 
-export const Input = styled.input`
+export const Input = styled.input<InputProps>`
   width: 100%;
   height: 55px;
   font-size: 16px;
@@ -44,7 +44,7 @@ export const Input = styled.input`
   user-select: auto;
   ${robotoRegular()};
 
-  ${({ color, hasLabel, hasIcon, dark }: InputProps) => css`
+  ${({ color, hasLabel, hasIcon, dark }) => css`
     padding-top: ${hasLabel ? 12 : 0}px;
     padding-right: ${hasIcon ? 48 : 12}px;
     ${coloredCursor(color, dark ? 255 : 0)};
@@ -72,7 +72,7 @@ interface LabelProps {
   dark: boolean;
 }
 
-export const Label = styled.div`
+export const Label = styled.div<LabelProps>`
   left: 12px;
   position: absolute;
   transition: 0.2s font-size, 0.2s color, 0.2s margin-top;
@@ -80,7 +80,7 @@ export const Label = styled.div`
   -webkit-font-smoothing: antialiased;
   ${centerVertical()};
 
-  ${({ activated, focused, color, dark }: LabelProps) => css`
+  ${({ activated, focused, color, dark }) => css`
     font-size: ${activated ? 12 : 16}px;
     margin-top: ${activated ? -12 : 0}px;
     color: ${focused
@@ -92,7 +92,11 @@ export const Label = styled.div`
   `}
 `;
 
-export const Indicator = styled.div`
+interface IndicatorProps {
+  focused: boolean;
+  color: string;
+}
+export const Indicator = styled.div<IndicatorProps>`
   height: 2px;
   margin-left: auto;
   margin-right: auto;
@@ -102,13 +106,18 @@ export const Indicator = styled.div`
   position: absolute;
   transition: 0.2s width ${EASING_FUNCTION};
 
-  ${({ focused, color }: { focused: boolean; color: string }) => css`
+  ${({ focused, color }) => css`
     width: ${focused ? 100 : 0}%;
     background-color: ${color};
   `}
 `;
 
-export const Icon = styled.div`
+interface IconProps {
+  src: string;
+  dark: boolean;
+}
+
+export const Icon = styled.div<IconProps>`
   width: 36px;
   height: 36px;
   position: absolute;
@@ -121,7 +130,7 @@ export const Icon = styled.div`
   ${centerVertical()};
   ${centerIcon(24)};
 
-  ${({ src, dark }: { src: string; dark: boolean }) => css`
+  ${({ src, dark }) => css`
     background-image: url(${src});
     filter: ${dark ? 'invert(100%)' : 'none'};
   `}

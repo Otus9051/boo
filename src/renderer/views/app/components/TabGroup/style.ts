@@ -16,7 +16,11 @@ export const Line = styled.div`
   border-radius: 4px;
 `;
 
-export const Placeholder = styled.div`
+interface PlaceholderProps {
+  hasName: boolean;
+}
+
+export const Placeholder = styled.div<PlaceholderProps>`
   -webkit-app-region: no-drag;
   overflow: hidden;
   position: relative;
@@ -24,7 +28,7 @@ export const Placeholder = styled.div`
   color: black;
   font-size: 11px;
 
-  ${({ hasName }: { hasName: boolean }) => css`
+  ${({ hasName }) => css`
     padding: ${hasName ? 4 : 7}px;
     border-radius: ${hasName ? '6px' : '50%'};
   `};

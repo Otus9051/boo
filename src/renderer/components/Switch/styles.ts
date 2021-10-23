@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { ITheme } from '~/interfaces';
 import { centerVertical } from '~/renderer/mixins';
 
-interface Props {
+interface SwitchProps {
   activated: boolean;
   color: string;
   theme: ITheme;
@@ -11,7 +11,7 @@ interface Props {
   dense: boolean;
 }
 
-export const StyledSwitch = styled.div`
+export const StyledSwitch = styled.div<SwitchProps>`
   border-radius: 32px;
   position: relative;
   overflow: hidden;
@@ -27,7 +27,7 @@ export const StyledSwitch = styled.div`
     z-index: 2;
   }
 
-  ${({ activated, color, theme, clickable, dense }: Props) => css`
+  ${({ activated, color, theme, clickable, dense }) => css`
     background-color: ${activated ? color : theme['switch.backgroundColor']};
     cursor: ${clickable ? 'pointer' : 'default'};
     width: ${dense ? 32 : 36}px;
@@ -43,14 +43,18 @@ export const StyledSwitch = styled.div`
   `}
 `;
 
-export const Thumb = styled.div`
+interface ThumbProps {
+  activated: boolean;
+  dense: boolean;
+}
+export const Thumb = styled.div<ThumbProps>`
   border-radius: 100%;
   position: absolute;
   z-index: 3;
   transition: 0.15s left;
   ${centerVertical()};
 
-  ${({ activated, dense }: { activated: boolean; dense: boolean }) => css`
+  ${({ activated, dense }) => css`
     width: ${dense ? 12 : 14}px;
     height: ${dense ? 12 : 14}px;
     left: ${activated ? (dense ? 18 : 20) : 2}px;

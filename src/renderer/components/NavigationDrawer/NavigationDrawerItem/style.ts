@@ -4,15 +4,18 @@ import { centerIcon } from '~/renderer/mixins';
 import { ITheme } from '~/interfaces';
 import { transparency } from '~/renderer/constants';
 
-export const StyledNavigationDrawerItem = styled.div`
-  /* padding: 4px 16px; */
+interface NavigationDrawerItemProps {
+  theme?: ITheme;
+  global?: boolean;
+}
+export const StyledNavigationDrawerItem = styled.div<NavigationDrawerItemProps>`
   display: flex;
   height: 40px;
   border-radius: 4px;
   align-items: center;
   position: relative;
   cursor: pointer;
-  ${({ theme, global }: { theme?: ITheme; global?: boolean }) => css`
+  ${({ theme, global }) => css`
     &:hover {
       background-color: ${theme['backgroundColor']};
     }
@@ -28,6 +31,4 @@ export const Icon = styled.div`
   justify-content: center;
   align-items: center;
   ${centerIcon(20)};
-
-  ${({ theme }: { theme?: ITheme }) => css``};
 `;

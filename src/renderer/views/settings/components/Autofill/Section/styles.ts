@@ -3,12 +3,16 @@ import { centerIcon } from '~/renderer/mixins';
 import { transparency, ICON_DROPDOWN } from '~/renderer/constants';
 import { ITheme } from '~/interfaces';
 
-export const StyledSection = styled.div`
+interface SectionProps {
+  theme?: ITheme;
+}
+
+export const StyledSection = styled.div<SectionProps>`
   width: 100%;
   border-radius: 4px;
   margin-top: 12px;
 
-  ${({ theme }: { theme?: ITheme }) => css`
+  ${({ theme }) => css`
     background-color: ${theme['pages.lightForeground']
       ? 'rgba(255, 255, 255, 0.04)'
       : 'rgba(0, 0, 0, 0.04)'};
@@ -41,28 +45,33 @@ export const Label = styled.div`
   font-size: 14px;
 `;
 
-export const DropIcon = styled.div`
+interface DropIconProps {
+  expanded: boolean;
+  theme?: ITheme;
+}
+export const DropIcon = styled.div<DropIconProps>`
   width: 20px;
   height: 20px;
-  background-image: url(${ICON_DROPDOWN});
   opacity: ${transparency.icons.inactive};
   margin-left: auto;
   margin-right: 16px;
   ${centerIcon('contain')};
 
-  ${({ expanded, theme }: { expanded: boolean; theme?: ITheme }) => css`
+  ${({ expanded, theme }) => css`
     transform: ${expanded ? 'rotate(180deg)' : 'rotate(0deg)'};
     filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : 'none'};
   `}
 `;
-
-export const Container = styled.div`
+interface ContainerProps {
+  expanded: boolean;
+}
+export const Container = styled.div<ContainerProps>`
   width: 100%;
   display: flex;
   padding: 16px;
   padding-top: 0px;
 
-  ${({ expanded }: { expanded: boolean }) => css`
+  ${({ expanded }) => css`
     display: ${expanded ? 'block' : 'none'};
   `};
 `;
