@@ -5,27 +5,10 @@ import {
   MenuItemConstructorOptions,
   app,
 } from 'electron';
-import { join } from 'path';
 import { IBookmark } from '~/interfaces';
 import { Application } from '../application';
 import { AppWindow } from '../windows/app';
 import { showAddBookmarkDialog } from '../dialogs/add-bookmark';
-
-function getPath(file: string) {
-  if (process.env.NODE_ENV === 'development') {
-    return join(
-      app.getAppPath(),
-      'src',
-      'renderer',
-      'resources',
-      'icons',
-      `${file}.png`,
-    );
-  } else {
-    const path = require(`~/renderer/resources/icons/${file}.png`);
-    return join(app.getAppPath(), `build`, path);
-  }
-}
 
 function getIcon(
   favicon: string | undefined,
@@ -49,19 +32,19 @@ function getIcon(
     }
   }
 
-  if (Application.instance.settings.object.theme === 'skye-dark') {
-    if (isFolder) {
-      return getPath('folder_light');
-    } else {
-      return getPath('page_light');
-    }
-  } else {
-    if (isFolder) {
-      return getPath('folder_dark');
-    } else {
-      return getPath('page_dark');
-    }
-  }
+  // if (Application.instance.settings.object.theme === 'skye-dark') {
+  //   if (isFolder) {
+  //     return getPath('folder_light');
+  //   } else {
+  //     return getPath('page_light');
+  //   }
+  // } else {
+  //   if (isFolder) {
+  //     return getPath('folder_dark');
+  //   } else {
+  //     return getPath('page_dark');
+  //   }
+  // }
 }
 
 export function createDropdown(
