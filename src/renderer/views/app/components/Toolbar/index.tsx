@@ -9,15 +9,26 @@ import { RightButtons } from '../RightButtons';
 import store from '../../store';
 import { platform } from 'os';
 import { FullscreenExitButton } from '../Titlebar/style';
-import { remote } from 'electron';
+import { ipcRenderer, remote } from 'electron';
 import { WindowsControls } from 'react-windows-controls';
 
 const onFullscreenExit = (e: React.MouseEvent<HTMLDivElement>) => {
   remote.getCurrentWindow().setFullScreen(false)
 }
+
+const onCloseClick = () => ipcRenderer.send(`window-close-${store.windowId}`)
+const onMaximizeClick = () => ipcRenderer.send(`window-toggle-maximize-${store.windowId}`)
+const onMinimizeClick = () => ipcRenderer.send(`window-minimize-${store.windowId}`)
+const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  if (store.addressbarFocused) {
+    e.preventDefault()
+  }
+}
+
 export const Toolbar = observer(() => {
   return (
     <StyledToolbar
+      onMouseDown={onMouseDown}
       isFullscreen={store.isFullscreen}
       isHTMLFullscreen={store.isHTMLFullscreen}
     >
@@ -33,9 +44,9 @@ export const Toolbar = observer(() => {
         /> :
         <WindowsControls
           style={{ height:  store.isCompact ? '100%' : 32, WebkitAppRegion: 'no-drag', marginLeft: 8 }}
-          onClose={}
-          onMinimize={}
-          onMaximize={}
+          onClose={onCloseClick}
+          onMinimize={onMinimizeClick}
+          onMaximize={onMaximizeClick}
           dark={store.theme['toolbar.backgroundColor']}
         />
       )}
