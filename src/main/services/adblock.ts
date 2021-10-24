@@ -29,7 +29,8 @@ const emitBlockedEvent = (request: Request) => {
 let adblockRunning = false;
 let adblockInitialized = false;
 
-export const runAdblockService = async (ses: Electron.session) => {
+export const runAdblockService = async (ses: Electron.Session) => {
+  console.log();
   if (!adblockInitialized) {
     adblockInitialized = true;
     await loadFilters();
@@ -56,7 +57,7 @@ export const runAdblockService = async (ses: Electron.session) => {
   engine.on('request-redirected', emitBlockedEvent);
 };
 
-export const stopAdblockService = (ses: Electron.session) => {
+export const stopAdblockService = (ses: Electron.Session) => {
   if (!adblockRunning) return;
 
   adblockRunning = false;

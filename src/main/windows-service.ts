@@ -33,12 +33,12 @@ export class WindowsService {
         },
         selectTab: (tab, window) => {
           const win = this.list.find((x) => x.win.id === window.id);
-          win.viewManager.select(tab.id, true);
+          if (win) win.viewManager.select(tab.id, true);
           win.send('select-tab-id', tab.id);
         },
         removeTab: (tab, window) => {
           const win = this.list.find((x) => x.win.id === window.id);
-          win.viewManager.destroy(tab.id);
+          if (win && win.viewManager) win.viewManager.destroy(tab.id);
         },
         createWindow: async (details) => {
           return this.open(details.incognito).win;

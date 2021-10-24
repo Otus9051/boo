@@ -41,7 +41,6 @@ import {
 import { Textfield } from '~/renderer/components/Textfield';
 import { WebUIStyle } from '~/renderer/mixins/default-styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Icon } from '~/renderer/components/NavigationDrawer/NavigationDrawerItem/style';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 export const NormalButton = ({

@@ -9,7 +9,8 @@ import { RightButtons } from '../RightButtons';
 import store from '../../store';
 import { platform } from 'os';
 import { FullscreenExitButton } from '../Titlebar/style';
-import { ipcRenderer, remote } from 'electron';
+import { ipcRenderer } from 'electron';
+import * as remote from '@electron/remote';
 import { WindowsControls } from 'react-windows-controls';
 
 const onFullscreenExit = (e: React.MouseEvent<HTMLDivElement>) => {
