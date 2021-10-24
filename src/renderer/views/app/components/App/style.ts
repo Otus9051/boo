@@ -14,4 +14,5 @@ export const StyledApp = styled.div`
   display: flex;
   flex-flow: column;
   background-color: #fff;
+  -webkit-app-region: drag;
 `;

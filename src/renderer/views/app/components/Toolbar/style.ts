@@ -18,6 +18,7 @@ export const StyledToolbar = styled.div<ToolbarProps>`
   color: rgba(0, 0, 0, 0.8);
   width: 100%;
   justify-content: center;
+  -webkit-app-region: drag;
   ${({ isFullscreen, theme, color }) => css`
     background-color: ${!!color ? color : theme['titlebar.backgroundColor']};
     align-items: ${theme.isCompact ? 'center' : 'initial'};

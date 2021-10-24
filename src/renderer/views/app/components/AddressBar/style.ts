@@ -27,7 +27,7 @@ export const StyledAddressBar = styled.div<AddressBarProps>`
   position: absolute;
   left: 0;
   right: 0;
-
+  -webkit-app-region: no-drag;
   ${({ color, theme }) => {
     if (color && color !== '') {
       const cc = contrast(color);
