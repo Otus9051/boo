@@ -74,7 +74,6 @@ const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     e.currentTarget.blur();
     const { value } = e.currentTarget;
     let url = value;
-
     if (value.trim() === '') {
       callViewMethod(
         store.tabs.selectedTabId,

@@ -2,7 +2,8 @@ import * as React from 'react';
 import { observer } from 'mobx-react-lite';
 import { ToolbarButton } from '../ToolbarButton';
 import { IBrowserAction } from '../../models';
-import { ipcRenderer, remote } from 'electron';
+import { ipcRenderer } from 'electron';
+import * as remote from '@electron/remote';
 import store from '../../store';
 import { extensionMainChannel } from '~/common/rpc/extensions';
 
@@ -98,9 +99,9 @@ const onContextMenu = (data: IBrowserAction) => (
 };
 
 const onMouseDown = (data: IBrowserAction) => async (e: any) => {
-  canOpenPopup =
-    !store.dialogsVisibility['extension-popup'] ||
-    data.extensionId !== store.extensions.currentlyToggledPopup;
+  // canOpenPopup =
+  //   !store.dialogsVisibility['extension-popup'] ||
+  //   data.extensionId !== store.extensions.currentlyToggledPopup;
   // ipcRenderer.send(`hide-extension-popup-${store.windowId}`);
 };
 

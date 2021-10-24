@@ -1,6 +1,7 @@
 import { protocol } from 'electron';
 import { join } from 'path';
 import { ERROR_PROTOCOL, WEBUI_PROTOCOL } from '~/constants/files';
+import { URL } from 'url';
 
 protocol.registerSchemesAsPrivileged([
   {
