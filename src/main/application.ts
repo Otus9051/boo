@@ -1,5 +1,5 @@
 import { app, ipcMain, Menu } from 'electron';
-import { isAbsolute, extname } from 'path';
+import { isAbsolute, extname, resolve } from 'path';
 import { existsSync } from 'fs';
 import { SessionsService } from './sessions-service';
 import { checkFiles } from '~/utils/files';
@@ -43,6 +43,12 @@ export class Application {
           url: url,
           active: true,
         });
+        this.windows.current.win.webContents.once('dom-ready', () => {
+          this.windows.current.viewManager.create({
+            url: url,
+            active: true,
+          });
+        });
       });
 
       app.on('second-instance', async (e, argv) => {
@@ -63,6 +69,12 @@ export class Application {
                 url: `file:///${path}`,
                 active: true,
               });
+              this.windows.current.win.webContents.once('dom-ready', () => {
+                this.windows.current.viewManager.create({
+                  url: `file:///${path}`,
+                  active: true,
+                });
+              });
             }
           }
           return;
@@ -76,6 +88,13 @@ export class Application {
             url: prefixHttp(path),
             active: true,
           });
+          this.windows.current.win.webContents.once('dom-ready', () => {
+            this.windows.current.viewManager.create({
+              url: prefixHttp(path),
+              active: true,
+            });
+          });
+
           return;
         }
 

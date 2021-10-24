@@ -32,7 +32,6 @@ export const StyledAddressBar = styled.div<AddressBarProps>`
     if (color && color !== '') {
       const cc = contrast(color);
 
-      console.log(cc);
       const isDarkMode = theme['toolbar.lightForeground'];
       switch (cc) {
         case 'dark':

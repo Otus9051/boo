@@ -173,7 +173,6 @@ export const TabContainer = styled.div<TabContainerProps>`
     if (color && color !== '') {
       const cc = contrast(color);
 
-      console.log(cc);
       const isDarkMode = theme['toolbar.lightForeground'];
       switch (cc) {
         case 'dark':

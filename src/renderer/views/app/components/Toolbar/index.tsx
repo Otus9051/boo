@@ -28,7 +28,6 @@ const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
 };
 
 export const Toolbar = observer(() => {
-  console.log(store.tabs.selectedTab?.color);
   return (
     <StyledToolbar
       onMouseDown={onMouseDown}

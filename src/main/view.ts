@@ -118,7 +118,6 @@ export class View {
 
     this.webContents.addListener('did-change-theme-color', (e, color) => {
       this.updateData();
-      console.log(color);
       this.emitEvent('color-updated', color);
       this.updateURL(this.webContents.getURL());
     });
