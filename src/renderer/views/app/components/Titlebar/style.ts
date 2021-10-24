@@ -36,6 +36,8 @@ export const StyledTitlebar = styled.div<TitlebarProps>`
       -webkit-app-region: ${isFullscreen ? 'no-drag' : 'drag'};
     }
   `};
+
+  transition: background-color 0.25s, color 0.25s;
 `;
 
 interface FullscreenExistButtonProps {

@@ -25,6 +25,8 @@ export const StyledTabbar = styled.div<{
   ${({ color, theme }) => css`
     background-color: ${color ? color : theme['titlebar.backgroundColor']};
   `};
+
+  transition: background-color 0.25s, color 0.25s;
 `;
 
 /* &:hover {

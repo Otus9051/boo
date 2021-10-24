@@ -101,6 +101,8 @@ export const StyledAddressBar = styled.div<AddressBarProps>`
       }
     `}
   `};
+
+  transition: background-color 0.25s, color 0.25s;
 `;
 
 export const InputContainer = styled.div`

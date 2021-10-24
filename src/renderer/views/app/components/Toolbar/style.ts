@@ -29,4 +29,6 @@ export const StyledToolbar = styled.div<ToolbarProps>`
       -webkit-app-region: ${isFullscreen ? 'no-drag' : 'drag'};
     }
   `};
+
+  transition: background-color 0.25s, color 0.25s;
 `;
