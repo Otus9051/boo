@@ -7,18 +7,35 @@ import { transparency } from '~/renderer/constants';
 interface NavigationDrawerItemProps {
   theme?: ITheme;
   global?: boolean;
+  selected?: boolean;
 }
 export const StyledNavigationDrawerItem = styled.div<NavigationDrawerItemProps>`
   display: flex;
   height: 40px;
-  border-radius: 4px;
   align-items: center;
   position: relative;
+  border-radius: 8px;
   cursor: pointer;
-  ${({ theme, global }) => css`
+  ${({ theme, global, selected }) => css`
     &:hover {
-      background-color: ${theme['backgroundColor']};
+      background-color: ${global ? 'transparent' : theme['backgroundColor']};
     }
+
+    ${selected &&
+    !global && {
+      backgroundColor: theme['backgroundColor'],
+    }}
+
+    ${selected &&
+    global && {
+      color: '#1E6FEB',
+    }}
+
+    ${global && {
+      fontSize: 18,
+    }}
+    padding-left: ${global ? '0' : '10px'};
+    padding-right: ${global ? '0' : '10px'};
     justify-content: ${global ? 'center' : 'left'};
   `};
 `;

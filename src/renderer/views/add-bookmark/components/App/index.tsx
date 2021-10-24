@@ -37,8 +37,7 @@ const onDropdownClick = (e: React.MouseEvent<HTMLDivElement>) => {
     })),
   ]);
 
-  // @ts-ignore
-  const { x, y } = remote.BrowserView.fromWebContents(
+  const { x, y } = remote.BrowserWindow.fromWebContents(
     remote.getCurrentWebContents(),
   ).getBounds();
 
@@ -82,9 +81,7 @@ export const App = observer(() => {
           <Button
             onClick={onRemove}
             background={
-              store.theme['dialog.lightForeground']
-                ? 'rgba(255, 255, 255, 0.08)'
-                : 'rgba(0, 0, 0, 0.08)'
+              store.theme['dialog.lightForeground'] ? '#11151A' : '#F2F8FF'
             }
             foreground={
               store.theme['dialog.lightForeground'] ? 'white' : 'black'

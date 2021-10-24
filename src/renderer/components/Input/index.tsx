@@ -4,7 +4,7 @@ import { ITheme } from '~/interfaces';
 import { centerIcon } from '~/renderer/mixins';
 
 export const Control = css`
-  height: 32px;
+  height: 40px;
   position: relative;
   border: none;
   outline: none;

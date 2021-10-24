@@ -37,7 +37,7 @@ const MenuItem = observer(
 
 export const GlobalNavigationDrawer = () => {
   return (
-    <NavigationDrawer dense title="">
+    <NavigationDrawer dense title="" global>
       <MenuItem name="settings" global>
         <FontAwesomeIcon icon={ICON_SETTINGS} fixedWidth />
       </MenuItem>

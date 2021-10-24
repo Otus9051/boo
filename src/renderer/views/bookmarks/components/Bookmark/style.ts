@@ -18,7 +18,7 @@ export const More = styled.div<MoreProps>`
   justify-content: center;
   align-items: center;
   ${({ theme }) => css`
-    filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : 'none'};
+    filter: ${theme['pages.lightForeground'] ? 'invert(0%)' : 'none'};
   `}
   &:hover {
     opacity: 1;
@@ -28,8 +28,14 @@ export const More = styled.div<MoreProps>`
 export const Favicon = styled.div`
   ${centerIcon()};
   height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 16px;
   margin-right: 24px;
+  ${({ theme }: { theme?: ITheme }) => css`
+    filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : ''};
+  `}
 `;
 
 interface TitleProps {

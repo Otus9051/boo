@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { robotoRegular } from '~/renderer/mixins';
 import { ITheme } from '~/interfaces';
 import { DialogStyle } from '~/renderer/mixins/dialogs';
 
@@ -10,7 +9,8 @@ interface AppProps {
 }
 export const StyledApp = styled(DialogStyle)<AppProps>`
   padding: 20px;
-
+  display: flex;
+  flex-direction: column;
   & .textfield,
   .dropdown {
     width: 255px;

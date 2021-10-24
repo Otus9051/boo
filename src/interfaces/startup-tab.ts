@@ -5,6 +5,7 @@ export interface IStartupTab {
   title?: string;
   url?: string;
   favicon?: string;
+  color?: string;
   order?: number;
   pinned?: boolean;
   isUserDefined?: boolean;

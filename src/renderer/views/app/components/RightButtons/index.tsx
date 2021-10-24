@@ -105,8 +105,7 @@ export const RightButtons = observer(() => {
 
       <ToolbarButton
         badgeRight={10}
-        onMouseDown={onMenuClick}
-        onClick={onAddTabClick}
+        onMouseDown={onAddTabClick}
         icon={ICON_ADD}
         size={18}
       />

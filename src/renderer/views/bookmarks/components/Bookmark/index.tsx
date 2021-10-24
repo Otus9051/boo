@@ -89,14 +89,17 @@ export const Bookmark = observer(({ data }: { data: IBookmark }) => {
       style={{ borderRadius: 0 }}
     >
       <Favicon
+        theme={store.theme}
         style={{
-          backgroundImage: `url(${favicon})`,
+          backgroundImage: typeof favicon === 'string' ? `url(${favicon})` : '',
           filter:
             store.theme['pages.lightForeground'] && customFavicon
-              ? 'invert(100%)'
+              ? 'invert(0%)'
               : 'none',
         }}
-      />
+      >
+        {typeof favicon !== 'string' && <FontAwesomeIcon icon={favicon} />}
+      </Favicon>
       <Title>{getBookmarkTitle(data)}</Title>
       <Site>{data.url}</Site>
       {!data.static && (

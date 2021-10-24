@@ -90,6 +90,9 @@ export class TabsStore {
         }
 
         this.createTab(options, id);
+
+        e.sender.send('create-tab-reply-' + id);
+        console.log('sent with id', id);
       },
     );
 
@@ -108,6 +111,13 @@ export class TabsStore {
 
     ipcRenderer.on('select-tab-index', (e, i) => {
       this.list[i]?.select();
+    });
+
+    ipcRenderer.on('select-tab-id', (e, id: number) => {
+      console.log('owo', id);
+      this.getTabById(id)?.select();
+      console.log(this.list.map((a) => [a.id, a.url]));
+      console.log(this.getTabById(id));
     });
 
     ipcRenderer.on('select-last-tab', () => {
@@ -137,6 +147,7 @@ export class TabsStore {
       if (tab) {
         if (event === 'blocked-ad') tab.blockedAds++;
         if (event === 'title-updated') tab.title = args[0];
+        if (event === 'color-updated') tab.color = args[0];
         if (event === 'favicon-updated') tab.favicon = args[0];
         if (event === 'did-navigate') tab.favicon = '';
         if (event === 'media-playing') tab.isPlaying = true;
@@ -172,6 +183,7 @@ export class TabsStore {
         'get-search-tabs',
         this.list.map((tab) => ({
           favicon: tab.favicon,
+          color: tab.color,
           url: tab.url,
           title: tab.title,
           id: tab.id,

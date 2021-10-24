@@ -44,6 +44,8 @@ export class ITab {
 
   public title = 'New Tab';
 
+  public color = '';
+
   public loading = true;
 
   public favicon = '';
@@ -90,6 +92,7 @@ export class ITab {
       isMuted: observable,
       isPlaying: observable,
       title: observable,
+      color: observable,
       blockedAds: observable,
       hasCredentials: observable,
       isSelected: computed,
@@ -131,6 +134,7 @@ export class ITab {
         favicon: this.favicon,
         pinned: !!this.isPinned,
         title: this.title,
+        color: this.color,
         isUserDefined: false,
         order: store.tabs.list.indexOf(this),
       });
@@ -157,6 +161,7 @@ export class ITab {
       );
 
       if (focused) {
+        if (!store.inputRef) return;
         store.inputRef.focus();
         store.inputRef.setSelectionRange(
           this.addressbarSelectionRange[0],

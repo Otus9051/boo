@@ -48,7 +48,7 @@ export const TabGroups = observer(() => {
 
 export const Tabbar = observer(() => {
   return (
-    <StyledTabbar>
+    <StyledTabbar color={store.tabs.selectedTab?.color}>
       <TabsContainer
         onMouseEnter={onMouseEnter}
         onMouseLeave={onTabsMouseLeave}

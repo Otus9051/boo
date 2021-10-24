@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { robotoRegular, centerIcon } from '~/renderer/mixins';
+import { interRegular, centerIcon } from '~/renderer/mixins';
 import { transparency, ICON_CLOSE } from '~/renderer/constants';
 
 export const StyledItem = styled.div`
@@ -13,7 +13,7 @@ export const Username = styled.div`
   font-size: 13px;
   color: rgba(0, 0, 0, ${transparency.text.medium});
   flex: 2;
-  ${robotoRegular()};
+  ${interRegular()};
 `;
 
 export const Password = styled(Username)`

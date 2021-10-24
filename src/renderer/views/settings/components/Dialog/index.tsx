@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 import { EASING_FUNCTION } from '~/renderer/constants';
-import { robotoRegular, robotoMedium } from '~/renderer/mixins';
+import { interRegular, interMedium } from '~/renderer/mixins';
 import { Button } from '~/renderer/components/Button';
 import store from '../../store';
 
@@ -27,7 +27,7 @@ export const Dialog = styled.div`
   border-radius: 8px;
   padding-bottom: 8px;
   transition: 0.15s transform ${EASING_FUNCTION};
-  ${robotoRegular()};
+  ${interRegular()};
 
   ${({ visible }: { visible: boolean }) => css`
     pointer-events: ${visible ? 'inherit' : 'none'};
@@ -39,7 +39,7 @@ export const Dialog = styled.div`
 export const Title = styled.div`
   padding: 16px 16px 8px 16px;
   font-size: 16px;
-  ${robotoMedium()};
+  ${interMedium()};
 `;
 
 export const Content = styled.div`
@@ -62,5 +62,5 @@ export const Buttons = styled.div`
 
 export const Bold = styled.span`
   font-size: 14px;
-  ${robotoMedium()};
+  ${interMedium()};
 `;

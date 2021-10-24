@@ -22,12 +22,19 @@ export class WindowsService {
 
           if (!win) throw new Error('Window not found');
 
-          const view = win.viewManager.create(details);
+          const view = win.viewManager.create(details, false, false);
+          win.webContents.send('create-tab', { ...details }, false, view.id);
+
+          await new Promise((resolve) => {
+            ipcMain.once('create-tab-reply-' + view.id, resolve);
+          });
+
           return [view.webContents, win.win];
         },
         selectTab: (tab, window) => {
           const win = this.list.find((x) => x.win.id === window.id);
           win.viewManager.select(tab.id, true);
+          win.send('select-tab-id', tab.id);
         },
         removeTab: (tab, window) => {
           const win = this.list.find((x) => x.win.id === window.id);

@@ -15,7 +15,7 @@ interface Props {
   onContextMenu?: (e?: React.MouseEvent<HTMLDivElement>) => void;
   size?: number;
   style?: any;
-  icon: IconProp;
+  icon: IconProp | string;
   divRef?: (ref: HTMLDivElement) => void;
   disabled?: boolean;
   className?: string;
@@ -65,7 +65,6 @@ export const ToolbarButton = observer(
     id,
   }: Props) => {
     style = { ...style };
-
     return (
       <Button
         id={id}
@@ -81,12 +80,15 @@ export const ToolbarButton = observer(
         disabled={disabled}
       >
         <Icon
-          style={{ ...iconStyle }}
+          style={{
+            ...iconStyle,
+            backgroundImage: typeof icon === 'string' ? `url(${icon})` : '',
+          }}
           size={size}
           disabled={disabled}
           opacity={opacity}
         >
-          <FontAwesomeIcon icon={icon} />
+          {typeof icon !== 'string' && <FontAwesomeIcon icon={icon} />}
         </Icon>
         {badge && (
           <Badge

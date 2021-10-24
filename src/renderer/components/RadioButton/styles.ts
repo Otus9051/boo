@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import { transparency, BLUE_500 } from '~/renderer/constants';
-import { robotoRegular } from '~/renderer/mixins';
+import { interRegular } from '~/renderer/mixins';
 import { ITheme } from '~/interfaces';
 
 export const Container = styled.div`
@@ -106,5 +106,5 @@ export const Label = styled.div`
   font-size: 14px;
   color: rgba(0, 0, 0, ${transparency.text.high});
   margin-left: 8px;
-  ${robotoRegular()};
+  ${interRegular()};
 `;

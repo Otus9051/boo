@@ -2,6 +2,7 @@ export type TabEvent =
   | 'load-commit'
   | 'url-updated'
   | 'title-updated'
+  | 'color-updated'
   | 'favicon-updated'
   | 'did-navigate'
   | 'loading'

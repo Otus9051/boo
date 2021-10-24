@@ -27,8 +27,8 @@ export const StyledTitlebar = styled.div<TitlebarProps>`
     content: '';
   }
 
-  ${({ isFullscreen, theme }) => css`
-    background-color: ${theme['titlebar.backgroundColor']};
+  ${({ isFullscreen, theme, color }) => css`
+    background-color: ${color ? color : theme['titlebar.backgroundColor']};
     height: 45px;
     align-items: ${theme.isCompact ? 'center' : 'initial'};
 

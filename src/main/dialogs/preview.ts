@@ -31,6 +31,7 @@ export class PreviewDialog extends PersistentDialog {
     const {
       id,
       url,
+      color,
       title,
       errorURL,
     } = Application.instance.windows
@@ -41,6 +42,7 @@ export class PreviewDialog extends PersistentDialog {
       id,
       url: url.startsWith(`${ERROR_PROTOCOL}://`) ? errorURL : url,
       title,
+      color,
       x: this.tab.x - 8,
     });
   }

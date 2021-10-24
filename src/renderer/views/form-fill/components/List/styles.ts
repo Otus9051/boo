@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { robotoRegular, noButtons } from '~/renderer/mixins';
+import { interRegular, noButtons } from '~/renderer/mixins';
 import { transparency } from '~/renderer/constants';
 
 export const StyledList = styled.div`
@@ -35,7 +35,7 @@ export const Text = styled.div`
   text-overflow: ellipsis;
   overflow: hidden;
   color: #000;
-  ${robotoRegular()};
+  ${interRegular()};
 `;
 
 export const SubText = styled(Text)`

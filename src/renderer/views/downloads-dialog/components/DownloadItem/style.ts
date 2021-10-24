@@ -77,13 +77,14 @@ export const Icon = styled.div`
   width: 24px;
   height: 24px;
   ${centerIcon()};
-  background-image: url(${ICON_PAGE});
   margin-right: 16px;
   opacity: 0.54;
   margin-left: 16px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ${({ theme }: { theme?: ITheme }) => css`
-    filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : ''};
+    filter: ${theme['dialog.lightForeground'] ? 'invert(0%)' : ''};
   `}
 `;
 
@@ -91,15 +92,16 @@ export const MoreButton = styled.div`
   width: 36px;
   height: 36px;
   ${centerIcon(20)};
-  background-image: url(${ICON_MORE});
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0.54;
   margin-right: 8px;
   border-radius: 6px;
   transition: 0.1s background-color;
 
   ${({ theme }: { theme?: ITheme }) => css`
-    filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : ''};
+    filter: ${theme['dialog.lightForeground'] ? 'invert(0%)' : ''};
   `}
 
   &:hover {

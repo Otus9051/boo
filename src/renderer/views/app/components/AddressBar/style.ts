@@ -2,28 +2,87 @@ import { platform } from 'os';
 import styled, { css } from 'styled-components';
 import { ITheme } from '~/interfaces';
 import { BLUE_300 } from '~/renderer/constants';
+import { contrast } from '~/utils/colors';
 
 interface AddressBarProps {
   theme: ITheme;
   focus: boolean;
+  color?: string;
 }
 
 export const StyledAddressBar = styled.div<AddressBarProps>`
   height: 30px;
-  flex: 1;
+  // flex: 1;
   border-radius: 8px;
   margin: 0 7px;
   display: flex;
   align-items: center;
-  position: relative;
+  // position: relative;
   max-width: 450px;
   margin-left: auto;
   margin-right: auto;
   font-size: 15px;
   overflow: hidden;
-  left: ${platform() !== 'darwin' ? '34px' : '-64px'};
-  ${({ theme, focus }) => css`
-    background-color: ${theme['addressbar.backgroundColor']};
+  // left: ${platform() !== 'darwin' ? '34px' : '-64px'};
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  ${({ color, theme }) => {
+    if (color && color !== '') {
+      const cc = contrast(color);
+
+      console.log(cc);
+      const isDarkMode = theme['toolbar.lightForeground'];
+      switch (cc) {
+        case 'dark':
+          if (isDarkMode) {
+            return css`
+              background-color: rgb(255, 255, 255, 0.2);
+              color: #fff;
+            `;
+          } else {
+            return css`
+              background-color: rgb(255, 255, 255, 0.2);
+              color: #fff;
+            `;
+          }
+        case 'light': {
+          if (isDarkMode) {
+            return css`
+              background-color: rgb(0, 0, 0, 0.15);
+            `;
+          } else {
+            return css`
+              background-color: rgb(0, 0, 0, 0.06);
+            `;
+          }
+        }
+      }
+    }
+    return css`
+      color: ${theme['addressbar.textColor']};
+      background-color: ${theme['addressbar.backgroundColor']};
+    `;
+  }}
+
+  ${({ theme, focus, color }) => css`
+    /* background-color: ${theme['addressbar.backgroundColor']}; */
+
+    /* background-color: ${color
+      ? theme['toolbar.lightForeground']
+        ? 'rgb(255,255,255,0.20)'
+        : 'rgb(0,0,0,0.15) '
+      : theme['addressbar.backgroundColor']}; */
+
+    /* selected
+        ? theme['toolbar.lightForeground']
+          ? 'rgb(255,255,255,0.20)'
+          : 'rgb(0,0,0,0.15) '
+        : theme['toolbar.lightForeground']
+        ? 'rgb(255,255,255,0.10)'
+        : 'rgb(0,0,0,0.05) ' */
+
     border: 1px solid
       ${theme.isCompact
         ? theme['toolbar.lightForeground']
@@ -32,7 +91,7 @@ export const StyledAddressBar = styled.div<AddressBarProps>`
         : focus
         ? `${BLUE_300} !important`
         : 'transparent'};
-    color: ${theme['addressbar.textColor']};
+    /* color: ${theme['addressbar.textColor']}; */
 
     ${!theme.isCompact &&
     css`
@@ -98,9 +157,7 @@ export const Input = styled.input<InputProps>`
     color: ${visible ? 'inherit' : 'transparent'};
 
     &::placeholder {
-      color: ${theme['searchBox.lightForeground']
-        ? 'rgba(255, 255, 255, 0.54)'
-        : 'rgba(0, 0, 0, 0.54)'};
+      color: ${theme['searchBox.lightForeground'] ? 'inherit' : 'inherit'};
     }
 
     ${theme['searchBox.lightForeground'] &&

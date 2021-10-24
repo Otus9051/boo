@@ -14,6 +14,7 @@ import {
   DEFAULT_TITLEBAR_HEIGHT,
   TOOLBAR_HEIGHT,
 } from '~/constants/design';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
   if (e.which === 13) {
@@ -101,7 +102,7 @@ export const App = observer(() => {
   });
 
   const suggestion = store.suggestions.selectedSuggestion;
-  let favicon = ICON_SEARCH;
+  let favicon: string | IconProp = ICON_SEARCH;
   let customIcon = true;
 
   if (suggestion && suggestionsVisible) {
@@ -112,7 +113,7 @@ export const App = observer(() => {
       favicon = store.searchEngine.icon;
     } else if (
       favicon == null ||
-      favicon.trim() === '' ||
+      (typeof favicon === 'string' && favicon.trim() === '') ||
       favicon === ICON_PAGE
     ) {
       favicon = ICON_PAGE;

@@ -138,6 +138,7 @@ export class StartupTabsStore {
       url: tab.url,
       pinned: tab.isPinned,
       title: tab.title,
+      color: tab.color,
       favicon: tab.favicon,
       isUserDefined: false,
     });

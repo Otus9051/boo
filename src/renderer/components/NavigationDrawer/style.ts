@@ -27,7 +27,9 @@ export const StyledNavigationDrawer = styled.div<NavigationDrawerProps>`
   `}
 `;
 
-export const MenuItems = styled.div`
+export const MenuItems = styled.div<{
+  global?: boolean;
+}>`
   display: flex;
   flex-flow: column;
   flex: 1;
@@ -35,6 +37,12 @@ export const MenuItems = styled.div`
   padding-bottom: 24px;
   overflow: hidden auto;
   ${noButtons('6px', 'rgba(0, 0, 0, 0.04)', 'rgba(0, 0, 0, 0.12)')};
+  ${({ global }) => css`
+    margin-left: ${global ? '0' : '-10px'};
+    margin-right: ${global ? '0' : '-10px'};
+    justify-content: ${global ? 'center' : 'left'};
+    gap: ${global ? '30px' : '0'};
+  `}
 `;
 
 export const Header = styled.div`

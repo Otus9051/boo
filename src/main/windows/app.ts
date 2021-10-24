@@ -18,7 +18,7 @@ export class AppWindow {
   public constructor(incognito: boolean) {
     this.win = new BrowserWindow({
       frame: false,
-      minWidth: 400,
+      minWidth: 900,
       minHeight: 450,
       width: 900,
       height: 700,

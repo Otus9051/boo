@@ -7,6 +7,7 @@ export interface IBookmark {
   isFolder?: boolean;
   parent?: string;
   order?: number;
+  color?: string;
   expanded?: boolean;
   static?: 'mobile' | 'main' | 'other' | 'pinned';
   children?: string[];

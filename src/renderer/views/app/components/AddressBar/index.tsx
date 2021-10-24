@@ -134,6 +134,7 @@ export const AddressBar = observer(() => {
     <StyledAddressBar
       ref={(r) => (addressbarRef = r)}
       focus={store.addressbarFocused}
+      color={store.tabs.selectedTab?.color}
     >
       <ToolbarButton
         toggled={false}

@@ -266,7 +266,7 @@ export default observer(() => {
           </DialogButtons>
           <div style={{ clear: 'both' }}></div>
         </Dialog>
-        <NavigationDrawer title="Settings" search>
+        <NavigationDrawer title="Settings">
           <MenuItem section="general" icon={ICON_SETTINGS}>
             General
           </MenuItem>

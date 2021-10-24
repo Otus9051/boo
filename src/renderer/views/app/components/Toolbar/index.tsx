@@ -28,9 +28,15 @@ const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
 };
 
 export const Toolbar = observer(() => {
+  console.log(store.tabs.selectedTab?.color);
   return (
-    <StyledToolbar onMouseDown={onMouseDown} isFullscreen={store.isFullscreen}>
+    <StyledToolbar
+      onMouseDown={onMouseDown}
+      isFullscreen={store.isFullscreen}
+      color={store.tabs.selectedTab?.color}
+    >
       <NavigationButtons />
+      <div style={{ flex: 1 }} />
       <AddressBar />
       <RightButtons />
       {platform() !== 'darwin' &&

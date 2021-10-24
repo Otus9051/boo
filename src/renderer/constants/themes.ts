@@ -13,7 +13,7 @@ export const skyeLight: ITheme = {
   'tab.selected.backgroundColor': '#E5F1FF',
   'tab.backgroundColor': '#F2F8FF',
   'tab.textColor': `rgba(0, 0, 0, 0.7)`,
-  'control.backgroundColor': 'rgba(0, 0, 0, 0.08)',
+  'control.backgroundColor': '#F2F8FF',
   'control.hover.backgroundColor': 'rgba(0, 0, 0, 0.1)',
   'control.valueColor': '#000',
   'control.lightIcon': false,
@@ -51,7 +51,7 @@ export const skyeDark: ITheme = {
   'tab.selected.backgroundColor': '#1A1E2C',
   'tab.backgroundColor': '#11151A',
 
-  'control.backgroundColor': 'rgba(255, 255, 255, 0.1)',
+  'control.backgroundColor': '#11151A',
   'control.hover.backgroundColor': 'rgba(255, 255, 255, 0.12)',
   'control.valueColor': '#fff',
   'control.lightIcon': true,

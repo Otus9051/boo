@@ -14,6 +14,8 @@ import {
 import { IDownloadItem } from '~/interfaces';
 import prettyBytes = require('pretty-bytes');
 import { shell } from 'electron';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ICON_MORE, ICON_PAGE } from '~/renderer/constants/icons';
 
 const onClick = (item: IDownloadItem) => () => {
   if (item.completed) {
@@ -39,7 +41,9 @@ export const DownloadItem = observer(({ item }: { item: IDownloadItem }) => {
 
   return (
     <StyledDownloadItem onClick={onClick(item)}>
-      <Icon></Icon>
+      <Icon>
+        <FontAwesomeIcon icon={ICON_PAGE} />
+      </Icon>
       <Info>
         <Title>{item.fileName}</Title>
         {!item.completed && (
@@ -56,7 +60,9 @@ export const DownloadItem = observer(({ item }: { item: IDownloadItem }) => {
         )}
       </Info>
       <Separator></Separator>
-      <MoreButton onClick={onMoreClick(item)}></MoreButton>
+      <MoreButton onClick={onMoreClick(item)}>
+        <FontAwesomeIcon icon={ICON_MORE} />
+      </MoreButton>
     </StyledDownloadItem>
   );
 });

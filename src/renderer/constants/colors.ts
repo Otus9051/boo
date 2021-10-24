@@ -1,34 +1,34 @@
-export const BLUE_500 = '#21b0f3';
-export const BLUE_300 = '#64B5F6';
+export const BLUE_500 = '#1E6FEB';
+export const BLUE_300 = '#5A96F0';
 
-export const RED_500 = '#F44336';
+export const RED_500 = '#EB1E1E';
 
-export const PINK_500 = '#E91E63';
+export const PINK_500 = '#EB1ECF';
 
-export const PURPLE_500 = '#9C27B0';
+export const PURPLE_500 = '#9E1EEB';
 
-export const DEEP_PURPLE_500 = '#673AB7';
+export const DEEP_PURPLE_500 = '#661EEB';
 
-export const INDIGO_500 = '#3F51B5';
+export const INDIGO_500 = '#4D1EEB';
 
-export const CYAN_500 = '#00BCD4';
+export const CYAN_500 = '#1EDCEB';
 
-export const LIGHT_BLUE_500 = '#03A9F4';
+export const LIGHT_BLUE_500 = '#1E9BEB';
 
-export const TEAL_500 = '#009688';
+export const TEAL_500 = '#1EEBB3';
 
-export const GREEN_500 = '#4CAF50';
+export const GREEN_500 = '#1EEB5D';
 
-export const LIGHT_GREEN_500 = '#8BC34A';
+export const LIGHT_GREEN_500 = '#69EB1E';
 
-export const LIME_500 = '#CDDC39';
+export const LIME_500 = '#91EB1E';
 
-export const YELLOW_500 = '#FFEB3B';
+export const YELLOW_500 = '#E1EB1E';
 
-export const AMBER_500 = '#FFC107';
+export const AMBER_500 = '#EBBF1E';
 
-export const ORANGE_500 = '#FF9800';
+export const ORANGE_500 = '#EB771E';
 
-export const DEEP_ORANGE_500 = '#FF5722';
+export const DEEP_ORANGE_500 = '#EB711E';
 
-export const BLUE_GRAY_500 = '#607D8B';
+export const BLUE_GRAY_500 = '#3C3A3A';

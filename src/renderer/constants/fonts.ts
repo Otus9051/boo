@@ -1,3 +1,9 @@
-export const FONT_ROBOTO_REGULAR = require('~/renderer/resources/fonts/roboto-regular.woff2');
-export const FONT_ROBOTO_MEDIUM = require('~/renderer/resources/fonts/roboto-medium.woff2');
-export const FONT_ROBOTO_LIGHT = require('~/renderer/resources/fonts/roboto-light.woff2');
+export const FONT_INTER_LIGHT = require('~/renderer/resources/fonts/Inter-Light.woff2');
+export const FONT_INTER_THIN = require('~/renderer/resources/fonts/Inter-Thin.woff2');
+export const FONT_INTER_REGULAR = require('~/renderer/resources/fonts/Inter-Regular.woff2');
+export const FONT_INTER_SEMIBOLD = require('~/renderer/resources/fonts/Inter-SemiBold.woff2');
+export const FONT_INTER_BOLD = require('~/renderer/resources/fonts/Inter-Bold.woff2');
+export const FONT_INTER_MEDIUM = require('~/renderer/resources/fonts/Inter-Medium.woff2');
+export const FONT_INTER_EXTRALIGHT = require('~/renderer/resources/fonts/Inter-ExtraLight.woff2');
+export const FONT_INTER_EXTRABOLD = require('~/renderer/resources/fonts/Inter-ExtraBold.woff2');
+export const FONT_INTER_BLACK = require('~/renderer/resources/fonts/Inter-Black.woff2');

@@ -29,6 +29,7 @@ export class View {
   public isNewTab = false;
   public homeUrl: string;
   public favicon = '';
+  public color = '';
   public incognito = false;
 
   public errorURL = '';
@@ -112,6 +113,13 @@ export class View {
       this.updateData();
 
       this.emitEvent('title-updated', title);
+      this.updateURL(this.webContents.getURL());
+    });
+
+    this.webContents.addListener('did-change-theme-color', (e, color) => {
+      this.updateData();
+      console.log(color);
+      this.emitEvent('color-updated', color);
       this.updateURL(this.webContents.getURL());
     });
 
@@ -349,6 +357,7 @@ export class View {
     ) {
       const historyItem: IHistoryItem = {
         title: this.title,
+        color: this.color,
         url,
         favicon: this.favicon,
         date: new Date().getTime(),
@@ -403,7 +412,7 @@ export class View {
     if (!this.incognito) {
       const id = this.lastHistoryId;
       if (id) {
-        const { title, url, favicon } = this;
+        const { title, color, url, favicon } = this;
 
         this.historyQueue.enqueue(async () => {
           await Application.instance.storage.update({
@@ -413,6 +422,7 @@ export class View {
             },
             value: {
               title,
+              color,
               url,
               favicon,
             },
@@ -425,6 +435,7 @@ export class View {
 
           if (item) {
             item.title = title;
+            item.color = color;
             item.url = url;
             item.favicon = favicon;
           }

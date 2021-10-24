@@ -15,7 +15,7 @@ export const StyledButton = styled.div<ButtonProps>`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 6px;
   position: relative;
   cursor: pointer;
 
@@ -38,11 +38,11 @@ export const StyledButton = styled.div<ButtonProps>`
   ${({ background, foreground, type }) => css`
     color: ${foreground || '#fff'};
     border: ${type === 'outlined'
-      ? `1px solid ${background || '#2196F3'}`
+      ? `1px solid ${background || '#1E6FEB'}`
       : 'unset'};
     background-color: ${type === 'outlined'
       ? 'transparent'
-      : background || '#2196F3'};
+      : background || '#1E6FEB'};
 
     &::before {
       background-color: ${foreground || '#fff'};

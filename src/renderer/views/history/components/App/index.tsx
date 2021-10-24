@@ -17,6 +17,7 @@ import {
   ICON_TRASH,
 } from '~/renderer/constants';
 import { WebUIStyle } from '~/renderer/mixins/default-styles';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const onScroll = (e: any) => {
   const scrollPos = e.target.scrollTop;
@@ -35,7 +36,7 @@ const RangeItem = observer(
   }: {
     range: QuickRange;
     children: any;
-    icon: string;
+    icon: IconProp;
   }) => (
     <NavigationDrawer.Item
       onClick={() => (store.selectedRange = range)}
@@ -108,7 +109,7 @@ export default observer(() => {
           </RangeItem>
           <div style={{ flex: 1 }} />
           <NavigationDrawer.Item icon={ICON_TRASH} onClick={onClearClick}>
-            Clear browsing data
+            Clear Browsing Data
           </NavigationDrawer.Item>
         </NavigationDrawer>
         <Content onScroll={onScroll}>

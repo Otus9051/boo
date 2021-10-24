@@ -3,6 +3,7 @@ export interface IHistoryItem {
   title?: string;
   url?: string;
   date?: number;
+  color?: string;
   favicon?: string;
   hovered?: boolean;
 }

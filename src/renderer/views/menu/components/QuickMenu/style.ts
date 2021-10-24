@@ -21,6 +21,7 @@ export const MenuItem = styled.div`
   position: relative;
   padding: 0 12px;
   font-size: 12px;
+  border-radius: 4px;
 
   ${({ arrow }: { arrow?: boolean; disabled?: boolean }) =>
     arrow &&
@@ -61,8 +62,7 @@ export const MenuItemTitle = styled.div`
 export const MenuItems = styled.div`
   flex: 1;
   overflow: hidden;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding: 10px;
   ${({ theme }: { theme?: ITheme }) => css`
     background-color: ${theme['dialog.backgroundColor']};
     color: ${theme['dialog.textColor']};

@@ -4,6 +4,7 @@ import { transparency, ICON_CLOSE } from '~/renderer/constants';
 import { ITheme } from '~/interfaces';
 import { centerIcon } from '~/renderer/mixins';
 import { TAB_PINNED_WIDTH } from '../../constants';
+import { contrast } from '~/utils/colors';
 
 interface CloseProps {
   visible: boolean;
@@ -24,7 +25,6 @@ export const StyledClose = styled.div<CloseProps>`
   ${centerIcon(16)};
 
   ${({ visible, theme }) => css`
-    color: ${theme['toolbar.lightForeground'] ? '#DEDEDE' : '#323232'};
     opacity: ${visible ? transparency.icons.inactive : 0};
   `}
 
@@ -123,9 +123,6 @@ export const StyledTitle = styled.div<TitleProps>`
 
   ${({ isIcon, selected, theme }) => css`
     margin-left: ${!isIcon ? 0 : 12}px;
-    color: ${selected
-      ? theme['tab.selected.textColor']
-      : theme['tab.textColor']};
   `};
 `;
 
@@ -157,9 +154,10 @@ interface TabContainerProps {
   theme?: ITheme;
   hasTabGroup: boolean;
   selected?: boolean;
+  color?: string;
 }
 
-export const TabContainer = styled.div`
+export const TabContainer = styled.div<TabContainerProps>`
   position: relative;
 
   width: 100%;
@@ -169,13 +167,86 @@ export const TabContainer = styled.div`
   backface-visibility: hidden;
   transition: 0.1s background-color;
   border-bottom: transparent !important;
-  border: 2px solid;
+  /* border: 2px solid; */
 
-  ${({ pinned, theme, hasTabGroup, selected }: TabContainerProps) => css`
+  ${({ color, theme, selected }) => {
+    if (color && color !== '') {
+      const cc = contrast(color);
+
+      console.log(cc);
+      const isDarkMode = theme['toolbar.lightForeground'];
+      switch (cc) {
+        case 'dark':
+          if (isDarkMode) {
+            if (selected) {
+              return css`
+                background-color: rgb(255, 255, 255, 0.2);
+                color: #fff;
+              `;
+            }
+            return css`
+              background-color: rgb(255, 255, 255, 0.1);
+              color: #fff;
+            `;
+          } else {
+            if (selected) {
+              return css`
+                background-color: rgb(255, 255, 255, 0.2);
+                color: #fff;
+              `;
+            }
+            return css`
+              background-color: rgb(255, 255, 255, 0.1);
+              color: #e5e5e5;
+            `;
+          }
+        case 'light': {
+          if (isDarkMode) {
+            if (selected) {
+              return css`
+                background-color: rgb(0, 0, 0, 0.15);
+              `;
+            }
+            return css`
+              background-color: rgb(0, 0, 0, 0.06);
+              color: #000;
+            `;
+          } else {
+            if (selected) {
+              return css`
+                background-color: rgb(0, 0, 0, 0.15);
+              `;
+            }
+            return css`
+              background-color: rgb(0, 0, 0, 0.06);
+            `;
+          }
+        }
+      }
+    }
+    return css`
+      color: ${theme['addressbar.textColor']};
+      background-color: ${selected
+        ? theme['tab.selected.backgroundColor']
+        : theme['tab.backgroundColor']};
+    `;
+  }}
+
+  ${({ pinned, theme, hasTabGroup, selected, color }) => css`
     max-width: ${pinned ? `${TAB_PINNED_WIDTH}px` : '100%'};
-    background-color: ${selected
+
+    /* background-color: ${color
+      ? selected
+        ? theme['toolbar.lightForeground']
+          ? 'rgb(255,255,255,0.20)'
+          : 'rgb(0,0,0,0.15) '
+        : theme['toolbar.lightForeground']
+        ? 'rgb(255,255,255,0.10)'
+        : 'rgb(0,0,0,0.05) '
+      : selected
       ? theme['tab.selected.backgroundColor']
-      : theme['tab.backgroundColor']};
+      : theme['tab.backgroundColor']}; */
+
     height: ${theme.tabHeight}px;
     border-radius: ${theme.isCompact && !hasTabGroup ? '8px' : 'auto'};
     border-radius: 8px;

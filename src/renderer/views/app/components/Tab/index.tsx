@@ -308,6 +308,7 @@ export default observer(({ tab, index }: { tab: ITab; index: number }) => {
         hasTabGroup={tab.tabGroupId !== -1}
         pinned={tab.isPinned}
         selected={tab.isSelected}
+        color={store.tabs.selectedTab?.color}
         style={{
           marginLeft: index !== 0 ? '8px' : '1px',
           borderColor:

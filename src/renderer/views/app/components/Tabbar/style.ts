@@ -9,7 +9,10 @@ import {
 } from '~/constants/design';
 import { ITheme } from '~/interfaces';
 
-export const StyledTabbar = styled.div`
+export const StyledTabbar = styled.div<{
+  color: string;
+  theme: ITheme;
+}>`
   height: 100%;
   width: 100%;
   position: relative;
@@ -18,6 +21,10 @@ export const StyledTabbar = styled.div`
   margin-right: 10px;
   display: flex;
   margin-left: 10px;
+
+  ${({ color, theme }) => css`
+    background-color: ${color ? color : theme['titlebar.backgroundColor']};
+  `};
 `;
 
 /* &:hover {

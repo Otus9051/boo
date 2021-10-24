@@ -23,6 +23,7 @@ export const NavigationDrawerItem = observer(
       <StyledNavigationDrawerItem
         title={children}
         onClick={onClick}
+        selected={selected}
         global={global}
       >
         {icon && (
