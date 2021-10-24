@@ -17,8 +17,8 @@ export class NetworkServiceHandler implements RpcMainHandler<NetworkService> {
   request(e: RpcMainEvent, url: string) {
     try {
       return requestURL(url);
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.error(err);
       return undefined;
     }
   }

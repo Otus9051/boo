@@ -25,7 +25,7 @@ export const getViewMenu = (
           appWindow.viewManager.create(
             {
               url: params.linkURL,
-              active: false,
+              active: true,
             },
             true,
           );
@@ -55,7 +55,7 @@ export const getViewMenu = (
           appWindow.viewManager.create(
             {
               url: params.srcURL,
-              active: false,
+              active: true,
             },
             true,
           );

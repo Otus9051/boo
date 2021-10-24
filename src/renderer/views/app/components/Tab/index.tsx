@@ -23,9 +23,11 @@ import store from '../../store';
 import * as remote from '@electron/remote';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const removeTab = (tab: ITab) => (e: React.MouseEvent<HTMLDivElement>) => {
+const removeTab = (tab: ITab) => async (
+  e: React.MouseEvent<HTMLDivElement>,
+) => {
   e.stopPropagation();
-  tab.close();
+  await tab.close();
 };
 
 const toggleMuteTab = (tab: ITab) => (e: React.MouseEvent<HTMLDivElement>) => {
@@ -64,9 +66,9 @@ const onMouseDown = (tab: ITab) => (e: React.MouseEvent<HTMLDivElement>) => {
   }
 };
 
-const onClick = (tab: ITab) => (e: React.MouseEvent<HTMLDivElement>) => {
+const onClick = (tab: ITab) => async (e: React.MouseEvent<HTMLDivElement>) => {
   if (e.button === 4) {
-    tab.close();
+    await tab.close();
     return;
   }
 
@@ -76,9 +78,11 @@ const onClick = (tab: ITab) => (e: React.MouseEvent<HTMLDivElement>) => {
   }
 };
 
-const onMouseUp = (tab: ITab) => (e: React.MouseEvent<HTMLDivElement>) => {
+const onMouseUp = (tab: ITab) => async (
+  e: React.MouseEvent<HTMLDivElement>,
+) => {
   if (e.button === 1) {
-    tab.close();
+    await tab.close();
   }
 };
 
@@ -86,8 +90,8 @@ const onContextMenu = (tab: ITab) => () => {
   const menu = remote.Menu.buildFromTemplate([
     {
       label: 'New tab to the right',
-      click: () => {
-        store.tabs.addTab(
+      click: async () => {
+        await store.tabs.addTab(
           {
             index: store.tabs.list.indexOf(store.tabs.selectedTab) + 1,
           },
@@ -116,14 +120,14 @@ const onContextMenu = (tab: ITab) => () => {
     {
       label: 'Reload',
       accelerator: 'CmdOrCtrl+R',
-      click: () => {
-        tab.callViewMethod('webContents.reload');
+      click: async () => {
+        await tab.callViewMethod('webContents.reload');
       },
     },
     {
       label: 'Duplicate',
-      click: () => {
-        store.tabs.addTab({ active: true, url: tab.url });
+      click: async () => {
+        await store.tabs.addTab({ active: true, url: tab.url });
       },
     },
     {
@@ -144,37 +148,37 @@ const onContextMenu = (tab: ITab) => () => {
     {
       label: 'Close tab',
       accelerator: 'CmdOrCtrl+W',
-      click: () => {
-        tab.close();
+      click: async () => {
+        await tab.close();
       },
     },
     {
       label: 'Close other tabs',
-      click: () => {
+      click: async () => {
         for (const t of store.tabs.list) {
           if (t !== tab) {
-            t.close();
+            await t.close();
           }
         }
       },
     },
     {
       label: 'Close tabs to the left',
-      click: () => {
+      click: async () => {
         for (let i = store.tabs.list.indexOf(tab) - 1; i >= 0; i--) {
-          store.tabs.list[i].close();
+          await store.tabs.list[i].close();
         }
       },
     },
     {
       label: 'Close tabs to the right',
-      click: () => {
+      click: async () => {
         for (
           let i = store.tabs.list.length - 1;
           i > store.tabs.list.indexOf(tab);
           i--
         ) {
-          store.tabs.list[i].close();
+          await store.tabs.list[i].close();
         }
       },
     },

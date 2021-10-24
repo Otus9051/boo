@@ -166,11 +166,9 @@ export class ViewManager extends EventEmitter {
   public select(id: number, focus = true) {
     const { selected } = this;
     const view = this.views.get(id);
-
     if (!view) {
       return;
     }
-
     this.selectedId = id;
 
     if (selected) {

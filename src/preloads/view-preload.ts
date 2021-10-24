@@ -128,7 +128,6 @@ if (
     contextBridge.exposeInMainWorld('process', process);
     contextBridge.exposeInMainWorld('settings', settings);
     contextBridge.exposeInMainWorld('require', (id: string) => {
-      console.log(id);
       if (id === 'electron') {
         return { ipcRenderer, app };
       }

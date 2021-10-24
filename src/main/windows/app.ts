@@ -19,7 +19,7 @@ export class AppWindow {
     this.win = new BrowserWindow({
       frame: false,
       minWidth: 900,
-      minHeight: 450,
+      minHeight: 250,
       width: 900,
       height: 700,
       titleBarStyle: 'hiddenInset',

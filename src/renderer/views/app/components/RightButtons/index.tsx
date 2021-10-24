@@ -18,8 +18,8 @@ import { AddTab } from '../Tabbar/style';
 
 let menuRef: HTMLDivElement = null;
 
-const onAddTabClick = () => {
-  store.tabs.addTab();
+const onAddTabClick = async () => {
+  await store.tabs.addTab();
 };
 
 const onDownloadsClick = async (e: React.MouseEvent<HTMLDivElement>) => {
@@ -102,19 +102,12 @@ export const RightButtons = observer(() => {
         icon={ICON_MORE}
         size={18}
       />
-
       <ToolbarButton
         badgeRight={10}
         onMouseDown={onAddTabClick}
         icon={ICON_ADD}
         size={18}
       />
-
-      {/* <AddTab
-        icon={ICON_ADD}
-        onClick={onAddTabClick}
-        divRef={(r: any) => (store.addTab.ref = r)}
-      /> */}
     </Buttons>
   );
 });

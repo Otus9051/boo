@@ -195,7 +195,7 @@ export class View {
           this.window.viewManager.create({ url, active: true }, true);
         } else if (disposition === 'background-tab') {
           e.preventDefault();
-          this.window.viewManager.create({ url, active: false }, true);
+          this.window.viewManager.create({ url, active: true }, true);
         }
       },
     );
@@ -234,7 +234,7 @@ export class View {
           this.emitEvent('favicon-updated', fav);
         } catch (e) {
           this.favicon = '';
-          // console.error(e);
+          console.error(e);
         }
       },
     );

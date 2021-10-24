@@ -110,8 +110,8 @@ export class ITab {
     }
 
     if (active) {
-      requestAnimationFrame(() => {
-        this.select();
+      requestAnimationFrame(async () => {
+        await this.select();
       });
     }
 
@@ -247,7 +247,7 @@ export class ITab {
   }
 
   @action
-  public close() {
+  public async close() {
     store.tabs.closedUrl = this.url;
     store.tabs.canShowPreview = false;
     ipcRenderer.send(`hide-tab-preview-${store.windowId}`);
@@ -291,10 +291,10 @@ export class ITab {
         !store.tabs.scrollable
       ) {
         const nextTab = store.tabs.list[index + 1];
-        nextTab.select();
+        await nextTab.select();
       } else if (index - 1 >= 0 && !store.tabs.list[index - 1].isClosing) {
         const prevTab = store.tabs.list[index - 1];
-        prevTab.select();
+        await prevTab.select();
       }
     }
 

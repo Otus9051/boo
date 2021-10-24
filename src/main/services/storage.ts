@@ -463,8 +463,9 @@ export class StorageService {
       } else {
         return this.favicons.get(url);
       }
-    } catch (e) {
-      console.log(e);
+    } catch (err) {
+      console.error(err);
+      return undefined;
     }
   };
 

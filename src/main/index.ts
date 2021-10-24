@@ -68,7 +68,7 @@ ipcMain.handle(
         return result;
       }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   },
 );

@@ -23,7 +23,12 @@ export class WindowsService {
           if (!win) throw new Error('Window not found');
 
           const view = win.viewManager.create(details, false, false);
-          win.webContents.send('create-tab', { ...details }, false, view.id);
+          win.webContents.send(
+            'create-tab',
+            { ...details, active: true },
+            false,
+            view.id,
+          );
 
           await new Promise((resolve) => {
             ipcMain.once('create-tab-reply-' + view.id, resolve);

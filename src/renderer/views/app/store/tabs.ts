@@ -88,43 +88,41 @@ export class TabsStore {
           const index = this.list.indexOf(this.selectedTab) + 1;
           options.index = index;
         }
-
         this.createTab(options, id);
-
         e.sender.send('create-tab-reply-' + id);
-        console.log('sent with id', id);
       },
     );
 
-    ipcRenderer.on('select-next-tab', () => {
+    ipcRenderer.on('select-next-tab', async () => {
       const i = this.list.indexOf(this.selectedTab);
       const nextTab = this.list[i + 1];
 
       if (!nextTab) {
         if (this.list[0]) {
-          this.list[0].select();
+          await this.list[0].select();
         }
       } else {
-        nextTab.select();
+        await nextTab.select();
       }
     });
 
-    ipcRenderer.on('select-tab-index', (e, i) => {
-      this.list[i]?.select();
+    ipcRenderer.on('select-tab-index', async (e, i) => {
+      await this.list[i]?.select();
     });
 
-    ipcRenderer.on('select-tab-id', (e, id: number) => {
-      console.log('owo', id);
-      this.getTabById(id)?.select();
+    ipcRenderer.on('select-tab-id', async (e, id: number) => {
+      const tab = this.getTabById(id);
+
+      await tab?.select();
       console.log(this.list.map((a) => [a.id, a.url]));
-      console.log(this.getTabById(id));
+      console.log('huh', this.getTabById(id));
     });
 
-    ipcRenderer.on('select-last-tab', () => {
-      this.list[this.list.length - 1]?.select();
+    ipcRenderer.on('select-last-tab', async () => {
+      await this.list[this.list.length - 1]?.select();
     });
 
-    ipcRenderer.on('select-previous-tab', () => {
+    ipcRenderer.on('select-previous-tab', async () => {
       const i = this.list.indexOf(this.selectedTab);
       const prevTab = this.list[i - 1];
 
@@ -133,12 +131,12 @@ export class TabsStore {
           this.list[this.list.length - 1].select();
         }
       } else {
-        prevTab.select();
+        await prevTab.select();
       }
     });
 
-    ipcRenderer.on('remove-tab', (e, id: number) => {
-      this.getTabById(id)?.close();
+    ipcRenderer.on('remove-tab', async (e, id: number) => {
+      await this.getTabById(id)?.close();
     });
 
     ipcRenderer.on('tab-event', (e, event: TabEvent, tabId, args) => {
@@ -174,8 +172,8 @@ export class TabsStore {
       }
     });
 
-    ipcRenderer.on('revert-closed-tab', () => {
-      this.revertClosed();
+    ipcRenderer.on('revert-closed-tab', async () => {
+      await this.revertClosed();
     });
 
     ipcRenderer.on('get-search-tabs', () => {
@@ -219,7 +217,6 @@ export class TabsStore {
     this.removedTabs = 0;
 
     const tab = new ITab(options, id);
-
     tab.tabGroupId = tabGroupId;
 
     if (options.index !== undefined) {
@@ -638,7 +635,7 @@ export class TabsStore {
     }
   };
 
-  public revertClosed() {
-    this.addTab({ active: true, url: this.closedUrl });
+  public async revertClosed() {
+    await this.addTab({ active: true, url: this.closedUrl });
   }
 }
