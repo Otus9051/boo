@@ -14,6 +14,7 @@ import {
 } from './style';
 import {
   ICON_CLOSE,
+  ICON_SETTINGS,
   ICON_VOLUME_HIGH,
   ICON_VOLUME_OFF,
 } from '~/renderer/constants';
@@ -198,9 +199,13 @@ const Content = observer(({ tab }: { tab: ITab }) => {
       {!tab.loading && tab.favicon !== '' && (
         <StyledIcon
           isIconSet={tab.favicon !== ''}
-          style={{ backgroundImage: `url(${tab.favicon})` }}
+          style={{ backgroundImage: tab.favicon ? `url(${tab.favicon})` : '' }}
         >
-          <PinnedVolume tab={tab} />
+          {tab.favicon ? (
+            <PinnedVolume tab={tab} />
+          ) : (
+            <FontAwesomeIcon icon={ICON_SETTINGS} />
+          )}
         </StyledIcon>
       )}
 
