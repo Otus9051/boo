@@ -123,7 +123,6 @@ export class View {
     });
 
     this.webContents.addListener('did-navigate', async (e, url) => {
-      console.log(url);
       this.emitEvent('did-navigate', url);
       await this.addHistoryItem(url);
       this.updateURL(url);
@@ -132,7 +131,6 @@ export class View {
     this.webContents.addListener(
       'did-navigate-in-page',
       async (e, url, isMainFrame) => {
-        console.log('2', url);
         if (isMainFrame) {
           this.emitEvent('did-navigate', url);
 
@@ -167,7 +165,6 @@ export class View {
     this.webContents.on(
       'did-start-navigation',
       (e, url, isInPlace, isMainFrame) => {
-        console.log('3', url);
         if (!isMainFrame) return;
         const newUA = getUserAgentForURL(this.webContents.userAgent, url);
         if (this.webContents.userAgent !== newUA) {
@@ -270,7 +267,6 @@ export class View {
         certificate: Electron.Certificate,
         callback: Function,
       ) => {
-        console.log(certificate, error, url);
         // TODO: properly handle insecure websites.
         event.preventDefault();
         callback(true);
@@ -385,7 +381,6 @@ export class View {
   }
 
   public updateURL = (url: string) => {
-    console.log(this.lastUrl, url);
     if (this.lastUrl === url) return;
 
     this.emitEvent('url-updated', this.hasError ? this.errorURL : url);
