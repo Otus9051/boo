@@ -1,6 +1,6 @@
 {
   "name": "skye",
-  "version": "6.0.3-nightly.7",
+  "version": "6.0.4-nightly.1",
   "sideEffects": false,
   "description": "Extensible, fast and innovative web browser with material UI.",
   "keywords": [
