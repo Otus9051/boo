@@ -16,6 +16,7 @@ import {
   ICON_ARROW_RIGHT,
 } from '~/renderer/constants/icons';
 import { IBookmark } from '~/interfaces';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type BookmarkProps = {
   title: string;
@@ -43,6 +44,7 @@ const Bookmark = observer(
     function onContextMenu(event: any) {
       store.bookmarksBar.createContextMenu(event, id);
     }
+    console.log(favicon);
     return (
       <BookmarkButton
         dense
@@ -55,15 +57,13 @@ const Bookmark = observer(
       >
         <Favicon
           style={{
-            backgroundImage: `url(${
-              favicon || (isFolder ? ICON_FOLDER : ICON_PAGE)
-            })`,
-            filter:
-              store.theme['pages.lightForeground'] && !favicon
-                ? 'invert(100%)'
-                : 'none',
+            backgroundImage: `url(${favicon ? favicon : ''})`,
           }}
-        />
+        >
+          {!favicon && (
+            <FontAwesomeIcon icon={isFolder ? ICON_FOLDER : ICON_PAGE} />
+          )}
+        </Favicon>
         <Title>{title}</Title>
       </BookmarkButton>
     );
@@ -74,7 +74,7 @@ export const BookmarkBar = observer(() => {
   const { bookmarkBarItems: list, showOverflow } = store.bookmarksBar;
 
   return store.settings.object.bookmarksBar ? (
-    <StyledBookmarkBar>
+    <StyledBookmarkBar color={store.tabs.selectedTab?.color}>
       <BookmarkSection>
         {list.map(({ title, url, favicon, _id, isFolder }: IBookmark) => (
           <Bookmark

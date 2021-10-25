@@ -21,12 +21,10 @@ export const StyledTreeItem = styled.div<TreeItemProps>`
 
   ${({ theme, selected }) => css`
     &:hover {
-      background-color: ${theme['addressbar.backgroundColor']};
+      background-color: ${theme['backgroundColor']};
     }
 
-    background-color: ${selected
-      ? theme['addressbar.backgroundColor']
-      : 'none'};
+    background-color: ${selected ? theme['backgroundColor'] : 'none'};
   `}
 `;
 
@@ -41,10 +39,12 @@ export const DropIcon = styled.div<DropIconProps>`
   min-height: 24px;
   margin: 0px 2px;
   border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ${centerIcon(20)};
   ${({ visible, expanded, theme }) => css`
     opacity: ${visible ? transparency.icons.inactive : 0};
-    transform: ${expanded ? 'rotate(-90deg)' : 'rotate(0deg)'};
     filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : ''};
 
     &:hover {

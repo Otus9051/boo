@@ -28,6 +28,18 @@ export class Settings extends EventEmitter {
       },
     );
 
+    ipcMain.handle('set-default-browser', async (e) => {
+      if (
+        !(
+          app.isDefaultProtocolClient('http') &&
+          app.isDefaultProtocolClient('https')
+        )
+      ) {
+        app.setAsDefaultProtocolClient('http');
+        app.setAsDefaultProtocolClient('https');
+      }
+    });
+
     ipcMain.on('get-settings-sync', async (e) => {
       await this.onLoad();
       this.update();
@@ -112,23 +124,23 @@ export class Settings extends EventEmitter {
       }
     });
 
-    if (
-      this.object.defaultBrowser &&
-      !(
-        app.isDefaultProtocolClient('http') &&
-        app.isDefaultProtocolClient('https')
-      )
-    ) {
-      app.setAsDefaultProtocolClient('http');
-      app.setAsDefaultProtocolClient('https');
-    } else if (
-      !this.object.defaultBrowser &&
-      (app.isDefaultProtocolClient('http') ||
-        app.isDefaultProtocolClient('https'))
-    ) {
-      app.removeAsDefaultProtocolClient('http');
-      app.removeAsDefaultProtocolClient('https');
-    }
+    // if (
+    //   this.object.defaultBrowser &&
+    //   !(
+    //     app.isDefaultProtocolClient('http') &&
+    //     app.isDefaultProtocolClient('https')
+    //   )
+    // ) {
+    //   app.setAsDefaultProtocolClient('http');
+    //   app.setAsDefaultProtocolClient('https');
+    // } else if (
+    //   !this.object.defaultBrowser &&
+    //   (app.isDefaultProtocolClient('http') ||
+    //     app.isDefaultProtocolClient('https'))
+    // ) {
+    //   app.removeAsDefaultProtocolClient('http');
+    //   app.removeAsDefaultProtocolClient('https');
+    // }
   };
 
   private async load() {

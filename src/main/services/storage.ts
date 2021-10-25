@@ -62,7 +62,7 @@ export class StorageService {
 
   public historyVisited: IVisitedItem[] = [];
 
-  public favicons: Map<string, string> = new Map();
+  public favicons: Map<any, any> = new Map();
 
   public constructor(settings: Settings) {
     this.settings = settings;

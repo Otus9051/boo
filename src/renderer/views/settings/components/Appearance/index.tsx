@@ -6,7 +6,6 @@ import { Title, Row, Control, Header } from '../App/style';
 import store from '../../store';
 import { onSwitchChange } from '../../utils';
 import { observer } from 'mobx-react-lite';
-import { TopBarVariant } from '~/interfaces';
 
 const onThemeChange = (value: string) => {
   if (value === 'auto') {
@@ -33,29 +32,6 @@ const ThemeVariant = observer(() => {
           <Dropdown.Item value="auto">Auto</Dropdown.Item>
           <Dropdown.Item value="skye-light">Light</Dropdown.Item>
           <Dropdown.Item value="skye-dark">Dark</Dropdown.Item>
-
-        </Dropdown>
-      </Control>
-    </Row>
-  );
-});
-
-const onTopBarChange = (value: TopBarVariant) => {
-  store.settings.topBarVariant = value;
-  store.save();
-};
-
-const TopBarVariant = observer(() => {
-  return (
-    <Row>
-      <Title>Top bar variant</Title>
-      <Control>
-        <Dropdown
-          defaultValue={store.settings.topBarVariant}
-          onChange={onTopBarChange}
-        >
-          <Dropdown.Item value="default">Full</Dropdown.Item>
-          <Dropdown.Item value="compact">Compact</Dropdown.Item>
         </Dropdown>
       </Control>
     </Row>
@@ -70,19 +46,6 @@ const WarnQuit = observer(() => {
       <Title>Show warning dialog when closing multiple tabs</Title>
       <Control>
         <Switch value={warnOnQuit} />
-      </Control>
-    </Row>
-  );
-});
-
-const MenuAnimations = observer(() => {
-  const { animations } = store.settings;
-
-  return (
-    <Row onClick={onSwitchChange('animations')}>
-      <Title>Menu animations</Title>
-      <Control>
-        <Switch value={animations} />
       </Control>
     </Row>
   );
@@ -105,11 +68,9 @@ export const Appearance = observer(() => {
   return (
     <>
       <Header>Appearance</Header>
-      {/* <MenuAnimations /> */}
       <BookmarksBar />
       <WarnQuit />
       <ThemeVariant />
-      <TopBarVariant />
     </>
   );
 });

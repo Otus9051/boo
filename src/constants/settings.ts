@@ -79,5 +79,4 @@ export const DEFAULT_SETTINGS: ISettings = {
   doNotTrack: true,
   topBarVariant: 'default',
   token: null,
-  defaultBrowser: false,
 };

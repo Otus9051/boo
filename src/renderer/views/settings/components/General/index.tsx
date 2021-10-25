@@ -4,9 +4,10 @@ import { Title, Row, Control, Header } from '../App/style';
 import store from '../../store';
 import { observer } from 'mobx-react-lite';
 import { Switch } from '~/renderer/components/Switch';
+import { NormalButton } from '../App';
+import { ipcRenderer } from 'electron';
 
 export const General = observer(() => {
-  const { defaultBrowser } = store.settings;
   return (
     <>
       <Header>General</Header>
@@ -15,13 +16,13 @@ export const General = observer(() => {
           <Title>Default Browser</Title>
         </div>
         <Control>
-          <Switch
-            value={defaultBrowser}
-            onClick={() => {
-              store.settings.defaultBrowser = !store.settings.defaultBrowser;
-              store.save();
+          <NormalButton
+            onClick={async () => {
+              await ipcRenderer.invoke('set-default-browser');
             }}
-          />
+          >
+            Set as Default
+          </NormalButton>
         </Control>
       </Row>
     </>
