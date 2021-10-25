@@ -111,6 +111,11 @@
           description: `<b>${url}</b> is unreachable.`,
           code: 'ERR_ADDRESS_UNREACHABLE',
         },
+        '-118': {
+          title: "This site can't be reached",
+          description: `<b>${url}</b> timed out while loading.`,
+          code: 'ERR_CONNECTION_TIMED_OUT',
+        },
         '-300': {
           title: 'This site can’t be reached',
           description: `The webpage at <b>${url}</b> might be temporarily down or it may have moved permanently to a new web address.`,

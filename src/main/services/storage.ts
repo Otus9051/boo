@@ -446,7 +446,7 @@ export class StorageService {
         }
 
         const str = `data:${
-          (await fromBuffer(data)).ext
+          (await fromBuffer(data))?.ext
         };base64,${data.toString('base64')}`;
 
         this.insert({
