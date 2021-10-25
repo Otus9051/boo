@@ -26,7 +26,8 @@ export const StyledTabbar = styled.div<{
     background-color: ${color ? color : theme['titlebar.backgroundColor']};
   `};
 
-  transition: background-color 0.25s, color 0.25s;
+  transition: background-color 0.4s, color 0.4s;
+  transition-timing-function: ease-out;
 `;
 
 /* &:hover {

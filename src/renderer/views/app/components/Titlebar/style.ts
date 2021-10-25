@@ -37,7 +37,8 @@ export const StyledTitlebar = styled.div<TitlebarProps>`
     }
   `};
 
-  transition: background-color 0.25s, color 0.25s;
+  transition: background-color 0.4s, color 0.4s;
+  transition-timing-function: ease-out;
 `;
 
 interface FullscreenExistButtonProps {

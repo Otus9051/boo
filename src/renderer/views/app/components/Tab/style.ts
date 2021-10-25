@@ -249,6 +249,7 @@ export const TabContainer = styled.div<TabContainerProps>`
     height: ${theme.tabHeight}px;
     border-radius: ${theme.isCompact && !hasTabGroup ? '8px' : 'auto'};
     border-radius: 8px;
-    transition: background-color 0.25s, color 0.25s;
+    transition: background-color 0.4s, color 0.4s;
+    transition-timing-function: ease-out;
   `};
 `;
