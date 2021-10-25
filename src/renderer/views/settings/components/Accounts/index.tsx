@@ -9,6 +9,28 @@ import decode from 'jwt-decode';
 
 export const Accounts = observer(() => {
   const { token } = store.settings;
+  const [username, setUsername] = React.useState('Loading...');
+
+  React.useEffect(() => {
+    if (!token) return;
+
+    fetch(
+      'https://api.id.innatical.com/users.me?' +
+        new URLSearchParams({ input: JSON.stringify({ token }) }),
+    )
+      .then((res) => res.json())
+      .then(
+        (json: {
+          result: {
+            data: { ok: true; user: { username: string } } | { ok: false };
+          };
+        }) =>
+          json.result.data.ok
+            ? setUsername(json.result.data.user.username)
+            : undefined,
+      );
+  }, [token]);
+
   return (
     <>
       <Header>Account</Header>
@@ -16,9 +38,7 @@ export const Accounts = observer(() => {
         <div>
           <Title>{token ? 'Logged In' : 'Logged Out'}</Title>
           <SecondaryText>
-            {token
-              ? (decode(token) as { sub: string }).sub
-              : 'No user logged In'}
+            {token ? username : 'No user logged In'}
           </SecondaryText>
         </div>
 
