@@ -5,7 +5,6 @@ import store from '../../store';
 import { NormalButton } from '../App';
 import { getWebUIURL } from '~/common/webui';
 import { observer } from 'mobx-react-lite';
-import decode from 'jwt-decode';
 
 export const Accounts = observer(() => {
   const { token } = store.settings;
