@@ -23,6 +23,7 @@ interface Props {
   opacity?: number;
   autoInvert?: boolean;
   badgeBackground?: string;
+  inhertTextColor?: boolean;
   badge?: boolean;
   badgeTextColor?: string;
   badgeText?: string;
@@ -62,6 +63,7 @@ export const ToolbarButton = observer(
     toggled,
     dense,
     iconStyle,
+    inhertTextColor,
     id,
   }: Props) => {
     style = { ...style };
@@ -84,6 +86,7 @@ export const ToolbarButton = observer(
             ...iconStyle,
             backgroundImage: typeof icon === 'string' ? `url(${icon})` : '',
           }}
+          inhertTextColor={inhertTextColor}
           size={size}
           disabled={disabled}
           opacity={opacity}

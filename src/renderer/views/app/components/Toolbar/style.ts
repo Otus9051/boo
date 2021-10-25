@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { ITheme } from '~/interfaces';
 import { platform } from 'os';
+import { contrast } from '~/utils/colors';
 
 export interface ToolbarProps {
   isFullscreen: boolean;
@@ -15,7 +16,6 @@ export const StyledToolbar = styled.div<ToolbarProps>`
   display: flex;
   align-items: center;
   flex-flow: row;
-  color: rgba(0, 0, 0, 0.8);
   width: 100%;
   justify-content: center;
   -webkit-app-region: drag;
@@ -29,6 +29,38 @@ export const StyledToolbar = styled.div<ToolbarProps>`
       -webkit-app-region: ${isFullscreen ? 'no-drag' : 'drag'};
     }
   `};
+
+  ${({ color, theme }) => {
+    if (color && color !== '') {
+      const cc = contrast(color);
+
+      const isDarkMode = theme['toolbar.lightForeground'];
+      switch (cc) {
+        case 'dark':
+          if (isDarkMode) {
+            return css`
+              color: #fff;
+            `;
+          } else {
+            return css`
+              color: #e5e5e5;
+            `;
+          }
+        case 'light': {
+          if (isDarkMode) {
+            return css`
+              color: #000;
+            `;
+          } else {
+            return css``;
+          }
+        }
+      }
+    }
+    return css`
+      color: ${theme['addressbar.textColor']};
+    `;
+  }}
 
   transition: background-color 0.25s, color 0.25s;
 `;

@@ -140,6 +140,7 @@ export const AddressBar = observer(() => {
         icon={ICON_SEARCH}
         size={16}
         dense
+        inhertTextColor
         iconStyle={{ transform: 'scale(-1,1)' }}
       />
       <InputContainer>

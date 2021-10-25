@@ -42,17 +42,20 @@ export const NavigationButtons = observer(() => {
         disabled={!store.navigationState.canGoBack}
         size={20}
         icon={ICON_BACK}
+        inhertTextColor
         style={{ marginLeft: 6 }}
         onClick={onBackClick}
       />
       <ToolbarButton
         disabled={!store.navigationState.canGoForward}
         size={20}
+        inhertTextColor
         icon={ICON_FORWARD}
         onClick={onForwardClick}
       />
       <ToolbarButton
         size={20}
+        inhertTextColor
         icon={loading ? ICON_CLOSE : ICON_REFRESH}
         onClick={onRefreshClick}
       />

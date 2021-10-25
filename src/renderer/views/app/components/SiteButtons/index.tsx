@@ -99,6 +99,7 @@ export const SiteButtons = observer(() => {
           dense={dense}
           icon={ICON_KEY}
           size={16}
+          inhertTextColor
           onClick={onKeyClick}
         />
       )}
@@ -109,6 +110,7 @@ export const SiteButtons = observer(() => {
           icon={store.zoomFactor >= 1 ? ICON_MAGNIFY_PLUS : ICON_MAGNIFY_MINUS}
           size={18}
           dense={dense}
+          inhertTextColor
           onMouseDown={onZoomClick}
         />
       )}
@@ -118,6 +120,7 @@ export const SiteButtons = observer(() => {
         icon={store.isBookmarked ? ICON_STAR_FILLED : ICON_STAR}
         size={18}
         dense={dense}
+        inhertTextColor
         onMouseDown={onStarClick}
       />
       <ToolbarButton
@@ -125,6 +128,7 @@ export const SiteButtons = observer(() => {
         badge={store.settings.object.shield && blockedAds > 0}
         badgeText={blockedAds.toString()}
         icon={ICON_SHIELD}
+        inhertTextColor
         opacity={store.settings.object.shield ? 0.87 : 0.54}
         onContextMenu={onShieldContextMenu}
       ></ToolbarButton>

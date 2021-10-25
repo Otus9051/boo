@@ -87,6 +87,7 @@ export const RightButtons = observer(() => {
           icon={ICON_DOWNLOAD}
           badgeTop={9}
           badgeRight={9}
+          inhertTextColor
           preloader
           value={store.downloadProgress}
         ></ToolbarButton>
@@ -98,6 +99,7 @@ export const RightButtons = observer(() => {
         badge={store.updateAvailable}
         badgeRight={10}
         badgeTop={6}
+        inhertTextColor
         onMouseDown={onMenuClick}
         icon={ICON_MORE}
         size={18}
@@ -105,6 +107,7 @@ export const RightButtons = observer(() => {
       <ToolbarButton
         badgeRight={10}
         onMouseDown={onAddTabClick}
+        inhertTextColor
         icon={ICON_ADD}
         size={18}
       />

@@ -12,6 +12,7 @@ interface IconProps {
   disabled: boolean;
   opacity: number;
   theme?: ITheme;
+  inhertTextColor?: boolean;
 }
 
 export const Icon = styled.div<IconProps>`
@@ -20,9 +21,13 @@ export const Icon = styled.div<IconProps>`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${({ size, disabled, opacity, theme }) => css`
+  ${({ size, disabled, opacity, theme, inhertTextColor }) => css`
     ${centerIcon(size)};
-    color: ${theme['toolbar.lightForeground'] ? '#DEDEDE' : '#323232'};
+    color: ${inhertTextColor
+      ? 'inhert'
+      : theme['toolbar.lightForeground']
+      ? '#DEDEDE'
+      : '#323232'};
     opacity: ${disabled ? 0.25 : opacity};
   `};
 `;
