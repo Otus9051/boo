@@ -164,17 +164,7 @@ export default observer(() => {
       if (!token) return;
 
       store.selectedSection = 'account';
-
-      const req = await fetch('https://api.skye.innatical.com/login', {
-        body: JSON.stringify({ token }),
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-      });
-
-      const res = (await req.json()) as { token: string };
-      store.settings.token = res.token;
+      store.settings.token = token;
       store.save();
 
       ipcRenderer.invoke('bookmarks-sync');

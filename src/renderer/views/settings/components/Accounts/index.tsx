@@ -35,7 +35,7 @@ export const Accounts = observer(() => {
           ) : (
             <NormalButton
               onClick={() =>
-                (window.location.href = `https://id.innatical.com/connect?callback=${getWebUIURL(
+                (window.location.href = `https://id.innatical.com/connect?id=ea27b1df-ff32-4252-996f-65ceda9f0953&callback=${getWebUIURL(
                   'settings',
                 )}`)
               }
