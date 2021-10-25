@@ -3,17 +3,18 @@ import styled, { css } from 'styled-components';
 import { centerIcon } from '~/renderer/mixins';
 import { ITheme } from '~/interfaces';
 import { ICON_CLOSE } from '~/renderer/constants/icons';
+import { RED_500 } from '~/renderer/constants';
 
 export const Remove = styled.div`
   height: 16px;
   width: 16px;
   cursor: pointer;
+  color: ${RED_500};
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0.54;
-  background-image: url(${ICON_CLOSE});
   ${centerIcon()};
-  ${({ theme }: { theme?: ITheme }) => css`
-    filter: ${theme['pages.lightForeground'] ? 'invert(100%)' : 'none'};
-  `};
   &:hover {
     opacity: 1;
   }
@@ -24,6 +25,9 @@ export const Favicon = styled.div`
   height: 16px;
   width: 16px;
   margin-right: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Title = styled.a`

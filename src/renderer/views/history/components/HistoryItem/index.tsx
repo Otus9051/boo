@@ -6,7 +6,8 @@ import { IHistoryItem } from '~/interfaces';
 import { ListItem } from '~/renderer/components/ListItem';
 import { formatTime } from '../../utils';
 import store from '../../store';
-import { ICON_PAGE } from '~/renderer/constants/icons';
+import { ICON_PAGE, ICON_TRASH } from '~/renderer/constants/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const onClick = (item: IHistoryItem) => () => {
   const index = store.selectedItems.indexOf(item._id);
@@ -35,9 +36,12 @@ export default observer(({ data }: { data: IHistoryItem }) => {
   let { favicon } = data;
   let customFavicon = false;
 
-  if (favicon == null || favicon.trim() === '') {
+  if (
+    favicon == null ||
+    (typeof favicon === 'string' && favicon.trim() === '')
+  ) {
     favicon = ICON_PAGE;
-  } else {
+  } else if (typeof data.favicon === 'string') {
     favicon = store.favicons.get(data.favicon);
     customFavicon = true;
   }
@@ -46,14 +50,16 @@ export default observer(({ data }: { data: IHistoryItem }) => {
     <ListItem key={data._id} onClick={onClick(data)} selected={selected}>
       <Favicon
         style={{
-          backgroundImage: `url(${favicon})`,
+          backgroundImage: typeof favicon === 'string' ? `url(${favicon})` : '',
           opacity: customFavicon ? 1 : 0.54,
           filter:
             !customFavicon && store.theme['pages.lightForeground']
               ? 'invert(100%)'
               : 'none',
         }}
-      />
+      >
+        {typeof favicon !== 'string' && <FontAwesomeIcon icon={favicon} />}
+      </Favicon>
       <TitleContainer>
         <Title onClick={onTitleClick} href={data.url} target="_blank">
           {data.title}
@@ -61,7 +67,9 @@ export default observer(({ data }: { data: IHistoryItem }) => {
       </TitleContainer>
       <Site>{data.url.split('/')[2]}</Site>
       <Time>{formatTime(new Date(data.date))}</Time>
-      <Remove onClick={onRemoveClick(data)} />
+      <Remove onClick={onRemoveClick(data)}>
+        <FontAwesomeIcon icon={ICON_TRASH} />
+      </Remove>
     </ListItem>
   );
 });

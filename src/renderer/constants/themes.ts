@@ -30,9 +30,9 @@ export const skyeLight: ITheme = {
   'dropdown.backgroundColor': '#fff',
   'dropdown.backgroundColor.translucent': 'rgba(255, 255, 255, 0.7)',
   'dropdown.separator.color': 'rgba(0, 0, 0, 0.12)',
-  'pages.navigationDrawer1.backgroundColor': '#f5f5f5',
-  'pages.navigationDrawer2.backgroundColor': '#fafafa',
-
+  'pages.navigationDrawer1.backgroundColor': '#E5F1FF',
+  'pages.navigationDrawer2.backgroundColor': '#F2F8FF',
+  'pages.navigationDrawer2.searchBar.backgroundColor': '#ffffff',
   accentColor: '#fff',
   backgroundColor: '#fff',
 };
@@ -70,7 +70,7 @@ export const skyeDark: ITheme = {
   'dropdown.separator.color': 'rgba(255, 255, 255, 0.12)',
   'pages.navigationDrawer1.backgroundColor': '#12151f',
   'pages.navigationDrawer2.backgroundColor': '#10121a',
-
+  'pages.navigationDrawer2.searchBar.backgroundColor': '#000000',
   backgroundColor: '#070B10',
   accentColor: '#1A1E2C',
 };

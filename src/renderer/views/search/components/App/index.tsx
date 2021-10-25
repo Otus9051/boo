@@ -30,7 +30,8 @@ const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (suggestion.isSearch) {
         url = store.searchEngine.url.replace('%s', text);
       } else if (text.indexOf('://') === -1) {
-        url = `https://${text}`;
+        if (text.startsWith('localhost')) url = `http://${text}`;
+        else url = `https://${text}`;
       }
     }
 

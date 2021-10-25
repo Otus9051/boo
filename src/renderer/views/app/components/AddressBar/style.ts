@@ -39,11 +39,17 @@ export const StyledAddressBar = styled.div<AddressBarProps>`
             return css`
               background-color: rgb(255, 255, 255, 0.2);
               color: #fff;
+
+              input::placeholder {
+                color: rgb(255, 255, 255, 0.3);
+              }
             `;
           } else {
             return css`
               background-color: rgb(255, 255, 255, 0.2);
-              color: #fff;
+              input::placeholder {
+                color: rgb(255, 255, 255, 0.3);
+              }
             `;
           }
         case 'light': {

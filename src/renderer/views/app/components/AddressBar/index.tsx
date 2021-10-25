@@ -82,7 +82,12 @@ const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
       );
       return;
     } else if (isURL(value)) {
-      url = value.indexOf('://') === -1 ? `https://${value}` : value;
+      url =
+        value.indexOf('://') === -1
+          ? value.startsWith('localhost')
+            ? `http://${value}`
+            : `https://${value}`
+          : value;
     } else {
       url = store.settings.searchEngine.url.replace('%s', value);
     }

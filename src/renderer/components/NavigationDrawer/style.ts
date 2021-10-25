@@ -75,7 +75,9 @@ export const Input = styled.input<InputProps>`
       ? 'white'
       : `rgba(0, 0, 0, ${transparency.text.high})`};
     border-radius: 8px;
-    background-color: ${theme['addressbar.backgroundColor']};
+    background-color: ${theme[
+      'pages.navigationDrawer2.searchBar.backgroundColor'
+    ]};
     &::placeholder {
       color: ${theme['pages.lightForeground']
         ? 'rgba(255, 255, 255, 0.54)'
