@@ -13,10 +13,10 @@ interface DropdownProps {
 }
 
 export const StyledDropdown = styled.div<DropdownProps>`
-  height: 32px;
+  height: 40px;
   min-width: 200px;
   position: relative;
-  border-radius: 4px;
+  border-radius: 8px;
   user-select: none;
   cursor: pointer;
   display: flex;

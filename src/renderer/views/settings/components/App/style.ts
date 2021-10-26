@@ -25,7 +25,7 @@ export const Row = styled.div<RowProps>`
   width: 100%;
   display: flex;
   align-items: center;
-  min-height: 48px;
+  min-height: 70px;
 
   cursor: pointer;
   &:last-of-type {
@@ -33,10 +33,7 @@ export const Row = styled.div<RowProps>`
   }
 
   ${({ theme }) => css`
-    border-bottom: 1px solid
-      ${theme['pages.lightForeground']
-        ? 'rgba(255, 255, 255, 0.12)'
-        : 'rgba(0, 0, 0, 0.12)'};
+    border-bottom: 1px solid ${theme['control.borderBottomColor']};
   `}
 `;
 

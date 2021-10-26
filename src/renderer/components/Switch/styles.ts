@@ -30,8 +30,8 @@ export const StyledSwitch = styled.div<SwitchProps>`
   ${({ activated, color, theme, clickable, dense }) => css`
     background-color: ${activated ? color : theme['switch.backgroundColor']};
     cursor: ${clickable ? 'pointer' : 'default'};
-    width: ${dense ? 32 : 36}px;
-    height: ${dense ? 16 : 18}px;
+    width: ${dense ? 32 : 42}px;
+    height: ${dense ? 16 : 25}px;
 
     &:hover {
       &:after {
@@ -57,7 +57,7 @@ export const Thumb = styled.div<ThumbProps>`
   ${({ activated, dense }) => css`
     width: ${dense ? 12 : 14}px;
     height: ${dense ? 12 : 14}px;
-    left: ${activated ? (dense ? 18 : 20) : 2}px;
+    left: ${activated ? (dense ? 18 : 22) : 5}px;
     background-color: #fff;
   `}
 `;

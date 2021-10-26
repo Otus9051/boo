@@ -3,6 +3,7 @@ import { centerIcon } from '~/renderer/mixins';
 
 import { ContextMenuRow } from '~/renderer/components/ContextMenu';
 import { ITheme } from '~/interfaces';
+import { contrast } from '~/utils/colors';
 
 export const Image = styled.div`
   position: absolute;
@@ -44,21 +45,61 @@ export const Wrapper = styled.div`
   align-items: center;
   position: relative;
   overflow: hidden;
+  height: 100vh;
 
-  ${({ fullSize }: { fullSize: boolean }) => css`
-    height: ${fullSize ? '100vh' : 'auto'};
-  `};
+  ${({ color, theme }) => {
+    if (color && color !== '') {
+      const cc = contrast(color);
+
+      const isDarkMode = theme['toolbar.lightForeground'];
+      switch (cc) {
+        case 'dark':
+          if (isDarkMode) {
+            return css`
+              color: #fff;
+            `;
+          } else {
+            return css`
+              color: #fff;
+            `;
+          }
+        case 'light': {
+          if (isDarkMode) {
+            return css``;
+          } else {
+            return css``;
+          }
+        }
+      }
+    }
+    return css`
+      color: ${theme['addressbar.textColor']};
+    `;
+  }}
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-flow: column;
   width: calc(100% - 64px);
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
   max-width: 1366px;
   position: relative;
   min-height: 97px;
   z-index: 3;
+`;
+
+export const StyledH2 = styled.h2`
+  font-weight: 400;
+  font-size: 1rem;
+  margin-top: 30px;
+`;
+export const StyledForecast = styled.h2`
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0;
 `;
 
 export const RightBar = styled.div`
@@ -79,6 +120,31 @@ export const Menu = styled.div`
   bottom: 32px;
 `;
 
+export const StyledTime = styled.div`
+  h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    font-weight: 900;
+  }
+`;
+
+export const StyledSearchBar = styled.input<{
+  backgroundColor: string;
+}>`
+  border-radius: 10px;
+  margin-top: 30px;
+  width: 450px;
+  padding: 18px;
+  border: 0;
+  color: #fff;
+  &::placeholder {
+    color: #aaa;
+  }
+  ${({ backgroundColor }) => css`
+    background-color: ${backgroundColor};
+  `}
+`;
+
 export const IconItem = styled.div`
   width: 34px;
   height: 34px;
@@ -88,28 +154,17 @@ export const IconItem = styled.div`
   cursor: pointer;
   border-radius: 4px;
   position: relative;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:first-child {
     margin-top: 0;
   }
 
-  ${({
-    icon,
-    imageSet,
-    theme,
-  }: {
-    icon?: string;
-    theme?: ITheme;
-    imageSet?: boolean;
-  }) => css`
-    filter: ${!imageSet && !theme['pages.lightForeground']
-      ? 'invert(100%)'
-      : 'none'};
-
+  ${({ theme }: { theme?: ITheme }) => css`
     &:hover {
       opacity: 1;
       background-color: rgba(255, 255, 255, 0.1);
-      backdrop-filter: ${imageSet ? 'blur(2.5px)' : 'none'};
     }
 
     &:after {
@@ -120,7 +175,6 @@ export const IconItem = styled.div`
       right: 0;
       bottom: 0;
       ${centerIcon(20)};
-      background-image: url(${icon});
       filter: invert(100%);
     }
   `};

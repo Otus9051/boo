@@ -10,6 +10,7 @@ import { StyledAddressBar, InputContainer, Input, Text } from './style';
 import { ICON_SEARCH } from '~/renderer/constants';
 import { SiteButtons } from '../SiteButtons';
 import { DEFAULT_TITLEBAR_HEIGHT } from '~/constants/design';
+import { NEWTAB_URL } from '~/constants/tabs';
 
 let mouseUpped = false;
 
@@ -75,11 +76,7 @@ const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const { value } = e.currentTarget;
     let url = value;
     if (value.trim() === '') {
-      callViewMethod(
-        store.tabs.selectedTabId,
-        'loadURL',
-        'https://tab.innatical.com',
-      );
+      callViewMethod(store.tabs.selectedTabId, 'loadURL', NEWTAB_URL);
       return;
     } else if (isURL(value)) {
       url =

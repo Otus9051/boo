@@ -17,8 +17,10 @@ export interface ITheme {
   'control.hover.backgroundColor': string;
   'control.valueColor': string;
   'control.lightIcon': boolean;
+  'control.borderBottomColor': string;
   'switch.backgroundColor': string;
 
+  'button.backgroundColor': string;
   'dialog.separator.color': string;
   'dialog.backgroundColor': string;
   'dialog.textColor': string;

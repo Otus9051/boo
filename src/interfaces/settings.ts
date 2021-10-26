@@ -21,6 +21,11 @@ export interface ISettings {
   bookmarksBar: boolean;
   suggestions: boolean;
   searchEngine: number;
+  tab: {
+    image: string;
+    topSites: boolean;
+    pinned: boolean;
+  };
   searchEngines: ISearchEngine[];
   startupBehavior: IStartupBehavior;
   warnOnQuit: boolean;

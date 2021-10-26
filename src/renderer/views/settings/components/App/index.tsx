@@ -52,11 +52,7 @@ export const NormalButton = ({
 }) => {
   return (
     <Button
-      background={
-        store.theme['dialog.lightForeground']
-          ? 'rgba(255, 255, 255, 0.08)'
-          : 'rgba(0, 0, 0, 0.08)'
-      }
+      background={store.theme['button.backgroundColor']}
       onClick={onClick}
       foreground={store.theme['dialog.lightForeground'] ? 'white' : 'black'}
     >

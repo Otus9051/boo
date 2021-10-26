@@ -3,103 +3,90 @@ import { observer } from 'mobx-react-lite';
 
 import store from '../../store';
 import { ThemeProvider } from 'styled-components';
-import { Wrapper, Content, IconItem, Menu, Image, RightBar } from './style';
-import { TopSites } from '../TopSites';
-import { News } from '../News';
-import { Preferences } from '../Preferences';
 import {
-  ICON_TUNE,
-  ICON_SETTINGS,
-  ICON_HISTORY,
-  ICON_BOOKMARKS,
-  ICON_DOWNLOAD,
-  ICON_EXTENSIONS,
-} from '~/renderer/constants/icons';
+  Wrapper,
+  Content,
+  Image,
+  StyledTime,
+  StyledForecast,
+  StyledSearchBar,
+  StyledH2,
+} from './style';
+import { TopSites } from '../TopSites';
 import { WebUIStyle } from '~/renderer/mixins/default-styles';
-import { getWebUIURL } from '~/common/webui';
 
-window.addEventListener('mousedown', () => {
-  store.dashboardSettingsVisible = false;
-});
+import { useQuery } from 'react-query';
+import { QueryClientProvider, QueryClient } from 'react-query';
+import FastAverageColor from 'fast-average-color';
+import { useAsync } from 'react-use';
+import { Helmet } from 'react-helmet';
 
-const onIconClick = (name: string) => () => {
-  window.location.href = getWebUIURL(name);
+const queryClient = new QueryClient();
+
+const Time = () => {
+  return (
+    <StyledTime>
+      <h1>{new Date().toLocaleTimeString([], { timeStyle: 'short' })}</h1>
+    </StyledTime>
+  );
 };
 
-const onTuneClick = () => {
-  store.dashboardSettingsVisible = !store.dashboardSettingsVisible;
-};
+const Forecast = () => {
+  const { data: forecast } = useQuery(['weather'], async () => {
+    try {
+      const res = await (await fetch(`https://wttr.in/?format=%c%20%C`)).text();
+      return res;
+    } catch {
+      return 'Failed to load weather';
+    }
+  });
 
-const onRefreshClick = () => {
-  store.image = '';
-  setTimeout(() => {
-    localStorage.setItem('imageDate', '');
-    store.loadImage();
-  }, 50);
+  return (
+    <StyledForecast>
+      {new Date().toLocaleDateString([], {
+        month: 'long',
+        day: '2-digit',
+      })}
+      {' - '}
+      {forecast}
+    </StyledForecast>
+  );
 };
 
 export default observer(() => {
+  const theme = useAsync(async () => {
+    if (store.settings.tab.image == '') {
+      return '#070b10';
+    }
+
+    const fac = new FastAverageColor();
+    return (await fac.getColorAsync(store.settings.tab.image)).hex;
+  }, [store.settings.tab.image]);
+  console.log(theme);
   return (
-    <ThemeProvider theme={{ ...store.theme }}>
-      <div>
-        <WebUIStyle />
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={{ ...store.theme }}>
+        <div>
+          <Helmet>
+            <meta name="theme-color" content={theme.value} />
+          </Helmet>
+          <WebUIStyle />
 
-        <Preferences />
+          <Wrapper color={theme.value} theme={store.theme}>
+            <Image src={store.settings.tab.image} />
+            <Content>
+              <Time />
+              <Forecast />
 
-        <Wrapper fullSize={store.fullSizeImage}>
-          <Image src={store.imageVisible ? store.image : ''}></Image>
-          <Content>{store.topSitesVisible && <TopSites></TopSites>}</Content>
-
-          <RightBar>
-            <IconItem
-              imageSet={store.imageVisible}
-              title="Dashboard settings"
-              icon={ICON_TUNE}
-              onMouseDown={(e) => e.stopPropagation()}
-              onClick={onTuneClick}
-            ></IconItem>
-          </RightBar>
-          {store.quickMenuVisible && (
-            <Menu>
-              <IconItem
-                imageSet={store.imageVisible}
-                title="Settings"
-                icon={ICON_SETTINGS}
-                onClick={onIconClick('settings')}
-              ></IconItem>
-              <IconItem
-                imageSet={store.imageVisible}
-                title="History"
-                icon={ICON_HISTORY}
-                onClick={onIconClick('history')}
-              ></IconItem>
-              <IconItem
-                imageSet={store.imageVisible}
-                title="Bookmarks"
-                icon={ICON_BOOKMARKS}
-                onClick={onIconClick('bookmarks')}
-              ></IconItem>
-              {/* <IconItem
-                imageSet={store.imageVisible}
-                title="Downloads"
-                icon={ICON_DOWNLOAD}
-                onClick={onIconClick('downloads')}
-              ></IconItem>
-              <IconItem
-                imageSet={store.imageVisible}
-                title="Extensions"
-                icon={ICON_EXTENSIONS}
-                onClick={onIconClick('extensions')}
-              ></IconItem> */}
-            </Menu>
-          )}
-        </Wrapper>
-        {/* {store.newsBehavior !== 'hidden' && (
-          <Content>
-            <News></News>
-          </Content>
-        )} */}
-      </div>
-    </ThemeProvider>
+              {store.settings.tab.topSites && (
+                <>
+                  <TopSites backgroundColor={theme.value} />
+                </>
+              )}
+            </Content>
+          </Wrapper>
+        </div>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 });

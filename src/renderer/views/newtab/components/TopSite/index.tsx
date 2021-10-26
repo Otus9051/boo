@@ -5,6 +5,8 @@ import { Item, Icon, Title } from './style';
 import { IHistoryItem } from '~/interfaces';
 import store from '../../store';
 import { ICON_PAGE } from '~/renderer/constants';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const onClick = (url: string) => () => {
   if (url !== '' && url != null) {
@@ -12,25 +14,38 @@ const onClick = (url: string) => () => {
   }
 };
 
-export const TopSite = observer(({ item }: { item?: IHistoryItem }) => {
-  const { title, favicon, url } = item || {};
-  const custom = favicon === '' || favicon == null;
+export const TopSite = observer(
+  ({
+    item,
+    backgroundColor,
+  }: {
+    item?: IHistoryItem;
+    backgroundColor: string;
+  }) => {
+    const { title, favicon, url } = item || {};
+    const custom = favicon === '' || favicon == null;
 
-  let fav = ICON_PAGE;
+    let fav: string | IconProp = ICON_PAGE;
 
-  if (!custom) {
-    fav = favicon;
-  }
+    if (!custom) {
+      fav = favicon;
+    }
 
-  return (
-    <Item imageSet={store.imageVisible} onClick={onClick(url)}>
-      <Icon
+    return (
+      <Item
         imageSet={store.imageVisible}
-        custom={custom}
-        icon={fav}
-        add={item == null}
-      ></Icon>
-      {title && <Title>{title}</Title>}
-    </Item>
-  );
-});
+        onClick={onClick(url)}
+        backgroundColor={backgroundColor}
+      >
+        <Icon
+          imageSet={store.imageVisible}
+          custom={custom}
+          icon={typeof fav === 'string' ? fav : ''}
+        >
+          {typeof fav !== 'string' && <FontAwesomeIcon icon={fav} />}
+        </Icon>
+        {title && <Title>{title}</Title>}
+      </Item>
+    );
+  },
+);

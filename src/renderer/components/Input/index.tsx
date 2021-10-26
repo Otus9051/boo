@@ -1,21 +1,22 @@
 import styled, { css } from 'styled-components';
 
 import { ITheme } from '~/interfaces';
+import { BLUE_500 } from '~/renderer/constants';
 import { centerIcon } from '~/renderer/mixins';
 
 export const Control = css`
-  height: 40px;
+  height: 42px;
   position: relative;
   border: none;
   outline: none;
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   padding: 0px 8px;
   font-size: 12px;
 
   &:focus {
-    box-shadow: 0 0 0 2px rgba(100, 181, 246, 0.54);
+    box-shadow: 0 0 0 2px ${BLUE_500};
   }
 
   ${({ theme }: { theme: ITheme }) => css`
@@ -28,6 +29,7 @@ export const Input = styled.input.attrs(() => ({
   spellCheck: false,
 }))`
   ${Control}
+  margin-right: 10px;
 `;
 
 export const Dropdown = styled.div`

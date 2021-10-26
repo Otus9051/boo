@@ -66,6 +66,11 @@ export const DEFAULT_SETTINGS: ISettings = {
   startupBehavior: {
     type: 'empty',
   },
+  tab: {
+    image: 'https://file.coffee/u/y970mT9Cg5NkPg.png',
+    topSites: true,
+    pinned: true,
+  },
   warnOnQuit: false,
   version: 2,
   downloadsDialog: false,

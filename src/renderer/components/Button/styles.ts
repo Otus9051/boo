@@ -15,10 +15,11 @@ export const StyledButton = styled.div<ButtonProps>`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 8px;
   position: relative;
   cursor: pointer;
-
+  font-size: 15px;
+  text-align: center;
   &::before {
     content: '';
     display: block;

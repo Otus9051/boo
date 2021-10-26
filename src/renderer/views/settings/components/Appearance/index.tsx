@@ -6,6 +6,9 @@ import { Title, Row, Control, Header } from '../App/style';
 import store from '../../store';
 import { onSwitchChange } from '../../utils';
 import { observer } from 'mobx-react-lite';
+import { Input } from '~/renderer/components/Input';
+import { useState } from 'react';
+import { NormalButton } from '../App';
 
 const onThemeChange = (value: string) => {
   if (value === 'auto') {
@@ -64,6 +67,63 @@ const BookmarksBar = observer(() => {
   );
 });
 
+const ShowFrequentlyVisited = observer(() => {
+  const { tab } = store.settings;
+
+  return (
+    <Row onClick={onSwitchChange('tab', 'topSites')}>
+      <Title>Show frequently visited</Title>
+      <Control>
+        <Switch value={tab.topSites} />
+      </Control>
+    </Row>
+  );
+});
+
+const ShowPinnedSites = observer(() => {
+  const { tab } = store.settings;
+
+  return (
+    <Row onClick={onSwitchChange('tab', 'pinned')}>
+      <Title>Show pinned sites</Title>
+      <Control>
+        <Switch value={tab.pinned} />
+      </Control>
+    </Row>
+  );
+});
+
+const NewTabImage = observer(() => {
+  const { tab } = store.settings;
+  const [image, setImage] = useState('');
+  return (
+    <Row>
+      <Title>New tab image</Title>
+      <Control>
+        <Input
+          onChange={(event) => {
+            setImage(event.target.value);
+          }}
+          style={{
+            width: '200px',
+          }}
+          tabIndex={0}
+          className="textfield"
+          value={tab.image}
+        />
+      </Control>
+      <NormalButton
+        onClick={() => {
+          store.settings.tab.image = image;
+          store.save();
+        }}
+      >
+        Save
+      </NormalButton>
+    </Row>
+  );
+});
+
 export const Appearance = observer(() => {
   return (
     <>
@@ -71,6 +131,8 @@ export const Appearance = observer(() => {
       <BookmarksBar />
       <WarnQuit />
       <ThemeVariant />
+      <ShowFrequentlyVisited />
+      <NewTabImage />
     </>
   );
 });

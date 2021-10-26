@@ -24,7 +24,7 @@ interface CircleProps {
 }
 
 export const Circle = styled.div<CircleProps>`
-  border-radius: 100%;
+  border-radius: 2px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -53,13 +53,12 @@ export const Circle = styled.div<CircleProps>`
           : theme.dark
           ? 'rgba(255, 255, 255, 0.54)'
           : 'rgba(0, 0, 0, 0.54)'};
-      border-radius: 100%;
+      border-radius: 4px;
     }
   `}
 `;
 
 export const Root = styled.div`
-  margin: 5px;
   cursor: pointer;
   width: 18px;
   height: 18px;
@@ -69,7 +68,7 @@ export const Root = styled.div`
   }
   &::before {
     content: '';
-    border-radius: 100%;
+    border-radius: 2px;
     width: 100%;
     height: 100%;
     position: absolute;
