@@ -1,6 +1,6 @@
 {
   "name": "skye",
-  "version": "6.0.4-nightly.11",
+  "version": "6.0.4-nightly.12",
   "sideEffects": false,
   "description": "Extensible, fast and innovative web browser with Innatical UI.",
   "keywords": [
@@ -11,15 +11,15 @@
     "mobx",
     "styled-components"
   ],
-  "homepage": "https://github.com/innatical/skye#readme",
+  "homepage": "https://github.com/skyebrowser/skye#readme",
   "main": "build/main.bundle.js",
-  "author": "Innatical, Inc. <contact@innatical.com>",
+  "author": "Innatical LLC <contact@innatical.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/innatical/skye.git"
+    "url": "git+https://github.com/skyebrowser/skye.git"
   },
   "bugs": {
-    "url": "https://github.com/innatical/skye/issues"
+    "url": "https://github.com/skyebrowser/skye/issues"
   },
   "scripts": {
     "dev-renderer": "cross-env DEV=1 webpack serve --config webpack.config.renderer.js",

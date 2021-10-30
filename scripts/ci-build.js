@@ -40,7 +40,7 @@ const getInput = (name) => {
         name: 'skye-nightly',
         repository: {
           type: 'git',
-          url: 'git+https://github.com/innatical/skye.git',
+          url: 'git+https://github.com/skyebrowser/skye.git',
         },
       };
       await promises.writeFile(

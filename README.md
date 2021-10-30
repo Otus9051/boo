@@ -1,11 +1,16 @@
 <p align="center">
-  <img src="./logo.png" alt="Project Skye logo" />
+  <img src="./banner.png" alt="Skye logo" />
 </p>
 
 <br>
 <br>
 
-## Project Skye
+## Skye
+
 [![Boop! Linux - Core Application](https://img.shields.io/badge/Boop!_Linux-Core_Application-915cee?logo=Linux+Containers&logoColor=white)](https://)
 
 The next generation Web Browser powered by Innatical
+
+## Credits
+
+Thanks to [Wexond](https://github.com/wexond) for providing the foundation of skye.
