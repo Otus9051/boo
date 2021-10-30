@@ -9,27 +9,27 @@ const tabId = ipcRenderer.sendSync('get-webcontents-id');
 
 export const windowId: number = ipcRenderer.sendSync('get-window-id');
 
-const goBack = () => {
-  ipcRenderer.invoke(`web-contents-call`, {
+const goBack = async () => {
+  await ipcRenderer.invoke(`web-contents-call`, {
     webContentsId: tabId,
     method: 'goBack',
   });
 };
 
-const goForward = () => {
-  ipcRenderer.invoke(`web-contents-call`, {
+const goForward = async () => {
+  await ipcRenderer.invoke(`web-contents-call`, {
     webContentsId: tabId,
     method: 'goForward',
   });
 };
 
-window.addEventListener('mouseup', (e) => {
+window.addEventListener('mouseup', async (e) => {
   if (e.button === 3) {
     e.preventDefault();
-    goBack();
+    await goBack();
   } else if (e.button === 4) {
     e.preventDefault();
-    goForward();
+    await goForward();
   }
 });
 
@@ -72,13 +72,13 @@ document.addEventListener('wheel', (e) => {
   }
 });
 
-ipcRenderer.on('scroll-touch-end', () => {
+ipcRenderer.on('scroll-touch-end', async () => {
   if (
     horizontalMouseMove - beginningScrollRight > 150 &&
     Math.abs(horizontalMouseMove / verticalMouseMove) > 2.5
   ) {
     if (beginningScrollRight < 10) {
-      goForward();
+      await goForward();
     }
   }
 
@@ -87,7 +87,7 @@ ipcRenderer.on('scroll-touch-end', () => {
     Math.abs(horizontalMouseMove / verticalMouseMove) > 2.5
   ) {
     if (beginningScrollLeft < 10) {
-      goBack();
+      await goBack();
     }
   }
 

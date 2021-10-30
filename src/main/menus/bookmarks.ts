@@ -3,7 +3,6 @@ import {
   nativeImage,
   NativeImage,
   MenuItemConstructorOptions,
-  app,
 } from 'electron';
 import { IBookmark } from '~/interfaces';
 import { Application } from '../application';
@@ -11,8 +10,7 @@ import { AppWindow } from '../windows/app';
 import { showAddBookmarkDialog } from '../dialogs/add-bookmark';
 
 function getIcon(
-  favicon: string | undefined,
-  isFolder: boolean,
+  favicon: string | undefined
 ): NativeImage | string {
   if (favicon) {
     let dataURL = Application.instance.storage.favicons.get(favicon);
@@ -25,26 +23,12 @@ function getIcon(
         dataURL = split.join(':image/');
       }
 
-      const image = nativeImage
+      return nativeImage
         .createFromDataURL(dataURL)
         .resize({ width: 16, height: 16 });
-      return image;
     }
   }
-
-  // if (Application.instance.settings.object.theme === 'skye-dark') {
-  //   if (isFolder) {
-  //     return getPath('folder_light');
-  //   } else {
-  //     return getPath('page_light');
-  //   }
-  // } else {
-  //   if (isFolder) {
-  //     return getPath('folder_dark');
-  //   } else {
-  //     return getPath('page_dark');
-  //   }
-  // }
+  return undefined
 }
 
 export function createDropdown(
@@ -63,7 +47,7 @@ export function createDropdown(
           }
         : undefined,
       label: title,
-      icon: getIcon(favicon, isFolder),
+      icon: getIcon(favicon),
       submenu: isFolder ? createDropdown(appWindow, _id, bookmarks) : undefined,
       id: _id,
     }),
@@ -105,8 +89,8 @@ export function createMenu(appWindow: AppWindow, item: IBookmark) {
     },
     {
       label: 'Delete',
-      click: () => {
-        Application.instance.storage.removeBookmark(item._id);
+      click: async () => {
+        await Application.instance.storage.removeBookmark(item._id);
       },
     },
   ];

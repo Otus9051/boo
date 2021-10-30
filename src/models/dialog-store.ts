@@ -22,7 +22,7 @@ export class DialogStore {
 
   private _windowId = -1;
 
-  private persistent = false;
+  private readonly persistent: boolean = false;
 
   @observable
   public visible = false;
@@ -82,7 +82,9 @@ export class DialogStore {
     this.onUpdateTabInfo = () => {};
     this.onVisibilityChange = () => {};
 
-    this.send('loaded');
+    (async () => {
+      await this.send('loaded');
+    })()
   }
 
   public async invoke(channel: string, ...args: any[]) {
@@ -110,8 +112,8 @@ export class DialogStore {
     if (this.persistent && !this.visible) return;
     this.visible = false;
     this.onHide(data);
-    setTimeout(() => {
-      this.send('hide');
+    setTimeout(async () => {
+      await this.send('hide');
     });
   }
 }

@@ -2,8 +2,9 @@ import { BrowserWindow } from 'electron';
 import { Application } from '../application';
 import { DIALOG_MARGIN_TOP, DIALOG_MARGIN } from '~/constants/design';
 import { IBookmark } from '~/interfaces';
+import { IDialog } from "~/main/services/dialogs-service";
 
-export const showAddBookmarkDialog = (
+export const showAddBookmarkDialog = async (
   browserWindow: BrowserWindow,
   x: number,
   y: number,
@@ -32,7 +33,7 @@ export const showAddBookmarkDialog = (
     };
   }
 
-  const dialog = Application.instance.dialogs.show({
+  const dialog: IDialog = await Application.instance.dialogs.show({
     name: 'add-bookmark',
     browserWindow,
     getBounds: () => ({
@@ -42,10 +43,8 @@ export const showAddBookmarkDialog = (
       y: y - DIALOG_MARGIN_TOP,
     }),
     onWindowBoundsUpdate: () => dialog.hide(),
-  });
-
+  })
   if (!dialog) return;
-
   dialog.on('loaded', (e) => {
     e.reply('data', data);
   });

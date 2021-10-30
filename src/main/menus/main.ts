@@ -1,10 +1,8 @@
 import { Menu, webContents, app, BrowserWindow, MenuItem } from 'electron';
 import { defaultTabOptions } from '~/constants/tabs';
 import { viewSource, saveAs, printPage } from './common-actions';
-import { WEBUI_BASE_URL, WEBUI_URL_SUFFIX } from '~/constants/files';
 import { AppWindow } from '../windows';
 import { Application } from '../application';
-import { showMenuDialog } from '../dialogs/menu';
 import { getWebUIURL } from '~/common/webui';
 
 const isMac = process.platform === 'darwin';
@@ -108,8 +106,8 @@ export const getMainMenu = () => {
         },
         ...createMenuItem(
           ['CmdOrCtrl+S'],
-          () => {
-            saveAs();
+          async () => {
+            await saveAs();
           },
           'Save webpage as...',
         ),
@@ -127,8 +125,8 @@ export const getMainMenu = () => {
         // Hidden items
 
         // Focus address bar
-        ...createMenuItem(['Ctrl+Space', 'CmdOrCtrl+L', 'Alt+D', 'F6'], () => {
-          Application.instance.dialogs
+        ...createMenuItem(['Ctrl+Space', 'CmdOrCtrl+L', 'Alt+D', 'F6'], async () => {
+          await Application.instance.dialogs
             .getPersistent('search')
             .show(Application.instance.windows.current.win);
         }),
@@ -249,9 +247,9 @@ export const getMainMenu = () => {
         ),
         ...createMenuItem(
           ['CmdOrCtrl+Shift+B'],
-          () => {
+          async () => {
             const { bookmarksBar } = Application.instance.settings.object;
-            Application.instance.settings.updateSettings({
+            await Application.instance.settings.updateSettings({
               bookmarksBar: !bookmarksBar,
             });
           },
@@ -278,8 +276,8 @@ export const getMainMenu = () => {
           submenu: [
             ...createMenuItem(
               ['CmdOrCtrl+U'],
-              () => {
-                viewSource();
+              async () => {
+                await viewSource();
               },
               'View source',
             ),

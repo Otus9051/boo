@@ -1,5 +1,5 @@
 import { app, ipcMain, Menu } from 'electron';
-import { isAbsolute, extname, resolve } from 'path';
+import { isAbsolute, extname } from 'path';
 import { existsSync } from 'fs';
 import { SessionsService } from './sessions-service';
 import { checkFiles } from '~/utils/files';
@@ -27,7 +27,7 @@ export class Application {
 
   public dialogs = new DialogsService();
 
-  public start() {
+  public async start() {
     const gotTheLock = app.requestSingleInstanceLock();
 
     if (!gotTheLock) {
@@ -121,7 +121,7 @@ export class Application {
       this.windows.open(incognito);
     });
 
-    this.onReady();
+    await this.onReady();
   }
 
   private async onReady() {
@@ -138,8 +138,8 @@ export class Application {
     this.settings = new Settings();
     this.storage = new StorageService(this.settings);
 
-    this.storage.run();
-    this.dialogs.run();
+    await this.storage.run();
+    await this.dialogs.run();
 
     this.windows.open();
 

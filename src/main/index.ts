@@ -29,11 +29,10 @@ if (process.env.NODE_ENV === 'development') {
 
 ipcMain.setMaxListeners(0);
 
-// app.setAsDefaultProtocolClient('http');
-// app.setAsDefaultProtocolClient('https');
-
 const application = Application.instance;
-application.start();
+(async () => {
+  await application.start();
+})()
 
 process.on('uncaughtException', (error) => {
   console.error(error);

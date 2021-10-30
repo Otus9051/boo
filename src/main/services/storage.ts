@@ -106,12 +106,12 @@ export class StorageService {
       await this.exportBookmarks();
     });
 
-    ipcMain.handle('bookmarks-get', (e) => {
+    ipcMain.handle('bookmarks-get', () => {
       return this.bookmarks;
     });
 
-    ipcMain.handle('bookmarks-sync', (e) => {
-      this.loadBookmarks();
+    ipcMain.handle('bookmarks-sync', async() => {
+      await this.loadBookmarks();
     });
 
     ipcMain.on('bookmarks-remove', (e, ids: string[]) => {
@@ -131,7 +131,7 @@ export class StorageService {
       return b;
     });
 
-    ipcMain.handle('bookmarks-get-folders', async (e) => {
+    ipcMain.handle('bookmarks-get-folders', async () => {
       return this.bookmarks.filter((x) => x.isFolder);
     });
 
@@ -139,7 +139,7 @@ export class StorageService {
       await this.updateBookmark(id, change);
     });
 
-    ipcMain.handle('history-get', (e) => {
+    ipcMain.handle('history-get', () => {
       return this.history;
     });
 
@@ -223,9 +223,9 @@ export class StorageService {
     for (const key in this.databases) {
       this.databases[key] = this.createDatabase(key.toLowerCase());
     }
-    this.loadBookmarks();
+    await this.loadBookmarks();
     await this.loadFavicons();
-    this.loadHistory();
+    await this.loadHistory();
   }
 
   private async saveBookmarks() {
@@ -302,7 +302,7 @@ export class StorageService {
     let mobileFolder = items.find((x) => x.static === 'mobile');
 
     this.bookmarks = items;
-    this.saveBookmarks();
+    await this.saveBookmarks();
 
     if (!barFolder) {
       barFolder = await this.addBookmark({
@@ -318,44 +318,44 @@ export class StorageService {
     }
 
     if (!otherFolder) {
-      otherFolder = await this.addBookmark({
+      await this.addBookmark({
         static: 'other',
         isFolder: true,
       });
     }
 
     if (!mobileFolder) {
-      mobileFolder = await this.addBookmark({
+      await this.addBookmark({
         static: 'mobile',
         isFolder: true,
       });
     }
   }
 
-  public removeBookmark(id: string) {
+  public async removeBookmark(id: string) {
     const item = this.bookmarks.find((x) => x._id === id);
 
     if (!item) return;
 
     this.bookmarks = this.bookmarks.filter((x) => x._id !== id);
-    this.saveBookmarks();
+    await this.saveBookmarks();
     const parent = this.bookmarks.find((x) => x._id === item.parent);
 
     parent.children = parent.children.filter((x) => x !== id);
-    this.updateBookmark(item.parent, { children: parent.children });
+    await this.updateBookmark(item.parent, { children: parent.children });
 
-    this.remove({ scope: 'bookmarks', query: { _id: id } });
+    await this.remove({ scope: 'bookmarks', query: { _id: id } });
 
     if (item.isFolder) {
       this.bookmarks = this.bookmarks.filter((x) => x.parent !== id);
-      this.saveBookmarks();
+      await this.saveBookmarks();
       const removed = this.bookmarks.filter((x) => x.parent === id);
 
-      this.remove({ scope: 'bookmarks', query: { parent: id }, multi: true });
+      await this.remove({ scope: 'bookmarks', query: { parent: id }, multi: true });
 
       for (const i of removed) {
         if (i.isFolder) {
-          this.removeBookmark(i._id);
+          await this.removeBookmark(i._id);
         }
       }
     }
@@ -367,7 +367,7 @@ export class StorageService {
       this.bookmarks.find((x) => x._id === id),
     );
     this.bookmarks[index] = { ...this.bookmarks[index], ...change };
-    this.saveBookmarks();
+    await this.saveBookmarks();
 
     await this.update({
       scope: 'bookmarks',
@@ -414,7 +414,7 @@ export class StorageService {
     }
 
     this.bookmarks.push(doc);
-    this.saveBookmarks();
+    await this.saveBookmarks();
 
     Application.instance.windows.broadcast('reload-bookmarks');
 
@@ -434,7 +434,7 @@ export class StorageService {
         const res = await requestURL(url);
 
         if (res.statusCode === 404) {
-          throw new Error('404 favicon not found');
+          return undefined
         }
 
         let data = Buffer.from(res.data, 'binary');
@@ -449,7 +449,7 @@ export class StorageService {
           (await fromBuffer(data))?.ext
         };base64,${data.toString('base64')}`;
 
-        this.insert({
+        await this.insert({
           scope: 'favicons',
           item: {
             url,

@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import { ERROR_COLOR, BLUE_500 } from '~/renderer/constants';
 import { StyledTextfield, Input, Label, Indicator, Icon } from './style';
+import {IconProp} from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export type TestFunction = (str: string) => boolean;
 
@@ -9,7 +11,7 @@ export interface TextFieldProps {
   color?: string;
   label?: string;
   placeholder?: string;
-  icon?: string;
+  icon?: string | IconProp;
   onIconClick?: (target: Textfield) => void;
   inputType?: 'text' | 'email' | 'password' | 'number';
   style?: any;
@@ -172,7 +174,11 @@ export class Textfield extends React.PureComponent<TextFieldProps, State> {
             {label}
           </Label>
         )}
-        {hasIcon && <Icon dark={dark} src={icon} onClick={this.onIconClick} />}
+        {hasIcon && (
+          <Icon dark={dark} src={typeof icon === 'string' ? icon : ''} onClick={this.onIconClick}>
+            {typeof icon !== 'string' && <FontAwesomeIcon icon={icon} />}
+          </Icon>
+        )}
         <Indicator focused={focused} color={primaryColor} />
       </StyledTextfield>
     );

@@ -36,7 +36,7 @@ export class View {
 
   private hasError = false;
 
-  private window: AppWindow;
+  private readonly window: AppWindow;
 
   public bounds: any;
 
@@ -93,7 +93,7 @@ export class View {
       },
     );
 
-    ipcMain.handle(`get-error-url-${this.id}`, async (e) => {
+    ipcMain.handle(`get-error-url-${this.id}`, async () => {
       return this.errorURL;
     });
 
@@ -108,24 +108,24 @@ export class View {
         .browserView.webContents.send('found-in-page', result);
     });
 
-    this.webContents.addListener('page-title-updated', (e, title) => {
+    this.webContents.addListener('page-title-updated',  async (e, title) => {
       this.window.updateTitle();
-      this.updateData();
+      await this.updateData();
 
       this.emitEvent('title-updated', title);
-      this.updateURL(this.webContents.getURL());
+      await this.updateURL(this.webContents.getURL());
     });
 
-    this.webContents.addListener('did-change-theme-color', (e, color) => {
-      this.updateData();
+    this.webContents.addListener('did-change-theme-color', async (e, color) => {
+      await this.updateData();
       this.emitEvent('color-updated', color);
-      this.updateURL(this.webContents.getURL());
+      await this.updateURL(this.webContents.getURL());
     });
 
     this.webContents.addListener('did-navigate', async (e, url) => {
       this.emitEvent('did-navigate', url);
       await this.addHistoryItem(url);
-      this.updateURL(url);
+      await this.updateURL(url);
     });
 
     this.webContents.addListener(
@@ -135,22 +135,22 @@ export class View {
           this.emitEvent('did-navigate', url);
 
           await this.addHistoryItem(url, true);
-          this.updateURL(url);
+          await this.updateURL(url);
         }
       },
     );
 
-    this.webContents.addListener('did-stop-loading', () => {
+    this.webContents.addListener('did-stop-loading', async() => {
       this.updateNavigationState();
       this.emitEvent('loading', false);
-      this.updateURL(this.webContents.getURL());
+      await this.updateURL(this.webContents.getURL());
     });
 
-    this.webContents.addListener('did-start-loading', () => {
+    this.webContents.addListener('did-start-loading', async () => {
       this.hasError = false;
       this.updateNavigationState();
       this.emitEvent('loading', true);
-      this.updateURL(this.webContents.getURL());
+      await this.updateURL(this.webContents.getURL());
     });
 
     this.webContents.addListener('did-start-navigation', async (e, ...args) => {
@@ -159,7 +159,7 @@ export class View {
       this.favicon = '';
 
       this.emitEvent('load-commit', ...args);
-      this.updateURL(this.webContents.getURL());
+      await this.updateURL(this.webContents.getURL());
     });
 
     this.webContents.on(
@@ -175,11 +175,11 @@ export class View {
 
     this.webContents.addListener(
       'new-window',
-      (e, url, frameName, disposition) => {
+      async (e, url, frameName, disposition) => {
         if (disposition === 'new-window') {
           if (frameName === '_self') {
             e.preventDefault();
-            this.window.viewManager.selected.webContents.loadURL(url);
+            await this.window.viewManager.selected.webContents.loadURL(url);
           } else if (frameName === '_blank') {
             e.preventDefault();
             this.window.viewManager.create(
@@ -202,7 +202,7 @@ export class View {
 
     this.webContents.addListener(
       'did-fail-load',
-      (e, errorCode, errorDescription, validatedURL, isMainFrame) => {
+      async (e, errorCode, errorDescription, validatedURL, isMainFrame) => {
         console.error(errorCode, errorDescription, validatedURL, isMainFrame);
         // ignore -3 (ABORTED) - An operation was aborted (due to user action).
         if (isMainFrame && errorCode !== -3) {
@@ -210,7 +210,7 @@ export class View {
 
           this.hasError = true;
 
-          this.webContents.loadURL(
+          await this.webContents.loadURL(
             `${ERROR_PROTOCOL}://${NETWORK_ERROR_HOST}/${errorCode}`,
           );
         }
@@ -222,7 +222,7 @@ export class View {
       async (e, favicons) => {
         this.favicon = favicons[0];
 
-        this.updateData();
+        await this.updateData();
 
         try {
           let fav = this.favicon;
@@ -283,8 +283,10 @@ export class View {
 
     if (url.startsWith(NEWTAB_URL)) this.isNewTab = true;
 
-    this.webContents.loadURL(url);
-
+    (async () => {
+      await this.webContents.loadURL(url);
+    })()
+    
     this.browserView.setAutoResize({
       width: true,
       height: true,
@@ -380,7 +382,7 @@ export class View {
     }
   }
 
-  public updateURL = (url: string) => {
+  public updateURL = async (url: string) => {
     if (this.lastUrl === url) return;
 
     this.emitEvent('url-updated', this.hasError ? this.errorURL : url);
@@ -389,9 +391,9 @@ export class View {
 
     this.isNewTab = url.startsWith(NEWTAB_URL);
 
-    this.updateData();
+    await this.updateData();
 
-    if (process.env.ENABLE_AUTOFILL) this.updateCredentials();
+    if (process.env.ENABLE_AUTOFILL) await this.updateCredentials();
 
     this.updateBookmark();
   };
@@ -412,7 +414,7 @@ export class View {
       if (id) {
         const { title, color, url, favicon } = this;
 
-        this.historyQueue.enqueue(async () => {
+        await this.historyQueue.enqueue(async () => {
           await Application.instance.storage.update({
             scope: 'history',
             query: {

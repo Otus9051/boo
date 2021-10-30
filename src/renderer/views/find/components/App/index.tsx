@@ -13,8 +13,14 @@ import {
 } from './style';
 import store from '../../store';
 import { callViewMethod } from '~/utils/view';
-import { ICON_UP, ICON_DOWN, ICON_CLOSE } from '~/renderer/constants/icons';
+import {
+  ICON_UP,
+  ICON_DOWN,
+  ICON_CLOSE,
+  ICON_SEARCH,
+} from '~/renderer/constants/icons';
 import { UIStyle } from '~/renderer/mixins/default-styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const onInput = async () => {
   const { value } = store.findInputRef.current;
@@ -59,7 +65,9 @@ export const App = observer(() => {
       <StyledApp>
         <UIStyle />
         <StyledFind onKeyUp={onKeyUp}>
-          <SearchIcon />
+          <SearchIcon>
+            <FontAwesomeIcon icon={ICON_SEARCH} />
+          </SearchIcon>
           <Input
             autoFocus
             value={store.findInfo.text}
@@ -70,9 +78,15 @@ export const App = observer(() => {
           />
           <Occurrences>{store.findInfo.occurrences}</Occurrences>
           <Buttons>
-            <Button onClick={move(false)} icon={ICON_UP} size={20} />
-            <Button onClick={move(true)} icon={ICON_DOWN} size={20} />
-            <Button onClick={() => store.hide()} icon={ICON_CLOSE} size={16} />
+            <Button onClick={move(false)} size={20}>
+              <FontAwesomeIcon icon={ICON_UP} />
+            </Button>
+            <Button onClick={move(true)} size={20}>
+              <FontAwesomeIcon icon={ICON_DOWN} />
+            </Button>
+            <Button onClick={() => store.hide()} size={16}>
+              <FontAwesomeIcon icon={ICON_CLOSE} />
+            </Button>
           </Buttons>
         </StyledFind>
       </StyledApp>

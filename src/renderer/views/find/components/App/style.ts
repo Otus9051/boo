@@ -36,10 +36,11 @@ export const SearchIcon = styled.div`
   ${centerIcon()};
   margin-left: 12px;
   opacity: 0.54;
-  background-image: url(${ICON_SEARCH});
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   ${({ theme }: { theme?: ITheme }) => css`
-    filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : 'none'};
+    color: ${theme['dialog.lightForeground'] ? 'white' : 'black'};
   `}
 `;
 
@@ -56,25 +57,18 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.div`
-  ${({
-    size,
-    icon,
-    theme,
-  }: {
-    size: number;
-    icon: string;
-    theme?: ITheme;
-  }) => css`
+  ${({ size, theme }: { size: number; theme?: ITheme }) => css`
     ${centerIcon(size)};
-    background-image: url(${icon});
-    filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : 'none'};
+    color: ${theme['dialog.lightForeground'] ? 'white' : 'black'};
   `}
 
   width: 24px;
   height: 24px;
   opacity: 0.54;
   position: relative;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &:after {
     background-color: rgba(0, 0, 0, 0.08);
     content: '';
@@ -89,6 +83,7 @@ export const Button = styled.div`
   }
 
   &:hover {
+    opacity: 1;
     &:after {
       opacity: 1;
     }

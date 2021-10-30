@@ -28,7 +28,7 @@ export class Settings extends EventEmitter {
       },
     );
 
-    ipcMain.handle('set-default-browser', async (e) => {
+    ipcMain.handle('set-default-browser', async () => {
       if (
         !(
           app.isDefaultProtocolClient('http') &&
@@ -62,14 +62,16 @@ export class Settings extends EventEmitter {
 
       this.object.downloadsPath = filePaths[0];
 
-      this.addToQueue();
+      await this.addToQueue();
     });
 
     nativeTheme.on('updated', () => {
       this.update();
     });
 
-    this.load();
+    (async () => {
+      await this.load();
+    })()
   }
 
   private onLoad = async (): Promise<void> => {
@@ -116,9 +118,9 @@ export class Settings extends EventEmitter {
       Application.instance.sessions.viewIncognito,
     ];
 
-    contexts.forEach((e) => {
+    contexts.forEach(async (e) => {
       if (this.object.shield) {
-        runAdblockService(e);
+        await runAdblockService(e);
       } else {
         stopAdblockService(e);
       }
@@ -150,7 +152,7 @@ export class Settings extends EventEmitter {
 
       if (typeof json.version === 'string') {
         // Migrate from 3.1.0
-        Application.instance.storage.remove({
+        await Application.instance.storage.remove({
           scope: 'startupTabs',
           query: {},
           multi: true,
@@ -181,7 +183,7 @@ export class Settings extends EventEmitter {
 
       this.loaded = true;
 
-      this.addToQueue();
+      await this.addToQueue();
       this.emit('load');
     } catch (e) {
       this.loaded = true;
@@ -223,7 +225,7 @@ export class Settings extends EventEmitter {
     this.update();
 
     if (this.queue.length === 1) {
-      this.save();
+      await this.save();
     } else {
       this.once(id, () => {
         this.save();
@@ -231,9 +233,9 @@ export class Settings extends EventEmitter {
     }
   }
 
-  public updateSettings(settings: Partial<ISettings>) {
+  public async updateSettings(settings: Partial<ISettings>) {
     this.object = { ...this.object, ...settings };
 
-    this.addToQueue();
+    await this.addToQueue();
   }
 }

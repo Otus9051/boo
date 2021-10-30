@@ -42,9 +42,9 @@ const onFindClick = () => {
   );*/
 };
 
-const onDarkClick = () => {
+const onDarkClick = async () => {
   store.settings.darkContents = !store.settings.darkContents;
-  store.save();
+  await store.save();
 };
 
 const onPrintClick = () => {

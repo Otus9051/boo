@@ -15,7 +15,6 @@ export const DialogBaseStyle = styled.div`
   border-radius: ${DIALOG_BORDER_RADIUS}px;
   overflow: hidden;
   position: relative;
-
   ${({ theme }: { theme?: ITheme }) => css`
     background-color: ${theme['dialog.backgroundColor']};
   `}

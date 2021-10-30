@@ -1,35 +1,35 @@
 !macro customInstall
-  WriteRegStr SHCTX "SOFTWARE\RegisteredApplications" "Wexond" "Software\Clients\StartMenuInternet\Wexond\Capabilities"
+  WriteRegStr SHCTX "SOFTWARE\RegisteredApplications" "Skye" "Software\Clients\StartMenuInternet\Skye\Capabilities"
 
-  WriteRegStr SHCTX "SOFTWARE\Classes\Wexond" "" "Wexond HTML Document"
-  WriteRegStr SHCTX "SOFTWARE\Classes\Wexond\Application" "AppUserModelId" "Wexond"
-  WriteRegStr SHCTX "SOFTWARE\Classes\Wexond\Application" "ApplicationIcon" "$INSTDIR\Wexond.exe,0"
-  WriteRegStr SHCTX "SOFTWARE\Classes\Wexond\Application" "ApplicationName" "Wexond"
-  WriteRegStr SHCTX "SOFTWARE\Classes\Wexond\Application" "ApplicationCompany" "Wexond"      
-  WriteRegStr SHCTX "SOFTWARE\Classes\Wexond\Application" "ApplicationDescription" "A privacy-focused, extensible and beautiful web browser"      
-  WriteRegStr SHCTX "SOFTWARE\Classes\Wexond\DefaultIcon" "DefaultIcon" "$INSTDIR\Wexond.exe,0"
-  WriteRegStr SHCTX "SOFTWARE\Classes\Wexond\shell\open\command" "" '"$INSTDIR\Wexond.exe" "%1"'
+  WriteRegStr SHCTX "SOFTWARE\Classes\Skye" "" "Skye HTML Document"
+  WriteRegStr SHCTX "SOFTWARE\Classes\Skye\Application" "AppUserModelId" "Skye"
+  WriteRegStr SHCTX "SOFTWARE\Classes\Skye\Application" "ApplicationIcon" "$INSTDIR\Skye.exe,0"
+  WriteRegStr SHCTX "SOFTWARE\Classes\Skye\Application" "ApplicationName" "Skye"
+  WriteRegStr SHCTX "SOFTWARE\Classes\Skye\Application" "ApplicationCompany" "Skye"      
+  WriteRegStr SHCTX "SOFTWARE\Classes\Skye\Application" "ApplicationDescription" "Extensible, fast and innovative web browser with Innatical UI."      
+  WriteRegStr SHCTX "SOFTWARE\Classes\Skye\DefaultIcon" "DefaultIcon" "$INSTDIR\Skye.exe,0"
+  WriteRegStr SHCTX "SOFTWARE\Classes\Skye\shell\open\command" "" '"$INSTDIR\Skye.exe" "%1"'
 
-  WriteRegStr SHCTX "SOFTWARE\Classes\.htm\OpenWithProgIds" "Wexond" ""
-  WriteRegStr SHCTX "SOFTWARE\Classes\.html\OpenWithProgIds" "Wexond" ""
+  WriteRegStr SHCTX "SOFTWARE\Classes\.htm\OpenWithProgIds" "Skye" ""
+  WriteRegStr SHCTX "SOFTWARE\Classes\.html\OpenWithProgIds" "Skye" ""
 
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond" "" "Wexond"
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\DefaultIcon" "" "$INSTDIR\Wexond.exe,0"
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\Capabilities" "ApplicationDescription" "A privacy-focused, extensible and beautiful web browser"
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\Capabilities" "ApplicationName" "Wexond"
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\Capabilities" "ApplicationIcon" "$INSTDIR\Wexond.exe,0"
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\Capabilities\FileAssociations" ".htm" "Wexond"
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\Capabilities\FileAssociations" ".html" "Wexond"
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\Capabilities\URLAssociations" "http" "Wexond"
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\Capabilities\URLAssociations" "https" "Wexond"
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\Capabilities\StartMenu" "StartMenuInternet" "Wexond"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye" "" "Skye"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\DefaultIcon" "" "$INSTDIR\Skye.exe,0"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\Capabilities" "ApplicationDescription" "Extensible, fast and innovative web browser with Innatical UI."
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\Capabilities" "ApplicationName" "Skye"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\Capabilities" "ApplicationIcon" "$INSTDIR\Skye.exe,0"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\Capabilities\FileAssociations" ".htm" "Skye"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\Capabilities\FileAssociations" ".html" "Skye"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\Capabilities\URLAssociations" "http" "Skye"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\Capabilities\URLAssociations" "https" "Skye"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\Capabilities\StartMenu" "StartMenuInternet" "Skye"
   
-  WriteRegDWORD SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\InstallInfo" "IconsVisible" 1
+  WriteRegDWORD SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\InstallInfo" "IconsVisible" 1
   
-  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond\shell\open\command" "" "$INSTDIR\Wexond.exe"
+  WriteRegStr SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye\shell\open\command" "" "$INSTDIR\Skye.exe"
 !macroend
 !macro customUnInstall
-  DeleteRegKey SHCTX "SOFTWARE\Classes\Wexond"
-  DeleteRegKey SHCTX "SOFTWARE\Clients\StartMenuInternet\Wexond"
-  DeleteRegValue SHCTX "SOFTWARE\RegisteredApplications" "Wexond"
+  DeleteRegKey SHCTX "SOFTWARE\Classes\Skye"
+  DeleteRegKey SHCTX "SOFTWARE\Clients\StartMenuInternet\Skye"
+  DeleteRegValue SHCTX "SOFTWARE\RegisteredApplications" "Skye"
 !macroend

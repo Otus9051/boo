@@ -23,9 +23,9 @@ export const ItemBase = styled.div`
 export const Placeholder = styled(ItemBase)`
   box-sizing: border-box;
 
-  ${({ theme, imageSet }: { theme?: ITheme; imageSet: boolean }) => css`
+  ${({ theme }: { theme?: ITheme }) => css`
     border: 2px dashed
-      ${!imageSet && !theme['pages.lightForeground']
+      ${!theme['pages.lightForeground']
         ? 'rgba(0, 0, 0, 0.2)'
         : 'rgba(255, 255, 255, 0.3)'};
   `}

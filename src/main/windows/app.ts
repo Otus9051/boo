@@ -93,11 +93,11 @@ export class AppWindow {
     });
 
     const resize = () => {
-      setTimeout(() => {
+      setTimeout(async () => {
         if (process.platform === 'linux') {
-          this.viewManager.select(this.viewManager.selectedId, false);
+          await this.viewManager.select(this.viewManager.selectedId, false);
         } else {
-          this.viewManager.fixBounds();
+          await this.viewManager.fixBounds();
         }
       });
 
@@ -112,7 +112,7 @@ export class AppWindow {
     this.win.on('restore', resize);
     this.win.on('unmaximize', resize);
 
-    this.win.on('close', (event: Electron.Event) => {
+    this.win.on('close', async (event: Electron.Event) => {
       const { object: settings } = Application.instance.settings;
 
       if (settings.warnOnQuit && this.viewManager.views.size > 1) {
@@ -161,21 +161,23 @@ export class AppWindow {
 
     // this.webContents.openDevTools({ mode: 'detach' });
 
-    if (process.env.NODE_ENV === 'development') {
-      this.webContents.openDevTools({ mode: 'detach' });
-      this.win.loadURL('http://localhost:4444/app.html');
-    } else {
-      this.win.loadURL(join('file://', app.getAppPath(), 'build/app.html'));
-    }
+    (async () => {
+      if (process.env.NODE_ENV === 'development') {
+        this.webContents.openDevTools({ mode: 'detach' });
+        await this.win.loadURL('http://localhost:4444/app.html');
+      } else {
+        await this.win.loadURL(join('file://', app.getAppPath(), 'build/app.html'));
+      }
+    })()
 
-    this.win.on('enter-full-screen', () => {
+    this.win.on('enter-full-screen', async() => {
       this.send('fullscreen', true);
-      this.viewManager.fixBounds();
+      await this.viewManager.fixBounds();
     });
 
-    this.win.on('leave-full-screen', () => {
+    this.win.on('leave-full-screen', async () => {
       this.send('fullscreen', false);
-      this.viewManager.fixBounds();
+      await this.viewManager.fixBounds();
     });
 
     this.win.on('enter-html-full-screen', () => {

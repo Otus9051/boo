@@ -17,7 +17,7 @@
 | Go forward                  | `Alt + Right Arrow`              |
 | Close selected tab          | `Ctrl + W` or `Ctrl + F4`        |
 | Close current window        | `Ctrl + Shift + W` or `Alt + F4` |
-| Close Wexond                | `Ctrl + Shift + Q`               |
+| Close Skye                  | `Ctrl + Shift + Q`               |
 
 ### Wexond feature shortcuts
 
@@ -56,8 +56,8 @@
 | Go forward                  | `⌘ + ]` or `⌘ + Right Arrow` |
 | Close selected tab          | `⌘ + W`                      |
 | Close current window        | `⌘ + Shift + W`              |
-| Hide Wexond                 | `⌘ + H`                      |
-| Close Wexond                | `⌘ + Q`                      |
+| Hide Skye                   | `⌘ + H`                      |
+| Close Skye                  | `⌘ + Q`                      |
 
 ### Wexond feature shortcuts
 

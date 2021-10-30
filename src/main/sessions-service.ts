@@ -1,4 +1,4 @@
-import { session, ipcMain, app } from 'electron';
+import { session, ipcMain } from 'electron';
 import { getPath, makeId } from '~/utils';
 import { promises, existsSync } from 'fs';
 import { resolve, basename, parse, extname } from 'path';
@@ -35,8 +35,8 @@ export class SessionsService {
     this.clearCache('incognito');
 
     if (process.env.ENABLE_EXTENSIONS) {
-      ipcMain.on('load-extensions', () => {
-        this.loadExtensions();
+      ipcMain.on('load-extensions', async () => {
+        await this.loadExtensions();
       });
 
       ipcMain.handle('get-extensions', () => {

@@ -3,7 +3,6 @@ import { observer } from 'mobx-react-lite';
 
 import { Item, Icon, Title } from './style';
 import { IHistoryItem } from '~/interfaces';
-import store from '../../store';
 import { ICON_PAGE } from '~/renderer/constants';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -33,13 +32,10 @@ export const TopSite = observer(
 
     return (
       <Item
-        imageSet={store.imageVisible}
         onClick={onClick(url)}
         backgroundColor={backgroundColor}
       >
         <Icon
-          imageSet={store.imageVisible}
-          custom={custom}
           icon={typeof fav === 'string' ? fav : ''}
         >
           {typeof fav !== 'string' && <FontAwesomeIcon icon={fav} />}

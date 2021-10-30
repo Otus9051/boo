@@ -1,11 +1,7 @@
 import { AppWindow } from '../windows';
 import {
   clipboard,
-  nativeImage,
   Menu,
-  session,
-  ipcMain,
-  BrowserView,
 } from 'electron';
 import { isURL, prefixHttp } from '~/utils';
 import { saveAs, viewSource, printPage } from './common-actions';
@@ -198,7 +194,7 @@ export const getViewMenu = (
         label: 'Save as...',
         accelerator: 'CmdOrCtrl+S',
         click: async () => {
-          saveAs();
+          await saveAs();
         },
       },
       {
@@ -214,8 +210,8 @@ export const getViewMenu = (
       {
         label: 'View page source',
         accelerator: 'CmdOrCtrl+U',
-        click: () => {
-          viewSource();
+        click: async () => {
+          await viewSource();
         },
       },
     ]);

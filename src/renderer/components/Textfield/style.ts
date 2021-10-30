@@ -113,7 +113,7 @@ export const Indicator = styled.div<IndicatorProps>`
 `;
 
 interface IconProps {
-  src: string;
+  src?: string;
   dark: boolean;
 }
 

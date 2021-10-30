@@ -88,8 +88,6 @@ export const Icon = styled.div`
   font-size: 15px;
 
   ${({ theme }: { theme?: ITheme }) => css`
-    color: theme['dialog.lightForeground']
-    filter: ${theme['dialog.lightForeground'] ? 'invert(100%)' : 'none'};
   `};
 `;
 

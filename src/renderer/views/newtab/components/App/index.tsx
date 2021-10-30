@@ -8,9 +8,7 @@ import {
   Content,
   Image,
   StyledTime,
-  StyledForecast,
-  StyledSearchBar,
-  StyledH2,
+  StyledForecast
 } from './style';
 import { TopSites } from '../TopSites';
 import { WebUIStyle } from '~/renderer/mixins/default-styles';

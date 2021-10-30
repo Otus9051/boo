@@ -1,5 +1,4 @@
 import { ipcMain } from 'electron';
-import { VIEW_Y_OFFSET } from '~/constants/design';
 import { View } from './view';
 import { AppWindow } from './windows';
 import { WEBUI_BASE_URL } from '~/constants/files';
@@ -19,7 +18,7 @@ export class ViewManager extends EventEmitter {
 
   public incognito: boolean;
 
-  private window: AppWindow;
+  private readonly window: AppWindow;
 
   public get fullscreen() {
     return this._fullscreen;
@@ -51,11 +50,11 @@ export class ViewManager extends EventEmitter {
       this.create(details);
     });
 
-    ipcMain.on('Print', (e, details) => {
+    ipcMain.on('Print', () => {
       this.views.get(this.selectedId).webContents.print();
     });
 
-    ipcMain.handle(`view-select-${id}`, (e, id: number, focus: boolean) => {
+    ipcMain.handle(`view-select-${id}`, async (e, id: number, focus: boolean) => {
       if (process.env.ENABLE_EXTENSIONS) {
         const view = this.views.get(id);
         if (focus) {
@@ -64,7 +63,7 @@ export class ViewManager extends EventEmitter {
           );
         }
       }
-      this.select(id, focus);
+      await this.select(id, focus);
     });
 
     ipcMain.on(`view-destroy-${id}`, (e, id: number) => {
@@ -107,7 +106,7 @@ export class ViewManager extends EventEmitter {
       this.emitZoomUpdate();
     });
 
-    ipcMain.on('reset-zoom', (e) => {
+    ipcMain.on('reset-zoom', () => {
       this.selected.webContents.zoomFactor = 1;
       this.selected.emitEvent(
         'zoom-updated',
@@ -163,7 +162,7 @@ export class ViewManager extends EventEmitter {
     Object.values(this.views).forEach((x) => x.destroy());
   }
 
-  public select(id: number, focus = true) {
+  public async select(id: number, focus = true) {
     const { selected } = this;
     const view = this.views.get(id);
     if (!view) {
@@ -187,7 +186,7 @@ export class ViewManager extends EventEmitter {
     this.window.updateTitle();
     view.updateBookmark();
 
-    this.fixBounds();
+    await this.fixBounds();
 
     view.updateNavigationState();
 
@@ -221,10 +220,10 @@ export class ViewManager extends EventEmitter {
     }
   }
 
-  private setBoundsListener() {
+  private async setBoundsListener() {
     // resize the BrowserView's height when the toolbar height changes
     // ex: when the bookmarks bar appears
-    this.window.webContents.executeJavaScript(`
+    await this.window.webContents.executeJavaScript(`
         const {ipcRenderer} = require('electron');
         const resizeObserver = new ResizeObserver(([{ contentRect }]) => {
           ipcRenderer.send('resize-height');

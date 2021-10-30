@@ -24,7 +24,7 @@ interface IDialogShowOptions {
   getBounds: () => IRectangle;
 }
 
-interface IDialog {
+export interface IDialog {
   name: string;
   browserView: BrowserView;
   id: number;
@@ -51,13 +51,13 @@ export class DialogsService {
 
   public persistentDialogs: PersistentDialog[] = [];
 
-  public run() {
-    this.createBrowserView();
+  public async run() {
+    await this.createBrowserView();
 
     this.persistentDialogs.push(new SearchDialog());
   }
 
-  private createBrowserView() {
+  private async createBrowserView() {
     const view = new BrowserView({
       webPreferences: {
         nodeIntegration: true,
@@ -69,7 +69,7 @@ export class DialogsService {
     });
     require('@electron/remote/main').enable(view.webContents);
 
-    view.webContents.loadURL(`about:blank`);
+    await view.webContents.loadURL(`about:blank`);
 
     this.browserViews.push(view);
 
@@ -78,14 +78,13 @@ export class DialogsService {
     return view;
   }
 
-  public show(options: IDialogShowOptions): IDialog {
+  public async show(options: IDialogShowOptions): Promise<IDialog> {
     const {
       name,
       browserWindow,
       getBounds,
       devtools,
       onHide,
-      hideTimeout,
       onWindowBoundsUpdate,
       tabAssociation,
     } = options;
@@ -99,7 +98,7 @@ export class DialogsService {
         );
 
     if (!browserView) {
-      browserView = this.createBrowserView();
+      browserView = await this.createBrowserView();
     }
 
     const appWindow = Application.instance.windows.fromBrowserWindow(
@@ -268,9 +267,9 @@ export class DialogsService {
     });
 
     if (process.env.NODE_ENV === 'development') {
-      browserView.webContents.loadURL(`http://localhost:4444/${name}.html`);
+      await browserView.webContents.loadURL(`http://localhost:4444/${name}.html`);
     } else {
-      browserView.webContents.loadURL(
+      await browserView.webContents.loadURL(
         join('file://', app.getAppPath(), `build/${name}.html`),
       );
     }
@@ -303,7 +302,7 @@ export class DialogsService {
   };
 
   public destroy = () => {
-    // TODO: For some reason reactivation of the app breaks when this is called, it seems like the issue is with our extentions engine
+    // TODO: For some reason reactivation of the app breaks when this is called, it seems like the issue is with our extensions engine
     // this.getBrowserViews().forEach((x) => (x.webContents as any).destroy());
   };
 
