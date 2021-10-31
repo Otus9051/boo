@@ -42,8 +42,8 @@ export const StyledCheckbox = styled.div<CheckboxProps>`
 
   &::before {
     content: '';
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     border-radius: 100%;
     display: block;
     position: absolute;

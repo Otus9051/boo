@@ -23,7 +23,7 @@ export const StyledTitlebar = styled.div<TitlebarProps>`
     top: 4px;
     left: 4px;
     right: 4px;
-    bottom: 0px;
+    bottom: 0;
     content: '';
   }
 
@@ -52,7 +52,7 @@ export const FullscreenExitButton = styled.div<FullscreenExistButtonProps>`
   margin-bottom: 5px;
   min-width: 45px;
   -webkit-app-region: no-drag;
-  margin-left: 8;
+  margin-left: 8px;
   transition: 0.1s background-color;
   ${centerIcon(24)};
 

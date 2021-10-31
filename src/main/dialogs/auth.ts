@@ -7,7 +7,7 @@ export const requestAuth = (
   url: string,
   tabId: number,
 ): Promise<{ username: string; password: string }> => {
-  return new Promise(async (resolve, reject) => {
+  return new Promise(async (resolve) => {
     const appWindow = Application.instance.windows.fromBrowserWindow(
       browserWindow,
     );

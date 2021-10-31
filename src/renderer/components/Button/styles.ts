@@ -10,7 +10,7 @@ export const StyledButton = styled.div<ButtonProps>`
   min-width: 80px;
   width: fit-content;
   height: 42px;
-  padding: 0px 30px;
+  padding: 0 30px;
   display: flex;
   align-items: center;
   justify-content: center;

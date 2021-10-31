@@ -52,7 +52,7 @@ export const Input = styled.input<InputProps>`
       ${dark ? `rgba(255, 255, 255, 0.12)` : `rgba(0, 0, 0, 0.42)`};
 
     &::placeholder {
-      text-shadow: 0px 0px 0px
+      text-shadow: 0 0 0
         ${dark
           ? `rgba(255, 255, 255, ${transparency.text.medium})`
           : `rgba(0, 0, 0, ${transparency.text.medium})`};

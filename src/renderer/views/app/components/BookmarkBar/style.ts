@@ -19,15 +19,13 @@ export const BookmarkBar = styled.div<BookmarkBarProps>`
   color: rgba(0, 0, 0, 0.8);
   width: 100%;
   min-height: 32px;
-  padding: 2px 8px;
-  padding-top: 0px;
-  padding-right: 4px;
-  ${({ theme, color }) => css`
+  padding: 0 4px 2px 8px;
+  ${({theme, color}) => css`
     margin-top: ${theme.isCompact ? 0 : -1}px;
     background-color: ${!!color ? color : theme['titlebar.backgroundColor']};
   `};
 
-  ${({ color, theme }) => {
+  ${({color, theme}) => {
     if (color && color !== '') {
       const cc = contrast(color);
 
@@ -76,7 +74,7 @@ export const BookmarkButton = styled(Button)`
   max-width: ${({ width }: { width: number }) => width}px;
   width: auto;
   padding: 4px;
-  margin: 0px 2px;
+  margin: 0 2px;
   font-size: 12px;
   display: flex;
   flex-direction: row;
@@ -84,12 +82,12 @@ export const BookmarkButton = styled(Button)`
 `;
 
 export const Title = styled.div`
-  min-width: 0px;
+  min-width: 0;
   max-width: 125px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 0px 4px 0px 0px;
+  padding: 0 4px 0 0;
 `;
 
 export const Favicon = styled.div`

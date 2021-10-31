@@ -6,7 +6,7 @@ import { transparency } from '~/renderer/constants';
 export const StyledList = styled.div`
   width: 100%;
   height: 100%;
-  padding: 8px 0px;
+  padding: 8px 0;
   overflow: hidden;
   ${noButtons()};
 `;
@@ -28,7 +28,7 @@ export const StyledItem = styled.div`
 `;
 
 export const Text = styled.div`
-  padding: 0px 12px;
+  padding: 0 12px;
   font-size: 14px;
   pointer-events: none;
   white-space: nowrap;

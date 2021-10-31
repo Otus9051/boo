@@ -13,7 +13,7 @@ export const Title = styled.div`
 `;
 
 export const Container = styled.div`
-  padding: 8px 0px;
+  padding: 8px 0;
 
   & .textfield {
     margin-top: 12px;

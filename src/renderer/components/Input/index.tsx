@@ -12,7 +12,7 @@ export const Control = css`
   border-radius: 8px;
   display: flex;
   align-items: center;
-  padding: 0px 8px;
+  padding: 0 8px;
   font-size: 12px;
 
   &:focus {
@@ -28,7 +28,7 @@ export const Control = css`
 export const Input = styled.input.attrs(() => ({
   spellCheck: false,
 }))`
-  ${Control}
+  ${Control};
   margin-right: 10px;
 `;
 

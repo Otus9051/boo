@@ -19,7 +19,7 @@ export const ListItem = styled.div<ListItemProps>`
           : 'rgba(0, 0, 0, 0.08)'
         : 'transparent'
     };
-      color: ${theme['pages.lightForeground'] ? '#fff' : '#000'}
+      color: ${theme['pages.lightForeground'] ? '#fff' : '#000'};
     &:hover {
       background-color: ${
         theme['pages.lightForeground']

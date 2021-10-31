@@ -55,7 +55,7 @@ export const TabsContainer = styled.div`
   white-space: nowrap;
 
   &::-webkit-scrollbar {
-    height: 0px;
+    height: 0;
     display: none;
     background-color: transparent;
     opacity: 0;

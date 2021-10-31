@@ -68,10 +68,9 @@ interface ContainerProps {
 export const Container = styled.div<ContainerProps>`
   width: 100%;
   display: flex;
-  padding: 16px;
-  padding-top: 0px;
+  padding: 0px 16px 16px;
 
-  ${({ expanded }) => css`
+  ${({expanded}) => css`
     display: ${expanded ? 'block' : 'none'};
   `};
 `;

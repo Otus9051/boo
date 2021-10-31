@@ -3,7 +3,7 @@ import { ITheme } from '~/interfaces';
 
 export const EmptySection = styled.div`
   margin-top: 16px;
-  padding: 0px 0px 8px 0px;
+  padding: 0 0 8px 0;
   overflow: hidden;
   border-radius: 8px;
 

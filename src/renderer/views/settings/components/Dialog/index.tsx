@@ -43,7 +43,7 @@ export const Title = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 8px 16px 0px 16px;
+  padding: 8px 16px 0 16px;
 `;
 
 export const Buttons = styled.div`

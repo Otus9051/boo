@@ -128,7 +128,7 @@ export class TabsStore {
 
       if (!prevTab) {
         if (this.list[this.list.length - 1]) {
-          this.list[this.list.length - 1].select();
+          await this.list[this.list.length - 1].select();
         }
       } else {
         await prevTab.select();

@@ -7,7 +7,7 @@ interface EmptySectionProps {
 
 export const EmptySection = styled.div<EmptySectionProps>`
   margin-top: 16px;
-  padding: 8px 0px 8px 0px;
+  padding: 8px 0 8px 0;
   overflow: hidden;
   border-radius: 8px;
 

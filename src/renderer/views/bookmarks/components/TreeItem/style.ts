@@ -37,7 +37,7 @@ interface DropIconProps {
 export const DropIcon = styled.div<DropIconProps>`
   min-width: 24px;
   min-height: 24px;
-  margin: 0px 2px;
+  margin: 0 2px;
   border-radius: 100%;
   display: flex;
   justify-content: center;
