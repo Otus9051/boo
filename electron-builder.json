@@ -50,7 +50,13 @@
     ]
   },
   "mac": {
-    "category": "public.app-category.navigation"
+    "category": "public.app-category.navigation",
+    "target": [
+      {
+        "target": "default",
+        "arch": "universal"
+      }
+    ]
   },
   "fileAssociations": [
     {
