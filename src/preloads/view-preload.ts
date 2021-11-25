@@ -168,9 +168,7 @@ if (window.location.href.startsWith(WEBUI_BASE_URL)) {
     else if (hostname.startsWith('history')) document.title = 'History';
     else if (hostname.startsWith('bookmarks')) document.title = 'Bookmarks';
     else if (hostname.startsWith('extensions')) document.title = 'Extensions';
-    else if (hostname.startsWith('newtab')) {
-      document.title = 'New tab';
-    }
+    else if (hostname.startsWith('newtab')) document.title = 'New Tab';
   });
 
   window.addEventListener('message', async ({ data }) => {

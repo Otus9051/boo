@@ -107,6 +107,7 @@ export class DialogsService {
 
     if (foundDialog && tabAssociation) {
       foundDialog.tabIds.push(tabAssociation.tabId);
+      console.log('found');
       foundDialog._sendTabInfo(tabAssociation.tabId);
     }
 
@@ -147,6 +148,7 @@ export class DialogsService {
       _sendTabInfo: (tabId) => {
         if (tabAssociation.getTabInfo) {
           const data = tabAssociation.getTabInfo(tabId);
+          console.log(data);
           browserView.webContents.send('update-tab-info', tabId, data);
         }
       },
@@ -201,6 +203,7 @@ export class DialogsService {
       },
       on: (name, cb) => {
         const channel = `${name}-${browserView.webContents.id}`;
+        console.log(channel);
         ipcMain.on(channel, (...args) => cb(...args));
         channels.push(channel);
       },
@@ -222,6 +225,7 @@ export class DialogsService {
       browserWindow.webContents.send('dialog-visibility-change', name, visible);
 
       if (visible) {
+        console.log('vis');
         dialog._sendTabInfo(id);
         browserWindow.removeBrowserView(browserView);
         browserWindow.addBrowserView(browserView);
@@ -267,7 +271,9 @@ export class DialogsService {
     });
 
     if (process.env.NODE_ENV === 'development') {
-      await browserView.webContents.loadURL(`http://localhost:4444/${name}.html`);
+      await browserView.webContents.loadURL(
+        `http://localhost:4444/${name}.html`,
+      );
     } else {
       await browserView.webContents.loadURL(
         join('file://', app.getAppPath(), `build/${name}.html`),
@@ -278,11 +284,13 @@ export class DialogsService {
       dialog.hide();
     });
 
+    console.log(tabAssociation);
     if (tabAssociation) {
       dialog.on('loaded', () => {
+        console.log('loaded');
         dialog._sendTabInfo(tabAssociation.tabId);
       });
-
+      dialog._sendTabInfo(tabAssociation.tabId);
       if (tabAssociation.setTabInfo) {
         dialog.on('update-tab-info', (e, tabId, ...args) => {
           tabAssociation.setTabInfo(tabId, ...args);

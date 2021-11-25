@@ -1,7 +1,7 @@
 import { VIEW_Y_OFFSET } from '~/constants/design';
 import { BrowserWindow } from 'electron';
 import { Application } from '../application';
-import {IDialog} from "~/main/services/dialogs-service";
+import { IDialog } from '~/main/services/dialogs-service';
 
 export const requestPermission = (
   browserWindow: BrowserWindow,
@@ -23,6 +23,8 @@ export const requestPermission = (
       browserWindow,
     );
 
+    console.log(name, url, details);
+
     appWindow.viewManager.selected.requestedPermission = { name, url, details };
 
     const dialog: IDialog = await Application.instance.dialogs.show({
@@ -37,8 +39,13 @@ export const requestPermission = (
       tabAssociation: {
         tabId,
         getTabInfo: (tabId) => {
+          console.log(tabId);
           const tab = appWindow.viewManager.views.get(tabId);
           return tab.requestedPermission;
+        },
+        setTabInfo: (tabId, info) => {
+          const tab = appWindow.viewManager.views.get(tabId);
+          tab.requestedPermission = info;
         },
       },
       onWindowBoundsUpdate: (disposition) => {

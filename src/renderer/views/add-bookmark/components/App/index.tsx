@@ -2,7 +2,7 @@ import * as React from 'react';
 import { observer } from 'mobx-react-lite';
 import { ThemeProvider } from 'styled-components';
 
-import { StyledApp, Title, Row, Label, Buttons } from './style';
+import { StyledApp, Title, Row, Label, Buttons, Col } from './style';
 import store from '../../store';
 import { Input, Dropdown } from '~/renderer/components/Input';
 import { Button } from '~/renderer/components/Button';
@@ -21,6 +21,7 @@ const updateBookmark = () => {
 };
 
 const onChange = () => {
+  if (!store.bookmark) return;
   store.bookmark.title = store.titleRef.current.value;
   updateBookmark();
 };
@@ -56,8 +57,8 @@ export const App = observer(() => {
     <ThemeProvider theme={{ ...store.theme }}>
       <StyledApp visible={store.visible}>
         <UIStyle />
-        <Title>{store.dialogTitle}</Title>
-        <Row>
+        <Title>{store.dialogTitle || 'New Bookmark'}</Title>
+        <Col>
           <Label>Name</Label>
           <Input
             tabIndex={0}
@@ -65,8 +66,8 @@ export const App = observer(() => {
             ref={store.titleRef}
             onChange={onChange}
           />
-        </Row>
-        <Row>
+        </Col>
+        <Col>
           <Label>Folder</Label>
           <Dropdown
             dark={store.theme['dialog.lightForeground']}
@@ -76,7 +77,7 @@ export const App = observer(() => {
           >
             {store.currentFolder && getBookmarkTitle(store.currentFolder)}
           </Dropdown>
-        </Row>
+        </Col>
         <Buttons>
           <Button onClick={onDone}>Done</Button>
           <Button

@@ -29,7 +29,6 @@ export const Input = styled.input.attrs(() => ({
   spellCheck: false,
 }))`
   ${Control};
-  margin-right: 10px;
 `;
 
 export const Dropdown = styled.div`

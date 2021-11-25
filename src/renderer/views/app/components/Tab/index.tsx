@@ -198,6 +198,7 @@ const onContextMenu = (tab: ITab) => () => {
 };
 
 const Content = observer(({ tab }: { tab: ITab }) => {
+  console.log('uh', tab);
   return (
     <StyledContent>
       {!tab.loading && tab.favicon !== '' && (

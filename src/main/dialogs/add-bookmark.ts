@@ -2,7 +2,7 @@ import { BrowserWindow } from 'electron';
 import { Application } from '../application';
 import { DIALOG_MARGIN_TOP, DIALOG_MARGIN } from '~/constants/design';
 import { IBookmark } from '~/interfaces';
-import { IDialog } from "~/main/services/dialogs-service";
+import { IDialog } from '~/main/services/dialogs-service';
 
 export const showAddBookmarkDialog = async (
   browserWindow: BrowserWindow,
@@ -38,14 +38,14 @@ export const showAddBookmarkDialog = async (
     browserWindow,
     getBounds: () => ({
       width: 366,
-      height: 240,
+      height: 300,
       x: x - 366 + DIALOG_MARGIN,
       y: y - DIALOG_MARGIN_TOP,
     }),
     onWindowBoundsUpdate: () => dialog.hide(),
-  })
-  if (!dialog) return;
+  });
   dialog.on('loaded', (e) => {
+    console.log(e, data);
     e.reply('data', data);
   });
 };
