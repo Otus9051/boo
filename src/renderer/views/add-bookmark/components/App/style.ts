@@ -9,14 +9,9 @@ interface AppProps {
 }
 export const StyledApp = styled(DialogStyle)<AppProps>`
   padding: 20px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  & .textfield,
-  .dropdown {
-    width: 255px;
-    margin-left: auto;
-  }
-
   ${({ theme }) => css`
     color: ${theme['dialog.lightForeground'] ? '#fff' : '#000'};
   `}
@@ -30,7 +25,7 @@ export const Subtitle = styled.div`
 
 export const Title = styled.div`
   font-size: 16px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   font-weight: bold;
 `;
 
@@ -41,8 +36,16 @@ export const Row = styled.div`
   display: flex;
 `;
 
+export const Col = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+`;
+
 export const Label = styled.div`
-  font-size: 12px;
+  font-size: 13px;
+  margin-bottom: 5px;
 `;
 
 export const Buttons = styled.div`
@@ -50,7 +53,7 @@ export const Buttons = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-top: 16px;
+  margin-top: 6px;
   & .button:not(:last-child) {
     margin-right: 8px;
   }

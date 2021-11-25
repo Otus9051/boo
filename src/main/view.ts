@@ -50,7 +50,15 @@ export class View {
   };
 
   public requestedAuth: IAuthInfo;
-  public requestedPermission: any;
+  public requestedPermission: {
+    name: string;
+    url: string;
+    details: {
+      isMainFrame: boolean;
+      requestingUrl: string;
+      [key: string]: any;
+    };
+  };
 
   private historyQueue = new Queue();
 
@@ -108,7 +116,7 @@ export class View {
         .browserView.webContents.send('found-in-page', result);
     });
 
-    this.webContents.addListener('page-title-updated',  async (e, title) => {
+    this.webContents.addListener('page-title-updated', async (e, title) => {
       this.window.updateTitle();
       await this.updateData();
 
@@ -140,7 +148,7 @@ export class View {
       },
     );
 
-    this.webContents.addListener('did-stop-loading', async() => {
+    this.webContents.addListener('did-stop-loading', async () => {
       this.updateNavigationState();
       this.emitEvent('loading', false);
       await this.updateURL(this.webContents.getURL());
@@ -285,8 +293,8 @@ export class View {
 
     (async () => {
       await this.webContents.loadURL(url);
-    })()
-    
+    })();
+
     this.browserView.setAutoResize({
       width: true,
       height: true,

@@ -12,6 +12,7 @@ import { FullscreenExitButton } from '../Titlebar/style';
 import { ipcRenderer } from 'electron';
 import * as remote from '@electron/remote';
 import { WindowsControls } from 'react-windows-controls';
+import { contrast } from '~/utils/colors';
 
 const onFullscreenExit = (e: React.MouseEvent<HTMLDivElement>) => {
   remote.getCurrentWindow().setFullScreen(false);
@@ -29,6 +30,22 @@ const onMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
 };
 
 export const Toolbar = observer(() => {
+  const color = React.useMemo(() => {
+    const isDarkMode = store.theme['toolbar.lightForeground'];
+
+    if (store.tabs.selectedTab?.color && store.tabs.selectedTab?.color !== '') {
+      const cc = contrast(store.tabs.selectedTab?.color);
+      console.log(cc);
+      switch (cc) {
+        case 'dark':
+          return false;
+        case 'light': {
+          return true;
+        }
+      }
+    }
+    return !isDarkMode;
+  }, [store.tabs.selectedTab?.color, store.theme]);
   return (
     <StyledToolbar
       onMouseDown={onMouseDown}
@@ -52,6 +69,7 @@ export const Toolbar = observer(() => {
               height: store.isCompact ? '100%' : 32,
               WebkitAppRegion: 'no-drag',
               marginLeft: 8,
+              filter: `invert(${color ? '100%' : '0%'})`,
             }}
             onClose={onCloseClick}
             onMinimize={onMinimizeClick}
