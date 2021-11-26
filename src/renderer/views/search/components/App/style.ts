@@ -8,7 +8,7 @@ export const StyledApp = styled(DialogStyle)`
   transition: none;
   padding-bottom: 4px;
   border-radius: 8px;
-  margin-top: 18px;
+  margin-top: 0px;
   ${({ theme }: { theme?: ITheme }) => css`
     background-color: ${theme['searchBox.backgroundColor']};
     color: ${theme['searchBox.lightForeground']

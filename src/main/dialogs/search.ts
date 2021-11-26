@@ -26,7 +26,7 @@ export class SearchDialog extends PersistentDialog {
       bounds: {
         width: WIDTH,
         height: HEIGHT,
-        y: 48,
+        y: 0,
       },
 
       devtools: false,
@@ -48,7 +48,7 @@ export class SearchDialog extends PersistentDialog {
   public rearrange() {
     super.rearrange({
       x: this.data.x - DIALOG_MARGIN,
-      y: this.data.y - DIALOG_MARGIN_TOP,
+      y: 8 - DIALOG_MARGIN_TOP,
       width: this.data.width + 2 * DIALOG_MARGIN,
     });
   }

@@ -131,6 +131,32 @@ const onBlur = (e: React.FocusEvent<HTMLInputElement>) => {
 };
 
 export const AddressBar = observer(() => {
+  const searchEngine = React.useMemo(() => {
+    try {
+      const url = new URL(store.addressbarValue);
+      const searchParams = new URLSearchParams(url.search);
+      switch (url.hostname.replace('www.', '')) {
+        case 'duckduckgo.com':
+          return searchParams.get('q');
+        case 'google.com':
+          return searchParams.get('q');
+        case 'bing.com':
+          return searchParams.get('q');
+        case 'yahoo.com':
+          return searchParams.get('p');
+        case 'ecosia.org':
+          return searchParams.get('q');
+        case 'ekoru.org':
+          return searchParams.get('q');
+      }
+    } catch {
+      return undefined;
+    }
+    return undefined;
+  }, [store.addressbarValue]);
+  const searchValue = React.useMemo(() => {
+    return searchEngine ?? store.addressbarValue;
+  }, [store.addressbarValue]);
   return (
     <StyledAddressBar
       ref={(r) => (addressbarRef = r)}
@@ -157,22 +183,24 @@ export const AddressBar = observer(() => {
           onMouseUp={onMouseUp}
           onChange={onChange}
           placeholder="Search or type in a URL"
-          visible={!store.addressbarTextVisible || store.addressbarValue === ''}
-          value={store.addressbarValue}
+          visible={!store.addressbarTextVisible || searchValue === ''}
+          value={searchValue}
         ></Input>
-        <Text
-          visible={store.addressbarTextVisible && store.addressbarValue !== ''}
-        >
-          {store.addressbarUrlSegments.map((item, key) => (
-            <div
-              key={key}
-              style={{
-                opacity: item.grayOut ? 0.54 : 1,
-              }}
-            >
-              {item.value}
-            </div>
-          ))}
+        <Text visible={store.addressbarTextVisible && searchValue !== ''}>
+          {searchEngine ? (
+            <div>{searchValue}</div>
+          ) : (
+            store.addressbarUrlSegments.map((item, key) => (
+              <div
+                key={key}
+                style={{
+                  opacity: item.grayOut ? 0.54 : 1,
+                }}
+              >
+                {item.value}
+              </div>
+            ))
+          )}
         </Text>
       </InputContainer>
       {!store.isCompact && <SiteButtons />}
