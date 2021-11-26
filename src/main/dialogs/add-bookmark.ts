@@ -44,8 +44,6 @@ export const showAddBookmarkDialog = async (
     }),
     onWindowBoundsUpdate: () => dialog.hide(),
   });
-  dialog.on('loaded', (e) => {
-    console.log(e, data);
-    e.reply('data', data);
-  });
+  if (!dialog) return;
+  dialog.browserView.webContents.send('data', data);
 };

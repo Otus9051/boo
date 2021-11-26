@@ -114,8 +114,6 @@ export class TabsStore {
       const tab = this.getTabById(id);
 
       await tab?.select();
-      console.log(this.list.map((a) => [a.id, a.url]));
-      console.log('huh', this.getTabById(id));
     });
 
     ipcRenderer.on('select-last-tab', async () => {

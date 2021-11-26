@@ -58,3 +58,26 @@ export const Buttons = styled.div`
     margin-right: 8px;
   }
 `;
+
+export const Select = styled.select<{
+  theme: ITheme;
+}>`
+  height: 40px;
+  min-width: 200px;
+  position: relative;
+  border-radius: 8px;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  border: 0;
+  padding: 0.3rem;
+  align-items: center;
+  -webkit-appearance: none;
+  ${({ theme }) => css`
+    background-color: ${theme['control.backgroundColor']};
+
+    &:hover {
+      background-color: ${theme['control.hover.backgroundColor']};
+    }
+  `}
+`;

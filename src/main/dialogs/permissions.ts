@@ -23,8 +23,6 @@ export const requestPermission = (
       browserWindow,
     );
 
-    console.log(name, url, details);
-
     appWindow.viewManager.selected.requestedPermission = { name, url, details };
 
     const dialog: IDialog = await Application.instance.dialogs.show({
@@ -39,7 +37,6 @@ export const requestPermission = (
       tabAssociation: {
         tabId,
         getTabInfo: (tabId) => {
-          console.log(tabId);
           const tab = appWindow.viewManager.views.get(tabId);
           return tab.requestedPermission;
         },

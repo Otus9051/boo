@@ -3,13 +3,7 @@ import { observer } from 'mobx-react-lite';
 
 import store from '../../store';
 import { ThemeProvider } from 'styled-components';
-import {
-  Wrapper,
-  Content,
-  Image,
-  StyledTime,
-  StyledForecast
-} from './style';
+import { Wrapper, Content, Image, StyledTime, StyledForecast } from './style';
 import { TopSites } from '../TopSites';
 import { WebUIStyle } from '~/renderer/mixins/default-styles';
 
@@ -60,7 +54,6 @@ export default observer(() => {
     const fac = new FastAverageColor();
     return (await fac.getColorAsync(store.settings.tab.image)).hex;
   }, [store.settings.tab.image]);
-  console.log(theme);
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={{ ...store.theme }}>

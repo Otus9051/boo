@@ -55,7 +55,7 @@ export class Store extends DialogStore {
       );
 
       if (this.titleRef.current) {
-        this.titleRef.current.value = title;
+        this.titleRef.current.value = this.bookmark.title ?? title;
         this.titleRef.current.focus();
         this.titleRef.current.select();
       }

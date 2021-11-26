@@ -44,7 +44,6 @@ const Bookmark = observer(
     function onContextMenu(event: any) {
       store.bookmarksBar.createContextMenu(event, id);
     }
-    console.log(favicon);
     return (
       <BookmarkButton
         dense

@@ -82,16 +82,14 @@ export class DialogStore {
     this.onUpdateTabInfo = () => {};
     this.onVisibilityChange = () => {};
 
-    (async () => {
-      await this.send('loaded');
-    })()
+    this.send('loaded');
   }
 
   public async invoke(channel: string, ...args: any[]) {
     return await ipcRenderer.invoke(`${channel}-${this.id}`, ...args);
   }
 
-  public async send(channel: string, ...args: any[]) {
+  public send(channel: string, ...args: any[]) {
     ipcRenderer.send(`${channel}-${this.id}`, ...args);
   }
 

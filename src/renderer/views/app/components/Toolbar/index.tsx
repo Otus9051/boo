@@ -35,7 +35,6 @@ export const Toolbar = observer(() => {
 
     if (store.tabs.selectedTab?.color && store.tabs.selectedTab?.color !== '') {
       const cc = contrast(store.tabs.selectedTab?.color);
-      console.log(cc);
       switch (cc) {
         case 'dark':
           return false;
