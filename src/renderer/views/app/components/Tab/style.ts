@@ -117,13 +117,9 @@ export const StyledTitle = styled.div<TitleProps>`
   text-overflow: ellipsis;
   white-space: nowrap;
   transition: 0.2s margin-left;
-  margin-left: 8px;
+
   min-width: 0;
   flex: 1;
-
-  ${({ isIcon, selected, theme }) => css`
-    margin-left: ${!isIcon ? 0 : 12}px;
-  `};
 `;
 
 interface IconProps {
@@ -133,6 +129,7 @@ export const StyledIcon = styled.div<IconProps>`
   height: 16px;
   min-width: 16px;
   transition: 0.2s opacity, 0.2s min-width;
+  margin-right: 8px;
   ${centerIcon()};
   ${({ isIconSet }) => css`
     min-width: ${isIconSet ? 0 : 16},
