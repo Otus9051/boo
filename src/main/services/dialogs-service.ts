@@ -123,9 +123,9 @@ export class DialogsService {
     browserWindow.addBrowserView(browserView);
     browserView.setBounds({ x: 0, y: 0, width: 1, height: 1 });
 
-    // if (devtools) {
-    browserView.webContents.openDevTools({ mode: 'detach' });
-    // }
+    if (devtools) {
+      browserView.webContents.openDevTools({ mode: 'detach' });
+    }
 
     const tabsEvents: {
       activate?: (id: number) => void;
