@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+    <id>skye.desktop</id>
+    <metadata_license>MIT</metadata_license>
+    <project_license>MIT</project_license>
+    <name>Skye Browser</name>
+    <url type="homepage">https://skye.innatical.com</url>
+    <summary>Imagine a browser that wasn’t absolute shit</summary>
+    <description>
+        <p>HAHA FUCK YOU SENTIALX THIS IS BETTER THEN WEXOND YOU FUCK</p>
+    </description>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://file.coffee/u/io-dQuSZiNMIXo.png</image>
+            <caption>The Homepage</caption>
+        </screenshot>
+    </screenshots>
+</component>
