@@ -14,11 +14,11 @@
   "publish": "github",
   "linux": {
     "category": "Network",
+    "executableName": "skye",
     "desktop": {
       "Name": "Innatical Skye",
       "Comment": "Browse the Web",
       "GenericName": "Internet",
-      "Exec": "skye",
       "Icon": "static/icons/skye.png",
       "Type": "Application",
       "StartupNotify": false,
