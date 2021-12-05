@@ -7,7 +7,7 @@
 
 ## Skye
 
-[![Boop! Linux - Core Application](https://img.shields.io/badge/Boop!_Linux-Core_Application-915cee?logo=Linux+Containers&logoColor=white)](https://)
+[![tauLinux - Core Application](https://img.shields.io/badge/tauLinux-Core_Application-915cee?logo=Linux+Containers&logoColor=white)](https://)
 
 The next generation Web Browser powered by Innatical
 
