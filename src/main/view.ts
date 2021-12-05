@@ -79,7 +79,7 @@ export class View {
       },
     });
 
-    this.browserView.setBackgroundColor('#fff');
+    this.browserView.setBackgroundColor('#FFFFFFFF');
 
     this.incognito = incognito;
 
@@ -131,6 +131,7 @@ export class View {
     });
 
     this.webContents.addListener('did-navigate', async (e, url) => {
+      this.browserView.setBackgroundColor('#FFFFFFFF');
       this.emitEvent('did-navigate', url);
       await this.addHistoryItem(url);
       await this.updateURL(url);
