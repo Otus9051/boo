@@ -19,7 +19,7 @@
       "Name": "Innatical Skye",
       "Comment": "Browse the Web",
       "GenericName": "Internet",
-      "Icon": "static/icons/skye.png",
+      "Icon": "/usr/share/icons/hicolor/0x0/apps/skye.png",
       "Type": "Application",
       "StartupNotify": false,
       "Categories": "Internet"
