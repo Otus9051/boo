@@ -18,12 +18,12 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Install required build toolchain
         if: matrix.os == 'ubuntu-latest'
         run: sudo apt-get install -y libarchive-tools
-        
+
       - name: Configure fontawesome
         uses: DamianReeves/write-file-action@v1.0
         with:

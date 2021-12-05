@@ -75,11 +75,11 @@ export class View {
         plugins: true,
         nativeWindowOpen: true,
         webSecurity: true,
-        // @ts-ignore
-        transparent: true,
         javascript: true,
       },
     });
+
+    this.browserView.setBackgroundColor('#fff');
 
     this.incognito = incognito;
 
@@ -140,6 +140,13 @@ export class View {
       'did-navigate-in-page',
       async (e, url, isMainFrame) => {
         if (isMainFrame) {
+          this.window.updateTitle();
+          await this.updateData();
+
+          this.emitEvent(
+            'title-updated',
+            this.browserView.webContents.getTitle(),
+          );
           this.emitEvent('did-navigate', url);
 
           await this.addHistoryItem(url, true);

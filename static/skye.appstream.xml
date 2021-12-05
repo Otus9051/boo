@@ -15,4 +15,26 @@
             <caption>The Homepage</caption>
         </screenshot>
     </screenshots>
+    <releases>
+        <release version="6.2.0" date="2021-12-04" />
+        <description>
+            <p>Added</p>
+            <ul>
+            <li>Appstream Info</li>
+            <lil>Desktop File</li>
+            </ul>
+            <p>Changed</p>
+            <ul>
+            <li>Upgrade to Electron 16</li>
+            <li>Upgrade to Node 16</li>
+
+            </ul>
+            <p>Fixed</p>
+            <ul>
+            <li>Transparent Background bug</li>
+            <li>Fix page title not updating</li>
+            </ul>
+        </description>
+        </release>
+    </releases>
 </component>
