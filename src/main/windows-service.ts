@@ -25,7 +25,7 @@ export class WindowsService {
           const view = win.viewManager.create(details, false, false);
           win.webContents.send(
             'create-tab',
-            { ...details, active: true },
+            { ...details, active: details.active ?? true },
             false,
             view.id,
           );

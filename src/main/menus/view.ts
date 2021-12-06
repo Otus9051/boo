@@ -1,8 +1,5 @@
 import { AppWindow } from '../windows';
-import {
-  clipboard,
-  Menu,
-} from 'electron';
+import { clipboard, Menu } from 'electron';
 import { isURL, prefixHttp } from '~/utils';
 import { saveAs, viewSource, printPage } from './common-actions';
 
@@ -22,6 +19,18 @@ export const getViewMenu = (
             {
               url: params.linkURL,
               active: true,
+            },
+            true,
+          );
+        },
+      },
+      {
+        label: 'Open link in background tab',
+        click: () => {
+          appWindow.viewManager.create(
+            {
+              url: params.linkURL,
+              active: false,
             },
             true,
           );

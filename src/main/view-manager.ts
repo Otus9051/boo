@@ -51,20 +51,15 @@ export class ViewManager extends EventEmitter {
     });
 
     ipcMain.on('Print', () => {
-      this.views.get(this.selectedId).webContents.print();
+      this.selected.webContents.print();
     });
 
-    ipcMain.handle(`view-select-${id}`, async (e, id: number, focus: boolean) => {
-      if (process.env.ENABLE_EXTENSIONS) {
-        const view = this.views.get(id);
-        if (focus) {
-          Application.instance.sessions.chromeExtensions.selectTab(
-            view.webContents,
-          );
-        }
-      }
-      await this.select(id, focus);
-    });
+    ipcMain.handle(
+      `view-select-${id}`,
+      async (e, id: number, focus: boolean) => {
+        await this.select(id, focus);
+      },
+    );
 
     ipcMain.on(`view-destroy-${id}`, (e, id: number) => {
       this.destroy(id);
@@ -145,6 +140,10 @@ export class ViewManager extends EventEmitter {
         webContents,
         this.window.win,
       );
+
+      if (details.active) {
+        Application.instance.sessions.chromeExtensions.selectTab(webContents);
+      }
     }
 
     webContents.once('destroyed', () => {
@@ -163,6 +162,7 @@ export class ViewManager extends EventEmitter {
   }
 
   public async select(id: number, focus = true) {
+    console.trace();
     const { selected } = this;
     const view = this.views.get(id);
     if (!view) {
@@ -190,6 +190,7 @@ export class ViewManager extends EventEmitter {
 
     view.updateNavigationState();
 
+    Application.instance.sessions.chromeExtensions.selectTab(view.webContents);
     this.emit('activated', id);
 
     // TODO: this.emitZoomUpdate(false);
