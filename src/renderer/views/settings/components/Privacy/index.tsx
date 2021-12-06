@@ -18,10 +18,43 @@ const DoNotTrackToggle = observer(() => {
   return (
     <Row onClick={onSwitchChange('doNotTrack')}>
       <Title>
-        Send a &quot;Do Not Track&quot; request with your browsing traffic
+        Send a &quot;Do Not Track&quot; request with your browsing traffic. Not
+        recommended,{' '}
+        <a
+          href="https://spreadprivacy.com/do-not-track"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+        >
+          see why
+        </a>
       </Title>
       <Control>
         <Switch value={doNotTrack} />
+      </Control>
+    </Row>
+  );
+});
+
+const GlobalPrivacyControlToggle = observer(() => {
+  const { globalPrivacyControl } = store.settings;
+
+  return (
+    <Row onClick={onSwitchChange('globalPrivacyControl')}>
+      <Title>
+        Send a{' '}
+        <a
+          href="https://globalprivacycontrol.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={(e) => e.stopPropagation()}
+        >
+          Global Privacy Control
+        </a>{' '}
+        request with your browsing traffic
+      </Title>
+      <Control>
+        <Switch value={globalPrivacyControl} />
       </Control>
     </Row>
   );
@@ -38,6 +71,7 @@ export const Privacy = () => {
       >
         Clear browsing data
       </Button>
+      <GlobalPrivacyControlToggle />
       <DoNotTrackToggle />
     </>
   );

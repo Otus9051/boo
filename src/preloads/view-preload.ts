@@ -159,6 +159,12 @@ if (
         `window.navigator.doNotTrack = { value: 1 }`,
       );
     }
+
+    if (settings.globalPrivacyControl) {
+      await webFrame.executeJavaScript(
+        `window.navigator.globalPrivacyControl = true`,
+      );
+    }
   })();
 }
 
