@@ -101,9 +101,8 @@ export class DialogsService {
       browserView = await this.createBrowserView();
     }
 
-    const appWindow = Application.instance.windows.fromBrowserWindow(
-      browserWindow,
-    );
+    const appWindow =
+      Application.instance.windows.fromBrowserWindow(browserWindow);
 
     if (foundDialog && tabAssociation) {
       foundDialog.tabIds.push(tabAssociation.tabId);
@@ -111,6 +110,7 @@ export class DialogsService {
     }
 
     browserWindow.webContents.send('dialog-visibility-change', name, true);
+    appWindow.fixDragging();
 
     this.browserViewDetails.set(browserView.webContents.id, true);
 
@@ -160,6 +160,7 @@ export class DialogsService {
         if (tabId && tabId !== selectedId) return;
 
         browserWindow.webContents.send('dialog-visibility-change', name, false);
+        appWindow.fixDragging();
 
         browserWindow.removeBrowserView(browserView);
 
@@ -220,6 +221,7 @@ export class DialogsService {
     tabsEvents.activate = (id) => {
       const visible = dialog.tabIds.includes(id);
       browserWindow.webContents.send('dialog-visibility-change', name, visible);
+      appWindow.fixDragging();
 
       if (visible) {
         dialog._sendTabInfo(id);

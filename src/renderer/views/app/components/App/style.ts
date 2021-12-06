@@ -10,9 +10,16 @@ export const Line = styled.div`
   background-color: black;
 `;
 
-export const StyledApp = styled.div`
+interface StyledAppProps {
+  dialogOpen: boolean;
+}
+
+export const StyledApp = styled.div<StyledAppProps>`
   display: flex;
   flex-flow: column;
   background-color: #fff;
-  -webkit-app-region: drag;
+  ${({ dialogOpen }) =>
+    css`
+      -webkit-app-region: ${dialogOpen ? 'no-drag' : 'drag'};
+    `}
 `;

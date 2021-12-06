@@ -50,6 +50,7 @@ export const Toolbar = observer(() => {
       onMouseDown={onMouseDown}
       isFullscreen={store.isFullscreen}
       color={store.tabs.selectedTab?.color}
+      dialogOpen={Object.values(store.dialogsVisibility).some((x) => !!x)}
     >
       <NavigationButtons />
       <div style={{ flex: 1 }} />

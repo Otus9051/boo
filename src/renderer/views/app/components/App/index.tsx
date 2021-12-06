@@ -58,6 +58,7 @@ const App = observer(() => {
       <StyledApp
         onMouseOver={store.isFullscreen ? onAppEnter : undefined}
         onMouseLeave={store.isFullscreen ? onAppLeave : undefined}
+        dialogOpen={Object.values(store.dialogsVisibility).some((x) => !!x)}
       >
         <UIStyle />
 

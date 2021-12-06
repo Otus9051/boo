@@ -1,4 +1,10 @@
-import { observable, computed, makeObservable, makeAutoObservable } from 'mobx';
+import {
+  observable,
+  computed,
+  makeObservable,
+  makeAutoObservable,
+  autorun,
+} from 'mobx';
 
 import { TabsStore } from './tabs';
 import { TabGroupsStore } from './tab-groups';
