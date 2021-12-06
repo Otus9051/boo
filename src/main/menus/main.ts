@@ -122,6 +122,8 @@ export const getMainMenu = () => {
           'Print',
         ),
 
+        ...(!isMac ? [{ role: 'quit' }] : [{}]),
+
         // Hidden items
 
         // Focus address bar
