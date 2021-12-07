@@ -122,16 +122,19 @@ export const getMainMenu = () => {
           'Print',
         ),
 
-        ...(!isMac ? [{ role: 'quit' }] : [{}]),
+        ...(!isMac ? [{ role: 'quit' }] : []),
 
         // Hidden items
 
         // Focus address bar
-        ...createMenuItem(['Ctrl+Space', 'CmdOrCtrl+L', 'Alt+D', 'F6'], async () => {
-          await Application.instance.dialogs
-            .getPersistent('search')
-            .show(Application.instance.windows.current.win);
-        }),
+        ...createMenuItem(
+          ['Ctrl+Space', 'CmdOrCtrl+L', 'Alt+D', 'F6'],
+          async () => {
+            await Application.instance.dialogs
+              .getPersistent('search')
+              .show(Application.instance.windows.current.win);
+          },
+        ),
 
         // Toggle menu
         ...createMenuItem(['Alt+F', 'Alt+E'], () => {
@@ -196,9 +199,8 @@ export const getMainMenu = () => {
         ...createMenuItem(
           isMac ? ['Cmd+[', 'Cmd+Left'] : ['Alt+Left'],
           () => {
-            const {
-              selected,
-            } = Application.instance.windows.current.viewManager;
+            const { selected } =
+              Application.instance.windows.current.viewManager;
             if (selected) {
               selected.webContents.goBack();
             }
@@ -208,9 +210,8 @@ export const getMainMenu = () => {
         ...createMenuItem(
           isMac ? ['Cmd+]', 'Cmd+Right'] : ['Alt+Right'],
           () => {
-            const {
-              selected,
-            } = Application.instance.windows.current.viewManager;
+            const { selected } =
+              Application.instance.windows.current.viewManager;
             if (selected) {
               selected.webContents.goForward();
             }
