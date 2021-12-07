@@ -5,7 +5,7 @@
     <project_license>MIT</project_license>
     <name>Skye Browser</name>
     <url type="homepage">https://skye.innatical.com</url>
-    <summary>Imagine a browser that wasn’t absolute shit</summary>
+    <summary>The Next Generation of Web Browsing, Powered by Innatical</summary>
     <description>
         <p>HAHA FUCK YOU SENTIALX THIS IS BETTER THEN WEXOND YOU FUCK</p>
     </description>
@@ -16,9 +16,9 @@
         </screenshot>
     </screenshots>
     <releases>
-        <release version="6.2.0" date="2021-12-04" />
+        <release version="6.3.2" date="2021-12-06" />
         <description>
-            <p>Added</p>
+            <!--<p>Added</p>
             <ul>
             <li>Appstream Info</li>
             <lil>Desktop File</li>
@@ -28,11 +28,10 @@
             <li>Upgrade to Electron 16</li>
             <li>Upgrade to Node 16</li>
 
-            </ul>
+            </ul> -->
             <p>Fixed</p>
             <ul>
-            <li>Transparent Background bug</li>
-            <li>Fix page title not updating</li>
+            <li>Appstream Support (We Hope)</li>
             </ul>
         </description>
         </release>
