@@ -12,6 +12,15 @@
   },
   "files": ["build/**/*", "package.json", "static/**/*"],
   "publish": "github",
+  "deb": {
+    "fpm": ["static/skye.appdata.xml=/usr/share/metainfo/skye.appdata.xml"]
+  },
+  "rpm": {
+    "fpm": ["static/skye.appdata.xml=/usr/share/metainfo/skye.appdata.xml"]
+  },
+  "pacman": {
+    "fpm": ["static/skye.appdata.xml=/usr/share/metainfo/skye.appdata.xml"]
+  },
   "linux": {
     "category": "Network",
     "executableName": "skye",
