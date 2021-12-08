@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>skye</id>
+    <metadata_license>CC-BY-SA-4.0</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+    <name>Skye Browser</name>
+    <url type="homepage">https://skye.innatical.com</url>
+    <summary>The Next Generation of Web Browsing, Powered by Innatical</summary>
+    <description>
+        <p>
+        Skye is a next generation web browser that integrates into the Innatical ecosystem, provides elegant design, has built-in ad and tracker blocking, and prioritizes speed.
+        </p>
+    </description>
+    <launchable type="desktop-id">skye.desktop</launchable>
+    <provides>
+        <binary>skye</binary>
+    </provides>
+    <screenshots>
+        <screenshot type="default">
+            <image>https://file.coffee/u/io-dQuSZiNMIXo.png</image>
+            <caption>The Homepage</caption>
+        </screenshot>
+    </screenshots>
+    <releases>
+        <release version="6.3.2" date="2021-12-06">
+            <description>
+                <p>Fixed</p>
+                <ul>
+                <li>Appstream Support (We Hope)</li>
+                </ul>
+            </description>
+        </release>
+    </releases>
+</component>

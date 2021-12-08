@@ -13,13 +13,13 @@
   "files": ["build/**/*", "package.json", "static/**/*"],
   "publish": "github",
   "deb": {
-    "fpm": ["static/skye.appdata.xml=/usr/share/metainfo/skye.appdata.xml"]
+    "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
   },
   "rpm": {
-    "fpm": ["static/skye.appdata.xml=/usr/share/metainfo/skye.appdata.xml"]
+    "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
   },
   "pacman": {
-    "fpm": ["static/skye.appdata.xml=/usr/share/metainfo/skye.appdata.xml"]
+    "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
   },
   "linux": {
     "category": "Network",
