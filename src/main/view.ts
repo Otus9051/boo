@@ -143,6 +143,7 @@ export class View {
       'did-navigate-in-page',
       async (e, url, isMainFrame) => {
         if (isMainFrame) {
+          this.browserView.setBackgroundColor('#FFFFFFFF');
           this.window.updateTitle();
           await this.updateData();
 
@@ -159,12 +160,14 @@ export class View {
     );
 
     this.webContents.addListener('did-stop-loading', async () => {
+      this.browserView.setBackgroundColor('#FFFFFFFF');
       this.updateNavigationState();
       this.emitEvent('loading', false);
       await this.updateURL(this.webContents.getURL());
     });
 
     this.webContents.addListener('did-start-loading', async () => {
+      this.browserView.setBackgroundColor('#FFFFFFFF');
       this.hasError = false;
       this.updateNavigationState();
       this.emitEvent('loading', true);
@@ -172,6 +175,7 @@ export class View {
     });
 
     this.webContents.addListener('did-start-navigation', async (e, ...args) => {
+      this.browserView.setBackgroundColor('#FFFFFFFF');
       this.updateNavigationState();
 
       this.favicon = '';
