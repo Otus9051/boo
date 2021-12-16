@@ -11,15 +11,15 @@ export const Line = styled.div`
 `;
 
 interface StyledAppProps {
-  dialogOpen: boolean;
+  modalOpen: boolean;
 }
 
 export const StyledApp = styled.div<StyledAppProps>`
   display: flex;
   flex-flow: column;
   background-color: #fff;
-  ${({ dialogOpen }) =>
+  ${({ modalOpen }) =>
     css`
-      -webkit-app-region: ${dialogOpen ? 'no-drag' : 'drag'};
+      -webkit-app-region: ${modalOpen ? 'no-drag' : 'drag'};
     `}
 `;

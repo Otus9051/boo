@@ -8,7 +8,7 @@ export interface ToolbarProps {
   isFullscreen: boolean;
   theme: ITheme;
   color?: string;
-  dialogOpen: boolean;
+  modalOpen: boolean;
 }
 
 export const StyledToolbar = styled.div<ToolbarProps>`
@@ -19,14 +19,14 @@ export const StyledToolbar = styled.div<ToolbarProps>`
   flex-flow: row;
   width: 100%;
   justify-content: center;
-  ${({ isFullscreen, theme, color, dialogOpen }) => css`
+  ${({ isFullscreen, theme, color, modalOpen }) => css`
     background-color: ${!!color ? color : theme['titlebar.backgroundColor']};
     align-items: ${theme.isCompact ? 'center' : 'initial'};
     padding-left: ${platform() === 'darwin' && !isFullscreen ? 78 : 4}px;
     padding-top: 10px;
     padding-bottom: 10px;
     &:before {
-      -webkit-app-region: ${isFullscreen || dialogOpen ? 'no-drag' : 'drag'};
+      -webkit-app-region: ${isFullscreen || modalOpen ? 'no-drag' : 'drag'};
     }
   `};
 

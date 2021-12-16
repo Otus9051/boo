@@ -24,7 +24,7 @@ export const Titlebar = observer(() => {
       onMouseDown={onMouseDown}
       isFullscreen={store.isFullscreen}
       color={store.tabs.selectedTab?.color}
-      dialogOpen={Object.values(store.dialogsVisibility).some((x) => !!x)}
+      modalOpen={store.modalOpen}
     >
       {store.isCompact && <NavigationButtons />}
       <Tabbar />

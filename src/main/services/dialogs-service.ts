@@ -21,7 +21,7 @@ interface IDialogShowOptions {
   tabAssociation?: IDialogTabAssociation;
   onWindowBoundsUpdate?: (disposition: BoundsDisposition) => void;
   onHide?: (dialog: IDialog) => void;
-  getBounds: () => IRectangle;
+  getBounds: (dialog: IDialog) => IRectangle;
 }
 
 export interface IDialog {
@@ -212,7 +212,7 @@ export class DialogsService {
           y: 0,
           width: 0,
           height: 0,
-          ...roundifyRectangle(getBounds()),
+          ...roundifyRectangle(getBounds(dialog)),
           ...roundifyRectangle(rect),
         });
       },

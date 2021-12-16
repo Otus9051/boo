@@ -7,7 +7,7 @@ import { centerIcon } from '~/renderer/mixins';
 interface TitlebarProps {
   isFullscreen: boolean;
   theme: ITheme;
-  dialogOpen: boolean;
+  modalOpen: boolean;
 }
 
 export const StyledTitlebar = styled.div<TitlebarProps>`
@@ -28,13 +28,13 @@ export const StyledTitlebar = styled.div<TitlebarProps>`
     content: '';
   }
 
-  ${({ isFullscreen, theme, color, dialogOpen }) => css`
+  ${({ isFullscreen, theme, color, modalOpen }) => css`
     background-color: ${color ? color : theme['titlebar.backgroundColor']};
     height: 45px;
     align-items: ${theme.isCompact ? 'center' : 'initial'};
 
     &:before {
-      -webkit-app-region: ${isFullscreen || dialogOpen ? 'no-drag' : 'drag'};
+      -webkit-app-region: ${isFullscreen || modalOpen ? 'no-drag' : 'drag'};
     }
   `};
 

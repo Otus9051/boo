@@ -22,6 +22,7 @@ import { IBrowserAction } from '../models';
 import { NEWTAB_URL } from '~/constants/tabs';
 import { IURLSegment } from '~/interfaces/urls';
 import { BookmarkBarStore } from './bookmark-bar';
+import { NONMODAL_DIALOGS } from '~/constants';
 
 export class Store {
   public settings = new SettingsStore(this);
@@ -89,6 +90,12 @@ export class Store {
   };
 
   // Computed
+
+  public get modalOpen() {
+    return Object.entries(this.dialogsVisibility)
+      .filter(([key]) => !NONMODAL_DIALOGS.includes(key))
+      .some(([, open]) => open);
+  }
 
   public get downloadProgress() {
     const downloading = this.downloads.filter((x) => !x.completed);
@@ -193,6 +200,7 @@ export class Store {
       isBookmarked: observable,
       zoomFactor: observable,
       dialogsVisibility: observable,
+      modalOpen: computed,
       addressbarUrlSegments: computed,
       addressbarValue: computed,
       theme: computed,
