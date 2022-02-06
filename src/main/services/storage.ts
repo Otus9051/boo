@@ -1,5 +1,5 @@
 import { ipcMain, dialog } from 'electron';
-import * as Datastore from 'nedb';
+import * as Datastore from '@seald-io/nedb';
 import { fileTypeFromBuffer } from 'file-type';
 import * as icojs from 'icojs';
 
@@ -23,6 +23,8 @@ import fetch from 'node-fetch';
 import { Settings } from '../models/settings';
 
 interface Databases {
+  // TODO: ts moment
+  // @ts-ignore
   [key: string]: Datastore;
 }
 
@@ -426,6 +428,8 @@ export class StorageService {
   }
 
   private createDatabase = (name: string) => {
+    // TODO: ts moment
+    // @ts-ignore
     return new Datastore({
       filename: getPath(`storage/${name}.db`),
       autoload: true,
