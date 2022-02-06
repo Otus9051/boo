@@ -1,6 +1,6 @@
 import { ipcMain, dialog } from 'electron';
 import * as Datastore from 'nedb';
-import { fromBuffer } from 'file-type';
+import { fileTypeFromBuffer } from 'file-type';
 import * as icojs from 'icojs';
 
 import { getPath } from '~/utils';
@@ -110,7 +110,7 @@ export class StorageService {
       return this.bookmarks;
     });
 
-    ipcMain.handle('bookmarks-sync', async() => {
+    ipcMain.handle('bookmarks-sync', async () => {
       await this.loadBookmarks();
     });
 
@@ -351,7 +351,11 @@ export class StorageService {
       await this.saveBookmarks();
       const removed = this.bookmarks.filter((x) => x.parent === id);
 
-      await this.remove({ scope: 'bookmarks', query: { parent: id }, multi: true });
+      await this.remove({
+        scope: 'bookmarks',
+        query: { parent: id },
+        multi: true,
+      });
 
       for (const i of removed) {
         if (i.isFolder) {
@@ -434,19 +438,19 @@ export class StorageService {
         const res = await requestURL(url);
 
         if (res.statusCode === 404) {
-          return undefined
+          return undefined;
         }
 
         let data = Buffer.from(res.data, 'binary');
 
-        const type = await fromBuffer(data);
+        const type = await fileTypeFromBuffer(data);
 
         if (type && type.ext === 'ico') {
           data = Buffer.from(new Uint8Array(await convertIcoToPng(data)));
         }
 
         const str = `data:${
-          (await fromBuffer(data))?.ext
+          (await fileTypeFromBuffer(data))?.ext
         };base64,${data.toString('base64')}`;
 
         await this.insert({
