@@ -264,17 +264,17 @@ export default observer(() => {
             </MenuItem>
           )}
           <MenuItem section="startup" icon={ICON_POWER}>
-            On startup
+            Startup Settings
           </MenuItem>
           <MenuItem
             section="address-bar"
             subSections={['search-engines']}
             icon={ICON_SEARCH}
           >
-            Address bar
+            Search Engines
           </MenuItem>
           <MenuItem section="downloads" icon={ICON_DOWNLOAD}>
-            Downloads
+            Download Settings
           </MenuItem>
           <MenuItem section="privacy" icon={ICON_SHIELD}>
             Privacy

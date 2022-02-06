@@ -1,4 +1,4 @@
-# Available keyboard shortcuts in Wexond
+# Available keyboard shortcuts in Skye
 
 ## Windows and Linux
 
@@ -19,7 +19,7 @@
 | Close current window        | `Ctrl + Shift + W` or `Alt + F4` |
 | Close Skye                  | `Ctrl + Shift + Q`               |
 
-### Wexond feature shortcuts
+### Skye feature shortcuts
 
 | Action                                  | Shortcut                        |
 | --------------------------------------- | ------------------------------- |
@@ -59,7 +59,7 @@
 | Hide Skye                   | `⌘ + H`                      |
 | Close Skye                  | `⌘ + Q`                      |
 
-### Wexond feature shortcuts
+### Skye feature shortcuts
 
 | Action                                  | Shortcut         |
 | --------------------------------------- | ---------------- |
