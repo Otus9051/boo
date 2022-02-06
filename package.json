@@ -39,7 +39,7 @@
     "postinstall": "patch-package"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.15",
+    "@babel/core": "^7.17.0",
     "@cliqz/adblocker-electron": "1.22.2",
     "@electron/remote": "^2.0.4",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
@@ -48,7 +48,7 @@
     "@types/crypto-js": "^4.0.1",
     "@types/jszip": "^3.4.1",
     "@types/nedb": "1.8.12",
-    "@types/node": "16.11.11",
+    "@types/node": "17.0.15",
     "@types/node-fetch": "^2.5.10",
     "@types/react": "17.0.39",
     "@types/react-dom": "17.0.11",
@@ -62,7 +62,7 @@
     "animejs": "^3.2.1",
     "awesome-node-loader": "^1.1.1",
     "babel-loader": "^8.2.2",
-    "concurrently": "^6.0.2",
+    "concurrently": "^7.0.0",
     "copy-webpack-plugin": "^8.1.1",
     "cross-env": "7.0.3",
     "electron": "^16.0.4",
