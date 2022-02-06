@@ -12,10 +12,8 @@ export declare interface DialogStore {
 }
 
 export class DialogStore {
-  @observable
   public settings: ISettings = DEFAULT_SETTINGS;
 
-  @computed
   public get theme() {
     return getTheme(this.settings.theme);
   }
@@ -24,7 +22,6 @@ export class DialogStore {
 
   private readonly persistent: boolean = false;
 
-  @observable
   public visible = false;
 
   public firstTime = false;
@@ -37,8 +34,8 @@ export class DialogStore {
     } = {},
   ) {
     makeObservable(this, {
-      theme: computed,
       settings: observable,
+      theme: computed,
       visible: observable,
     });
 

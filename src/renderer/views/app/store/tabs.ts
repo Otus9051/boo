@@ -2,8 +2,8 @@ import {
   observable,
   action,
   computed,
-  makeObservable,
   makeAutoObservable,
+  makeObservable,
 } from 'mobx';
 import * as React from 'react';
 
@@ -60,6 +60,23 @@ export class TabsStore {
 
   public constructor() {
     makeObservable(this, {
+      onResize: action,
+      createTab: action,
+      createTabs: action,
+      addTab: action,
+      addTabs: action,
+      pinTab: action,
+      unpinTab: action,
+      muteTab: action,
+      unmuteTab: action,
+      updateTabsBounds: action,
+      calculateTabMargins: action,
+      setTabGroupsLefts: action,
+      setTabsWidths: action,
+      setTabsLefts: action,
+      replaceTab: action,
+      onMouseUp: action,
+      onMouseMove: action,
       list: observable,
       isDragging: observable,
       hoveredTabId: observable,
@@ -188,7 +205,6 @@ export class TabsStore {
     });
   }
 
-  @action
   public onResize = (e: Event) => {
     if (e.isTrusted) {
       this.removedTabs = 0;
@@ -207,7 +223,7 @@ export class TabsStore {
     return this.list.find((x) => x.id === id);
   }
 
-  @action public createTab(
+  public createTab(
     options: chrome.tabs.CreateProperties,
     id: number,
     tabGroupId = -1,
@@ -231,10 +247,7 @@ export class TabsStore {
     return tab;
   }
 
-  @action public createTabs(
-    options: chrome.tabs.CreateProperties[],
-    ids: number[],
-  ) {
+  public createTabs(options: chrome.tabs.CreateProperties[], ids: number[]) {
     this.removedTabs = 0;
 
     const tabs = options.map((option, i) => {
@@ -277,7 +290,6 @@ export class TabsStore {
     }, milliseconds);
   };
 
-  @action
   public async addTab(
     options = defaultTabOptions,
     tabGroupId: number = undefined,
@@ -293,7 +305,6 @@ export class TabsStore {
     return this.createTab(opts, id, tabGroupId);
   }
 
-  @action
   public async addTabs(options: chrome.tabs.CreateProperties[]) {
     ipcRenderer.send(`hide-window-${store.windowId}`);
 
@@ -316,7 +327,6 @@ export class TabsStore {
     (this.list as any).remove(this.getTabById(id));
   }
 
-  @action
   public pinTab(tab: ITab) {
     tab.isPinned = true;
     store.startupTabs.updateStartupTabItem(tab);
@@ -327,7 +337,6 @@ export class TabsStore {
     });
   }
 
-  @action
   public unpinTab(tab: ITab) {
     tab.isPinned = false;
     store.startupTabs.updateStartupTabItem(tab);
@@ -345,19 +354,16 @@ export class TabsStore {
     });
   }
 
-  @action
   public muteTab(tab: ITab) {
     ipcRenderer.send(`mute-view-${store.windowId}`, tab.id);
     tab.isMuted = true;
   }
 
-  @action
   public unmuteTab(tab: ITab) {
     ipcRenderer.send(`unmute-view-${store.windowId}`, tab.id);
     tab.isMuted = false;
   }
 
-  @action
   public updateTabsBounds(animation: boolean) {
     this.calculateTabMargins();
     this.setTabsWidths(animation);
@@ -365,7 +371,6 @@ export class TabsStore {
     this.setTabsLefts(animation);
   }
 
-  @action
   public calculateTabMargins() {
     const tabs = this.list.filter((x) => !x.isClosing);
 
@@ -390,7 +395,6 @@ export class TabsStore {
     }
   }
 
-  @action
   public setTabGroupsLefts(animation: boolean) {
     const tabs = this.list.filter((x) => !x.isClosing);
 
@@ -414,7 +418,6 @@ export class TabsStore {
     }
   }
 
-  @action
   public setTabsWidths(animation: boolean) {
     const tabs = this.list.filter((x) => !x.isClosing);
 
@@ -445,7 +448,6 @@ export class TabsStore {
     }
   }
 
-  @action
   public setTabsLefts(animation: boolean) {
     const tabs = this.list.filter((x) => !x.isClosing);
 
@@ -469,7 +471,6 @@ export class TabsStore {
     );
   }
 
-  @action
   public replaceTab(firstTab: ITab, secondTab: ITab) {
     const index = this.list.indexOf(secondTab);
 
@@ -559,7 +560,6 @@ export class TabsStore {
     }
   }
 
-  @action
   public onMouseUp = () => {
     const selectedTab = this.selectedTab;
 
@@ -572,7 +572,6 @@ export class TabsStore {
     this.updateTabsBounds(true);
   };
 
-  @action
   public onMouseMove = (e: any) => {
     const { selectedTab } = this;
 

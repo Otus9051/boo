@@ -82,6 +82,11 @@ export class ITab {
     id: number,
   ) {
     makeObservable(this, {
+      updateData: action,
+      select: action,
+      setLeft: action,
+      setWidth: action,
+      close: action,
       addressbarValue: observable,
       url: observable,
       favicon: observable,
@@ -124,7 +129,6 @@ export class ITab {
     }
   }
 
-  @action
   public async updateData() {
     if (!store.isIncognito) {
       await store.startupTabs.addStartupTabItem({
@@ -145,7 +149,6 @@ export class ITab {
     return store.tabGroups.getGroupById(this.tabGroupId);
   }
 
-  @action
   public async select() {
     if (!this.isClosing) {
       store.tabs.selectedTabId = this.id;
@@ -234,19 +237,16 @@ export class ITab {
     store.tabs.updateTabsBounds(true);
   }
 
-  @action
   public setLeft(left: number, animation: boolean) {
     animateTab('translateX', left, this.ref.current, animation);
     this.left = left;
   }
 
-  @action
   public setWidth(width: number, animation: boolean) {
     animateTab('width', width, this.ref.current, animation);
     this.width = width;
   }
 
-  @action
   public async close() {
     store.tabs.closedUrl = this.url;
     store.tabs.canShowPreview = false;

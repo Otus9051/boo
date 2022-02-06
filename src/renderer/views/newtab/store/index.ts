@@ -4,15 +4,12 @@ import { getTheme } from '~/utils/themes';
 import { DEFAULT_SETTINGS } from '~/constants';
 
 export class Store {
-  @observable
   public settings: ISettings = { ...(window as any).settings };
 
-  @computed
   public get theme(): ITheme {
     return getTheme(this.settings.theme);
   }
 
-  @observable
   public topSites: IVisitedItem[] = [];
 
   public updateSettings(newSettings: ISettings) {
@@ -20,7 +17,11 @@ export class Store {
   }
 
   public constructor() {
-    makeObservable(this);
+    makeObservable(this, {
+      settings: observable,
+      theme: computed,
+      topSites: observable,
+    });
 
     (window as any).updateSettings = (settings: ISettings) => {
       this.settings = { ...this.settings, ...settings };
