@@ -291,7 +291,7 @@ export class StorageService {
       });
 
       if (req.status === 200) {
-        items = await req.json();
+        items = (await req.json()) as IBookmark[];
       }
     }
 

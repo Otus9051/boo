@@ -320,45 +320,45 @@
   resolved "https://registry.yarnpkg.com/@canvas/image-data/-/image-data-1.0.0.tgz#3bd2cd856e13fc9e2c25feff360a4056857b0367"
   integrity sha512-BxOqI5LgsIQP1odU5KMwV9yoijleOPzHL18/YvNqF9KFSGF2K/DLlYAbDQsWqd/1nbaFuSkYD/191dpMtNh4vw==
 
-"@cliqz/adblocker-content@^1.23.0":
-  version "1.23.0"
-  resolved "https://registry.yarnpkg.com/@cliqz/adblocker-content/-/adblocker-content-1.23.0.tgz#4417a28d6018138956898efa141c9e6f52c9ec34"
-  integrity sha512-X1osDX8pWGE1wGFnJqdY4qnwHI9Kb48Tom8HeZWTYDsf8VN636xUB5e5s4YZCTSfn271tFHYSdXNx3+TZqkkkQ==
+"@cliqz/adblocker-content@^1.23.4":
+  version "1.23.4"
+  resolved "https://registry.yarnpkg.com/@cliqz/adblocker-content/-/adblocker-content-1.23.4.tgz#d7803ab5f3c998247100b3b29b89ce5b3442314e"
+  integrity sha512-Ib8c8E8rnrDygUfO02hAkwD9qUmW+t0cq1MuKg9iEVGOJVZwZU27SpJDoWhHz9bninzcxthzJYlLGgBZzcqq0Q==
   dependencies:
-    "@cliqz/adblocker-extended-selectors" "^1.23.0"
+    "@cliqz/adblocker-extended-selectors" "^1.23.4"
 
-"@cliqz/adblocker-electron-preload@^1.22.2":
-  version "1.23.0"
-  resolved "https://registry.yarnpkg.com/@cliqz/adblocker-electron-preload/-/adblocker-electron-preload-1.23.0.tgz#69b42929fb06f1a3e0af7822813f7d4fb0698c3e"
-  integrity sha512-sLvmoI7sr9dro/zBidVJU8gGrh+8GmS4Bzkbmxl5Wzgr6Q7cAPf1OOO8ixSXltFurJWH7OJCgPss4WC8Q/kc5w==
+"@cliqz/adblocker-electron-preload@^1.23.4":
+  version "1.23.4"
+  resolved "https://registry.yarnpkg.com/@cliqz/adblocker-electron-preload/-/adblocker-electron-preload-1.23.4.tgz#41946642c52e1a51d0514cf5513dd9a11a020fae"
+  integrity sha512-i1NMv5EeAB7T393zhBVwo+74qd082pCIIySRGDLrOqm8BAosCjXzXifq6p+14d68k1K+C8nDahHm/XvpgWMTCw==
   dependencies:
-    "@cliqz/adblocker-content" "^1.23.0"
+    "@cliqz/adblocker-content" "^1.23.4"
 
-"@cliqz/adblocker-electron@1.22.2":
-  version "1.22.2"
-  resolved "https://registry.yarnpkg.com/@cliqz/adblocker-electron/-/adblocker-electron-1.22.2.tgz#85af3b49f7f653e6fb0d008b6523e3b3ba0dd41e"
-  integrity sha512-uSQjbcv9/csjQOO0AgqK8AnqdpKseebPkwXozglU1uFVVnuSOTs/4RohL3yac9uMkJtfyAIhT3mnbw9Cf4o+gQ==
+"@cliqz/adblocker-electron@1.23.4":
+  version "1.23.4"
+  resolved "https://registry.yarnpkg.com/@cliqz/adblocker-electron/-/adblocker-electron-1.23.4.tgz#6144199209aa9f1f73de5ee9d8b73c61deaf5945"
+  integrity sha512-ld/2jdf8rIzNEHAG/ZFfapDISityA++Kxql1DqfsIUi0xcRlQdz6ijWQ0+xVOW4ZhTifGjlUvaq60MVn+R3OUQ==
   dependencies:
-    "@cliqz/adblocker" "^1.22.2"
-    "@cliqz/adblocker-electron-preload" "^1.22.2"
+    "@cliqz/adblocker" "^1.23.4"
+    "@cliqz/adblocker-electron-preload" "^1.23.4"
     tldts-experimental "^5.6.21"
 
-"@cliqz/adblocker-extended-selectors@^1.23.0":
-  version "1.23.0"
-  resolved "https://registry.yarnpkg.com/@cliqz/adblocker-extended-selectors/-/adblocker-extended-selectors-1.23.0.tgz#44e54a91ae6f4cbc24f76f5b0ce16ec03851c015"
-  integrity sha512-6Zl/wdGBuRd80ssmThOYS0L9u2t4lZElJXpxRB3Jp7uF6oL4LqSK4OKps4x8BktdQMgej6r5EhCh1avwu/13Bg==
+"@cliqz/adblocker-extended-selectors@^1.23.4":
+  version "1.23.4"
+  resolved "https://registry.yarnpkg.com/@cliqz/adblocker-extended-selectors/-/adblocker-extended-selectors-1.23.4.tgz#76e310ff6598ec76eacf402bd4733e7b8ab0ee98"
+  integrity sha512-qDfeOwe1UK4fGQFFafQMftdPy7uLm5JwKiM8zcGiYzJqRxTvnquRTGzYLkQLri9L1Q4R9Tvtg1wZtWMIrQnO6Q==
 
-"@cliqz/adblocker@^1.22.2":
-  version "1.23.0"
-  resolved "https://registry.yarnpkg.com/@cliqz/adblocker/-/adblocker-1.23.0.tgz#a970d1199d36161a6154e27654cd7eb59a10a497"
-  integrity sha512-SRgSqEzFSN99zBeW3Or7ZW1uiIn+O2/Ol6KmZnsTZ/Wrn2RAQsm4wEzxPi6BSC3HpdJh2JdKuAwISavpmhuuvA==
+"@cliqz/adblocker@^1.23.4":
+  version "1.23.4"
+  resolved "https://registry.yarnpkg.com/@cliqz/adblocker/-/adblocker-1.23.4.tgz#dbf2282e223ca1bf963bc34d9a5d2b7f506513b5"
+  integrity sha512-IVP6L2on4SFCAk13hhH87MDbfXxvWv86LScKPoD7rOg+5f51HWp4meW+yFtv/VbLdpkKgORWXNA1KttVW0IuKA==
   dependencies:
-    "@cliqz/adblocker-content" "^1.23.0"
-    "@cliqz/adblocker-extended-selectors" "^1.23.0"
+    "@cliqz/adblocker-content" "^1.23.4"
+    "@cliqz/adblocker-extended-selectors" "^1.23.4"
     "@remusao/guess-url-type" "^1.1.2"
     "@remusao/small" "^1.1.2"
     "@remusao/smaz" "^1.7.1"
-    "@types/chrome" "^0.0.159"
+    "@types/chrome" "^0.0.176"
     "@types/firefox-webext-browser" "^94.0.0"
     tldts-experimental "^5.6.21"
 
@@ -652,10 +652,10 @@
     "@types/filesystem" "*"
     "@types/har-format" "*"
 
-"@types/chrome@^0.0.159":
-  version "0.0.159"
-  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.159.tgz#0c1125fbb6d1fd64713e35de9aafbfd5a1b7a33a"
-  integrity sha512-WZBkNJGAwZuRgv/an94DANdzFtJK0TvlO/evMpJD/TYnkjIxynIAU6RM7M78e8tyig/vD6weQ9T1Ba7v8nYjXQ==
+"@types/chrome@^0.0.176":
+  version "0.0.176"
+  resolved "https://registry.yarnpkg.com/@types/chrome/-/chrome-0.0.176.tgz#617fcbe41ea1d9c5d50c9e7fb8ebfe2d9aef853a"
+  integrity sha512-LOveFOMIUhMJjvRzZv5whGBpncP/gdJ4hcxeAqg94wGi6CyKaCmLgFSofgItf85GuLTl/0BQ6J/Y1e8BqZWfEg==
   dependencies:
     "@types/filesystem" "*"
     "@types/har-format" "*"
@@ -828,13 +828,12 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node-fetch@^2.5.10":
-  version "2.5.12"
-  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.5.12.tgz#8a6f779b1d4e60b7a57fb6fd48d84fb545b9cc66"
-  integrity sha512-MKgC4dlq4kKNa/mYrwpKfzQMB5X3ee5U6fSprkKpToBqBmX4nFZL9cW5jl6sWn+xpRJ7ypWh2yyqqr8UUCstSw==
+"@types/node-fetch@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-3.0.3.tgz#9d969c9a748e841554a40ee435d26e53fa3ee899"
+  integrity sha512-HhggYPH5N+AQe/OmN6fmhKmRRt2XuNJow+R3pQwJxOOF9GuwM7O2mheyGeIrs5MOIeNjDEdgdoyHBOrFeJBR3g==
   dependencies:
-    "@types/node" "*"
-    form-data "^3.0.0"
+    node-fetch "*"
 
 "@types/node@*":
   version "16.11.10"
@@ -2265,6 +2264,11 @@ csstype@^3.0.2, csstype@^3.0.6:
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.10.tgz#2ad3a7bed70f35b965707c092e5f30b327c290e5"
   integrity sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==
 
+data-uri-to-buffer@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-4.0.0.tgz#b5db46aea50f6176428ac05b73be39a57701a64b"
+  integrity sha512-Vr3mLBA8qWmcuschSLAOogKgQ/Jwxulv3RNE4FXnYWRGujzrRWQI4m12fQqRkwX06C0KanhLr4hK+GydchZsaA==
+
 date-fns@^2.16.1:
   version "2.26.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.26.0.tgz#fa45305543c392c4f914e50775fd2a4461e60fbd"
@@ -3070,6 +3074,14 @@ fd-slicer@~1.1.0:
   dependencies:
     pend "~1.2.0"
 
+fetch-blob@^3.1.2, fetch-blob@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/fetch-blob/-/fetch-blob-3.1.4.tgz#e8c6567f80ad7fc22fd302e7dcb72bafde9c1717"
+  integrity sha512-Eq5Xv5+VlSrYWEqKrusxY1C3Hm/hjeAsCGVG3ft7pZahlUAChpGZT/Ms1WmSLnEAisEXszjzu/s+ce6HZB2VHA==
+  dependencies:
+    node-domexception "^1.0.0"
+    web-streams-polyfill "^3.0.3"
+
 file-entry-cache@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/file-entry-cache/-/file-entry-cache-6.0.1.tgz#211b2dd9659cb0394b073e7323ac3c933d522027"
@@ -3204,15 +3216,6 @@ fork-ts-checker-webpack-plugin@^7.0.0:
     semver "^7.3.5"
     tapable "^2.2.1"
 
-form-data@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/form-data/-/form-data-3.0.1.tgz#ebd53791b78356a99af9a300d4282c4d5eb9755f"
-  integrity sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==
-  dependencies:
-    asynckit "^0.4.0"
-    combined-stream "^1.0.8"
-    mime-types "^2.1.12"
-
 form-data@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/form-data/-/form-data-4.0.0.tgz#93919daeaf361ee529584b9b31664dc12c9fa452"
@@ -3221,6 +3224,13 @@ form-data@^4.0.0:
     asynckit "^0.4.0"
     combined-stream "^1.0.8"
     mime-types "^2.1.12"
+
+formdata-polyfill@^4.0.10:
+  version "4.0.10"
+  resolved "https://registry.yarnpkg.com/formdata-polyfill/-/formdata-polyfill-4.0.10.tgz#24807c31c9d402e002ab3d8c720144ceb8848423"
+  integrity sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==
+  dependencies:
+    fetch-blob "^3.1.2"
 
 forwarded@0.2.0:
   version "0.2.0"
@@ -4614,12 +4624,19 @@ node-bookmarks-parser@^2.0.0:
   dependencies:
     cheerio "^1.0.0-rc.3"
 
-node-fetch@^2.6.7:
-  version "2.6.7"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
-  integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
+node-domexception@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/node-domexception/-/node-domexception-1.0.0.tgz#6888db46a1f71c0b76b3f7555016b63fe64766e5"
+  integrity sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==
+
+node-fetch@*, node-fetch@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-3.2.0.tgz#59390db4e489184fa35d4b74caf5510e8dfbaf3b"
+  integrity sha512-8xeimMwMItMw8hRrOl3C9/xzU49HV/yE6ORew/l+dxWimO5A4Ra8ld2rerlJvc/O7et5Z1zrWsPX43v1QBjCxw==
   dependencies:
-    whatwg-url "^5.0.0"
+    data-uri-to-buffer "^4.0.0"
+    fetch-blob "^3.1.4"
+    formdata-polyfill "^4.0.10"
 
 node-forge@^1.2.0:
   version "1.2.1"
@@ -6200,11 +6217,6 @@ totalist@^1.0.0:
   resolved "https://registry.yarnpkg.com/totalist/-/totalist-1.1.0.tgz#a4d65a3e546517701e3e5c37a47a70ac97fe56df"
   integrity sha512-gduQwd1rOdDMGxFG1gEvhV88Oirdo2p+KjoYFU7k2g+i7n6AFFbDQ5kMPUsW0pNbfQsB/cwXvT1i4Bue0s9g5g==
 
-tr46@~0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
-  integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
-
 tree-kill@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/tree-kill/-/tree-kill-1.2.2.tgz#4ca09a9092c88b73a7cdc5e8a01b507b0790a0cc"
@@ -6458,10 +6470,10 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   dependencies:
     minimalistic-assert "^1.0.0"
 
-webidl-conversions@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/webidl-conversions/-/webidl-conversions-3.0.1.tgz#24534275e2a7bc6be7bc86611cc16ae0a5654871"
-  integrity sha1-JFNCdeKnvGvnvIZhHMFq4KVlSHE=
+web-streams-polyfill@^3.0.3:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.0.tgz#a6b74026b38e4885869fb5c589e90b95ccfc7965"
+  integrity sha512-EqPmREeOzttaLRm5HS7io98goBgZ7IVz79aDvqjD0kYXLtFZTc0T/U6wHTPKyIjb+MdN7DFIIX6hgdBEpWmfPA==
 
 webpack-bundle-analyzer@^4.4.1:
   version "4.5.0"
@@ -6599,14 +6611,6 @@ websocket-extensions@>=0.1.1:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
-
-whatwg-url@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/whatwg-url/-/whatwg-url-5.0.0.tgz#966454e8765462e37644d3626f6742ce8b70965d"
-  integrity sha1-lmRU6HZUYuN2RNNib2dCzotwll0=
-  dependencies:
-    tr46 "~0.0.3"
-    webidl-conversions "^3.0.0"
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
