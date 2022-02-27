@@ -11,7 +11,14 @@
     "buildResources": "static/icons"
   },
   "files": ["build/**/*", "package.json", "static/**/*"],
-  "publish": "github",
+  "publish": [
+    "github",
+    {
+      "provider": "snapStore",
+      "repo": "skye",
+      "channels": ["stable"]
+    }
+  ],
   "deb": {
     "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
   },
@@ -36,23 +43,27 @@
     "target": [
       {
         "target": "AppImage",
-        "arch": ["x64"]
+        "arch": ["x64", "arm64"]
       },
       {
         "target": "deb",
-        "arch": ["x64"]
+        "arch": ["x64", "arm64"]
       },
       {
         "target": "rpm",
-        "arch": ["x64"]
+        "arch": ["x64", "arm64"]
       },
       {
         "target": "pacman",
-        "arch": ["x64"]
+        "arch": ["x64", "arm64"]
       },
       {
         "target": "tar.gz",
-        "arch": ["x64"]
+        "arch": ["x64", "arm64"]
+      },
+      {
+        "target": "snap",
+        "arch": ["x64", "arm64"]
       }
     ]
   },
