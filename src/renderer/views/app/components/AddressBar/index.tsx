@@ -150,10 +150,6 @@ export const AddressBar = observer(() => {
           return searchParams.get('q');
         case 'qwant.com':
           return searchParams.get('q');
-        case 'swisscows.com':
-          return searchParams.get('q');
-        case 'ekoru.org':
-          return searchParams.get('q');
       }
     } catch {
       return undefined;

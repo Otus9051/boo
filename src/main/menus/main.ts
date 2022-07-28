@@ -236,42 +236,6 @@ export const getMainMenu = () => {
       ],
     },
     {
-      label: 'Bookmarks',
-      submenu: [
-        ...createMenuItem(
-          isMac ? ['Cmd+Option+B'] : ['CmdOrCtrl+Shift+O'],
-          () => {
-            Application.instance.windows.current.viewManager.create({
-              url: getWebUIURL('bookmarks'),
-              active: true,
-            });
-          },
-          'Manage bookmarks',
-        ),
-        ...createMenuItem(
-          ['CmdOrCtrl+Shift+B'],
-          async () => {
-            const { bookmarksBar } = Application.instance.settings.object;
-            await Application.instance.settings.updateSettings({
-              bookmarksBar: !bookmarksBar,
-            });
-          },
-          'Toggle bookmarks bar',
-        ),
-        ...createMenuItem(
-          ['CmdOrCtrl+D'],
-          () => {
-            Application.instance.windows.current.webContents.send(
-              'show-add-bookmark-dialog',
-            );
-          },
-          'Add this website to bookmarks',
-        ),
-        // { type: 'separator' }
-        // TODO: list bookmarks
-      ],
-    },
-    {
       label: 'Tools',
       submenu: [
         {

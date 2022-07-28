@@ -279,9 +279,6 @@ export default observer(() => {
           <MenuItem section="privacy" icon={ICON_SHIELD}>
             Privacy
           </MenuItem>
-          <MenuItem section="account" icon={ICON_PERSON}>
-            Innatical ID
-          </MenuItem>
           {/* <MenuItem section="permissions">Site permissions</MenuItem> */}
 
           {/* <MenuItem section="language">Languages</MenuItem> */}
