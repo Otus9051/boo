@@ -32,3 +32,8 @@ It compiles macOS binaries
 yarn run compile-win32
 ```
 It compiles Windows binaries
+
+-------------------------------
+Image Source: https://www.reddit.com/r/AnimeGirls/comments/j6t3an/rawr
+
+The image was run through remove.bg, waifu2x and then cropped using Shotwell.
