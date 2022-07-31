@@ -25,8 +25,8 @@ assignees: ''
 **Details:**
 
 - Operating System:
-- Skye version:
-- Last known working Skye version:
+- Boo version:
+- Last known working Boo version:
 
 **Additional context**
 

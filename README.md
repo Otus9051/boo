@@ -8,7 +8,7 @@
 ![GitHub Downloads](https://img.shields.io/github/downloads/Otus9051/boo/total?color=%23497FFF&label=Downloads)
 ![GitHub Stars](https://img.shields.io/github/stars/Otus9051/boo?color=%23497FFF&label=Stars)
 
-Fast, Secure, Beautiful.
+Fast, Secure and probably one of the most beautiful OSS browsers. Based on Electron (is fast nonetheless).
 
 ## Credits
 

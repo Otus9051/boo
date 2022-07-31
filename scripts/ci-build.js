@@ -37,10 +37,10 @@ const getInput = (name) => {
       );
       const newPkg = {
         ...package,
-        name: 'skye-nightly',
+        name: 'boo-nightly',
         repository: {
           type: 'git',
-          url: 'git+https://github.com/skyebrowser/skye.git',
+          url: 'git+https://github.com/otus9051/boo.git',
         },
       };
       await promises.writeFile(
@@ -50,8 +50,8 @@ const getInput = (name) => {
 
       const newEBConfig = {
         ...electronBuilder,
-        appId: 'com.innatical.skye',
-        productName: 'Skye Nightly',
+        appId: 'com.otus9051.boo',
+        productName: 'Boo Nightly',
         directories: {
           output: 'dist',
           buildResources: 'static/nightly-icons',

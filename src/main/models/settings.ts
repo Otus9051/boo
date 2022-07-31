@@ -91,10 +91,10 @@ export class Settings extends EventEmitter {
 
     if (this.object.themeAuto) {
       this.object.theme = nativeTheme.shouldUseDarkColors
-        ? 'skye-dark'
-        : 'skye-light';
+        ? 'boo-dark'
+        : 'boo-light';
     } else {
-      themeSource = this.object.theme === 'skye-dark' ? 'dark' : 'light';
+      themeSource = this.object.theme === 'boo-dark' ? 'dark' : 'light';
     }
 
     if (themeSource !== nativeTheme.themeSource) {

@@ -1,5 +1,5 @@
 {
-  "name": "skye",
+  "name": "boo",
   "version": "7.0.0",
   "sideEffects": false,
   "description": "Extensible, fast and innovative web browser with basically the best UI of all Open Source Browsers.",
@@ -11,15 +11,15 @@
     "mobx",
     "styled-components"
   ],
-  "homepage": "https://github.com/skyebrowser/skye#readme",
+  "homepage": "https://github.com/Otus9051/boo",
   "main": "build/main.bundle.js",
   "author": "Otus9051 <otus@duck.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/skyebrowser/skye.git"
+    "url": "git+https://github.com/Otus9051/boo.git"
   },
   "bugs": {
-    "url": "https://github.com/skyebrowser/skye/issues"
+    "url": "https://github.com/Otus9051/boo/issues"
   },
   "scripts": {
     "dev-renderer": "cross-env DEV=1 webpack serve --config webpack.config.renderer.js",

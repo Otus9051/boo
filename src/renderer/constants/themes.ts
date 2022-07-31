@@ -1,7 +1,7 @@
 import { ITheme } from '~/interfaces';
 import { BLUE_500 } from './colors';
 
-export const skyeLight: ITheme = {
+export const booLight: ITheme = {
   'titlebar.backgroundColor': '#fff',
   'addressbar.backgroundColor': '#F2F8FF',
   'addressbar.textColor': '#000',
@@ -39,7 +39,7 @@ export const skyeLight: ITheme = {
   backgroundColor: '#fff',
 };
 
-export const skyeDark: ITheme = {
+export const booDark: ITheme = {
   'titlebar.backgroundColor': '#070B10',
   'addressbar.backgroundColor': '#1A1E2C',
   'addressbar.textColor': '#fff',

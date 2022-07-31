@@ -1,4 +1,4 @@
-# Available keyboard shortcuts in Skye
+# Available keyboard shortcuts in Boo
 
 ## Windows and Linux
 
@@ -17,9 +17,9 @@
 | Go forward                  | `Alt + Right Arrow`              |
 | Close selected tab          | `Ctrl + W` or `Ctrl + F4`        |
 | Close current window        | `Ctrl + Shift + W` or `Alt + F4` |
-| Close Skye                  | `Ctrl + Shift + Q`               |
+| Close Boo                  | `Ctrl + Shift + Q`               |
 
-### Skye feature shortcuts
+### Boo feature shortcuts
 
 | Action                                  | Shortcut                        |
 | --------------------------------------- | ------------------------------- |
@@ -56,10 +56,10 @@
 | Go forward                  | `⌘ + ]` or `⌘ + Right Arrow` |
 | Close selected tab          | `⌘ + W`                      |
 | Close current window        | `⌘ + Shift + W`              |
-| Hide Skye                   | `⌘ + H`                      |
-| Close Skye                  | `⌘ + Q`                      |
+| Hide Boo                   | `⌘ + H`                      |
+| Close Boo                  | `⌘ + Q`                      |
 
-### Skye feature shortcuts
+### Boo feature shortcuts
 
 | Action                                  | Shortcut         |
 | --------------------------------------- | ---------------- |

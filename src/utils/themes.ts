@@ -1,7 +1,7 @@
-  import { skyeLight, skyeDark } from '~/renderer/constants/themes';
+  import { booLight, booDark } from '~/renderer/constants/themes';
 
 export const getTheme = (name: string) => {
-  if (name === 'skye-light') return skyeLight;
-  else if (name === 'skye-dark') return skyeDark;
-  return skyeDark;
+  if (name === 'boo-light') return booLight;
+  else if (name === 'boo-dark') return booDark;
+  return booDark;
 };

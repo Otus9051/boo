@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-    <id>skye</id>
+    <id>boo</id>
     <metadata_license>CC-BY-SA-4.0</metadata_license>
     <project_license>GPL-3.0-or-later</project_license>
-    <name>Skye Browser</name>
-    <url type="homepage">https://skye.innatical.com</url>
-    <summary>The Next Generation of Web Browsing, Powered by Innatical</summary>
+    <name>Boo Browser</name>
+    <url type="homepage">https://github.com/Otus9051/boo</url>
+    <summary>Fast, Secure, Beautiful.</summary>
     <description>
         <p>
-        Skye is a next generation web browser that integrates into the Innatical ecosystem, provides elegant design, has built-in ad and tracker blocking, and prioritizes speed.
+        Boo is a fast, secure and probably one of the most beautiful OSS browsers. Based on Electron.
         </p>
     </description>
-    <launchable type="desktop-id">skye.desktop</launchable>
+    <launchable type="desktop-id">boo.desktop</launchable>
     <provides>
-        <binary>skye</binary>
+        <binary>boo</binary>
     </provides>
     <screenshots>
         <screenshot type="default">
@@ -22,11 +22,15 @@
         </screenshot>
     </screenshots>
     <releases>
-        <release version="6.3.2" date="2021-12-06">
+        <release version="7.0.0" date="2022-07-28">
             <description>
-                <p>Fixed</p>
+                <p>Updated</p>
                 <ul>
-                <li>Appstream Support (We Hope)</li>
+                <li>Electron and dependencies</li>
+                </ul>
+                <p>Others</p>
+                <ul>
+                <li>Removed Innatical Shit Mostly</li>
                 </ul>
             </description>
         </release>

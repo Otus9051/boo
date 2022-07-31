@@ -5,7 +5,7 @@ import { URL } from 'url';
 
 protocol.registerSchemesAsPrivileged([
   {
-    scheme: 'skye',
+    scheme: 'boo',
     privileges: {
       bypassCSP: true,
       secure: true,

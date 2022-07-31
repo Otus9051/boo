@@ -33,8 +33,8 @@ const ThemeVariant = observer(() => {
           onChange={onThemeChange}
         >
           <Dropdown.Item value="auto">Auto</Dropdown.Item>
-          <Dropdown.Item value="skye-light">Light</Dropdown.Item>
-          <Dropdown.Item value="skye-dark">Dark</Dropdown.Item>
+          <Dropdown.Item value="boo-light">Light</Dropdown.Item>
+          <Dropdown.Item value="boo-dark">Dark</Dropdown.Item>
         </Dropdown>
       </Control>
     </Row>

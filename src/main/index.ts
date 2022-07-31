@@ -11,9 +11,9 @@ if (process.env.NODE_ENV === 'development') {
 import { platform } from 'os';
 import { Application } from './application';
 
-export const isNightly = app.name === 'skye-nightly';
+export const isNightly = app.name === 'boo-nightly';
 
-app.name = isNightly ? 'Skye Nightly' : 'Skye';
+app.name = isNightly ? 'Boo Nightly' : 'Boo';
 
 (process.env as any)['ELECTRON_DISABLE_SECURITY_WARNINGS'] = true;
 

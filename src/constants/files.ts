@@ -2,9 +2,9 @@ import { DEFAULT_SETTINGS } from './settings';
 
 export const DIRECTORIES = ['adblock', 'extensions', 'storage'];
 
-export const WEBUI_PROTOCOL = 'skye';
+export const WEBUI_PROTOCOL = 'boo';
 
-export const ERROR_PROTOCOL = 'skye-error';
+export const ERROR_PROTOCOL = 'boo-error';
 
 export const NETWORK_ERROR_HOST = 'network-error';
 

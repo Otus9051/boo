@@ -1,6 +1,6 @@
 {
-  "appId": "com.innatical.skye",
-  "productName": "Skye",
+  "appId": "com.otus9051.boo",
+  "productName": "Boo",
   "nsis": {
     "include": "static/installer.nsh"
   },
@@ -15,22 +15,22 @@
     "github",
     {
       "provider": "snapStore",
-      "repo": "skye",
+      "repo": "boobrowse",
       "channels": ["stable"]
     }
   ],
   "deb": {
-    "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
+    "fpm": ["static/boo.metainfo.xml=/usr/share/metainfo/boo.metainfo.xml"]
   },
   "rpm": {
-    "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
+    "fpm": ["static/boo.metainfo.xml=/usr/share/metainfo/boo.metainfo.xml"]
   },
   "pacman": {
-    "fpm": ["static/skye.metainfo.xml=/usr/share/metainfo/skye.metainfo.xml"]
+    "fpm": ["static/boo.metainfo.xml=/usr/share/metainfo/boo.metainfo.xml"]
   },
   "linux": {
     "category": "Network",
-    "executableName": "skye",
+    "executableName": "boo",
     "desktop": {
       "Comment": "Browse the Web",
       "GenericName": "Internet",
@@ -88,14 +88,14 @@
   "fileAssociations": [
     {
       "name": "Document",
-      "description": "Skye",
+      "description": "Boo",
       "role": "Viewer",
       "ext": "html"
     }
   ],
   "protocols": [
     {
-      "name": "Skye",
+      "name": "Boo",
       "role": "Viewer",
       "schemes": ["http", "https"]
     }
