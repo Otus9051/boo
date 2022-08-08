@@ -1,6 +1,6 @@
 <p align="center">
-  <img src=".github/assets/nya.png" alt="Boo logo"
-  width="200" 
+  <img src="static/icons/icon.png" alt="Boo Logo"
+  width="200"
   height="200" />
 </p>
 
@@ -17,7 +17,7 @@ Boo is basically a continuation of Skye but with more features and perks and sec
 
 ## Development
 
-This project is based on Typescript and Electron and uses the Yarn package manager. To compile it, run 
+This project is based on Typescript and Electron and uses the Yarn package manager. To compile it, run
 ```
 yarn run compile-linux
 ```
@@ -32,8 +32,3 @@ It compiles macOS binaries
 yarn run compile-win32
 ```
 It compiles Windows binaries
-
--------------------------------
-Image Source: https://www.reddit.com/r/AnimeGirls/comments/j6t3an/rawr
-
-The image was run through remove.bg, waifu2x and then cropped using Shotwell.
