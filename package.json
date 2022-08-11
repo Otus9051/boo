@@ -1,6 +1,6 @@
 {
   "name": "boo",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "sideEffects": false,
   "description": "Extensible, fast and innovative web browser with basically the best UI of all Open Source Browsers.",
   "keywords": [
