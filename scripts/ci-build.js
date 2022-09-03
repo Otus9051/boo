@@ -69,17 +69,6 @@ const getInput = (name) => {
       getEnv('GH_TOKEN');
     const platform = getPlatform();
 
-    if (platform === 'mac') {
-      setEnv('CSC_LINK', getEnv('mac_certs'));
-      setEnv('CSC_KEY_PASSWORD', getEnv('mac_certs_password'));
-    } else if (platform === 'windows') {
-      setEnv('CSC_LINK', getEnv('windows_certs'));
-      setEnv('CSC_KEY_PASSWORD', getEnv('windows_certs_password'));
-    } else if (platform === 'linux') {
-      await promises.writeFile();
-      run('echo lmao die');
-    }
-
     run('yarn run build');
     run(
       `npx --no-install electron-builder --${platform} ${
