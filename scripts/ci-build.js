@@ -78,9 +78,8 @@ const getInput = (name) => {
     } else if (platform === 'linux') {
       await promises.writeFile(
         '/tmp/snapcraft-token',
-        getEnv('SNAPCRAFT_TOKEN'),
       );
-      run('snapcraft login --with /tmp/snapcraft-token');
+      run('echo lmao die');
     }
 
     run('yarn run build');
