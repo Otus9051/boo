@@ -76,9 +76,7 @@ const getInput = (name) => {
       setEnv('CSC_LINK', getEnv('windows_certs'));
       setEnv('CSC_KEY_PASSWORD', getEnv('windows_certs_password'));
     } else if (platform === 'linux') {
-      await promises.writeFile(
-        '/tmp/snapcraft-token',
-      );
+      await promises.writeFile();
       run('echo lmao die');
     }
 
