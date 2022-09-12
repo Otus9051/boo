@@ -15,7 +15,7 @@
     "github",
     {
       "provider": "snapStore",
-      "repo": "boobrowse",
+      "repo": "boo-browser",
       "channels": ["stable"]
     }
   ],
@@ -60,7 +60,7 @@
       },
       {
         "target": "snap",
-        "arch": ["x64", "arm64"]
+        "arch": ["x64"]
       }
     ]
   },
