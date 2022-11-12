@@ -12,12 +12,7 @@
   },
   "files": ["build/**/*", "package.json", "static/**/*"],
   "publish": [
-    "github",
-    {
-      "provider": "snapStore",
-      "repo": "boo-browser",
-      "channels": ["stable"]
-    }
+    "github"
   ],
   "deb": {
     "fpm": ["static/boo.metainfo.xml=/usr/share/metainfo/boo.metainfo.xml"]
