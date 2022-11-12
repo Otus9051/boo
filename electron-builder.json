@@ -75,6 +75,7 @@
         "arch": ["x64", "ia32"]
       }
     ]
+    "publish": "github"
   },
   "mac": {
     "category": "public.app-category.navigation",
