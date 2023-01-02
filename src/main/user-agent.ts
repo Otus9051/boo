@@ -8,12 +8,13 @@ const CHROME_COMPONENT_PATTERN = / Chrome\\?.([^\s]+)/g;
 
 const COMPONENTS_TO_REMOVE = [
   / Electron\\?.([^\s]+)/g,
+  / Boo.([^\s]+)/,
   ` ${app.name}/${app.getVersion()}`,
 ];
 
 // TODO(sentialx): script to update stable Chrome version?
 const COMPONENTS_TO_REPLACE: [string | RegExp, string][] = [
-  [CHROME_COMPONENT_PATTERN, ' Chrome/102.0.5005.167'],
+  [CHROME_COMPONENT_PATTERN, ' Chrome/108.0.0.0'],
 ];
 
 const urlMatchesPatterns = (url: string, patterns: RegExp[]) =>

@@ -1,6 +1,7 @@
 {
   "name": "boo",
-  "version": "7.0.3",
+  "version": "7.0.4",
+  "main": "build/main.bundle.js",
   "sideEffects": false,
   "description": "Extensible, fast and innovative web browser with basically the best UI of all Open Source Browsers.",
   "keywords": [
@@ -12,7 +13,6 @@
     "styled-components"
   ],
   "homepage": "https://github.com/Otus9051/boo",
-  "main": "build/main.bundle.js",
   "author": "Otus9051 <otus@duck.com>",
   "repository": {
     "type": "git",
