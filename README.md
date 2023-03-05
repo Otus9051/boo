@@ -1,3 +1,5 @@
+# DEVELOPMENT HAS BEEN STOPPED INDEFINITELY. PULL REQUESTS ARE WELCOME.
+
 <p align="center">
   <img src="static/icons/icon.png" alt="Boo Logo"
   width="200"
