@@ -1,4 +1,6 @@
 # DEVELOPMENT HAS BEEN STOPPED INDEFINITELY. PULL REQUESTS ARE WELCOME.
+## Browser now deemed insecure. There are 19 dependabot security issues in the security tab, gah.
+## I would patch them but no one uses it so...
 
 <p align="center">
   <img src="static/icons/icon.png" alt="Boo Logo"
