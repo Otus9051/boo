@@ -1,9 +1,9 @@
 import { ipcMain, dialog } from 'electron';
 import * as Datastore from '@seald-io/nedb';
 import { fileTypeFromBuffer } from 'file-type';
-import * as icojs from 'icojs';
+import { isICO, parseICO } from 'icojs';
 
-import { getPath } from '~/utils';
+import { getPath } from '../../utils';
 import {
   IFindOperation,
   IInsertOperation,
@@ -13,8 +13,8 @@ import {
   IVisitedItem,
   IFavicon,
   IBookmark,
-} from '~/interfaces';
-import { countVisitedTimes } from '~/utils/history';
+} from '../../interfaces';
+import { countVisitedTimes } from '../../utils/history';
 import { promises } from 'fs';
 import { Application } from '../application';
 import { requestURL } from '../network/request';
@@ -29,7 +29,7 @@ interface Databases {
 }
 
 const convertIcoToPng = async (icoData: Buffer): Promise<ArrayBuffer> => {
-  return (await icojs.parse(icoData, 'image/png'))[0].buffer;
+  return (await parseICO(icoData, 'image/png'))[0].buffer;
 };
 
 const encodeHref = (str: string) => {
